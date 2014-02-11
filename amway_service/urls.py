@@ -7,7 +7,7 @@ from settings import STATIC_ROOT
 admin.autodiscover()
 # admin.site.unregister(Site)
 urlpatterns = patterns('',
-    url(r'^$', 'qingyinghui_invitation.views.index'),
+    url(r'^qyh$', 'qingyinghui_invitation.views.index'),
     # url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT,
     #                                                'show_indexes': True}),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': STATIC_ROOT,
