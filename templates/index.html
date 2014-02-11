@@ -232,7 +232,7 @@ $(document).ready(function() {
 				/*alert(msg);*/
               if (msg['result']) {
                     /*卡号姓名正确，进入邀请函页面*/
-                    window.location.href = encodeURI("/myinvitation?loginname="+ msg['data']['name'] +"&loginid=" + msg['data']['ada'])
+                    window.location.href = encodeURI("/myinvitation?loginname="+ names +"&loginid=" + inputid)
               } else {
                   callalert();
                   $("#alert").children("h2").text("请正确输入您的姓名，如果您的家庭有多位成员结伴同行，只需输入您自己的姓名即可。");
