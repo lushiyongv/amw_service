@@ -9,7 +9,7 @@ amway_service
 
 前端代码目录： ~/amway.brixd.com/amway_service/templates
 
-登陆日志： ~/amway.brixd.com/amway_service/user_login_log  日志和统计脚本目录
+日志和统计脚本目录： ~/amway.brixd.com/amway_service/user_login_log  
 
 
 =============
