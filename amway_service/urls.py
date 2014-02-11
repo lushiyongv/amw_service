@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from django.contrib.sites.models import Site
 from settings import STATIC_ROOT
 
 admin.autodiscover()
 # admin.site.unregister(Site)
 urlpatterns = patterns('',
+    url(r'^$', 'amway_service.views.index'),
     url(r'^qyh$', 'qingyinghui_invitation.views.index'),
     # url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT,
     #                                                'show_indexes': True}),
