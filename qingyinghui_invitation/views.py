@@ -21,6 +21,9 @@ def index(request):
 def myinvitation(request):
     return render_to_response('myinvitation.html', locals(), context_instance=RequestContext(request))
 
+def schedule(request):
+    return render_to_response('calendar.html', locals(), context_instance=RequestContext(request))
+
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:

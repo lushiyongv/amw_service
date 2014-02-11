@@ -12,8 +12,9 @@ urlpatterns = patterns('',
     #                                                'show_indexes': True}),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': STATIC_ROOT,
                                                    'show_indexes': True}),
-    url(r'myinvitation/', 'qingyinghui_invitation.views.myinvitation'),
-    url(r'login/', 'qingyinghui_invitation.views.login'),
+    url(r'^myinvitation/$', 'qingyinghui_invitation.views.myinvitation'),
+    url(r'^login/$', 'qingyinghui_invitation.views.login'),
+    url(r'^qyh_schedule/$', 'qingyinghui_invitation.views.schedule'),
 
     # Examples:
     # url(r'^$', 'qingyinghui_invitation.views.home', name='home'),
