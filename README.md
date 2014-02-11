@@ -1,7 +1,7 @@
 amway_service
 =============
 
-青英会  部分
+青英会  邀请函
 
 登陆地址：http://a.brixd.com/invitation2014/index.html，   会跳转至：http://amway.brixd.com/qyh
 
@@ -11,4 +11,4 @@ amway_service
 
 
 =============
-xxx部分
+xxx
