@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1.0, minimum-scale=0.5, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta content="telephone=no"name="format-detection"/>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>-->
+<script src="../static/js/jquery-1.6.4.min.js"></script>
+<title>青英晚会日程</title>
+<style>
+html { margin:0px; padding: 0px; max-width:640px;}
+body {
+	margin:0px; width:100%;
+	max-width:640px; background-color:#F7F7F7;
+}
+#caltop {
+	width:100%; position:relative; margin:0px auto; float:left;
+	background-image:url(../static/images/cal_top.jpg);
+	background-repeat:no-repeat; background-size:contain;
+	max-width:640px; z-index:110;
+}
+#calbottom {
+	width:100%; margin:0px auto; float:left;
+	background-image:url(../static/images/cal_bottom.jpg);
+	background-repeat:no-repeat; background-size:contain;
+	max-width:640px; z-index:111;
+}
+#calcontent {
+	margin:0px 10px; float:left;
+	z-index:112; height:auto;
+}
+#caltitle1 {
+	width:100%; height:20px; float:left; margin:10px 0px;
+	background-image:url(../static/images/cal_title1.jpg);
+	background-repeat:no-repeat; background-size:contain; background-position:left;
+}
+#caltitle2 {
+	width:100%; height:20px; float:left; margin:10px 0px;
+	background-image:url(../static/images/cal_title2.jpg);
+	background-repeat:no-repeat; background-size:contain; background-position:left;
+}
+table {
+	width:100%; float:left; margin-top:10px;
+}
+.calstar {
+	width:34px; height:34px; display:block;
+	background-repeat:no-repeat; background-size:contain;
+}
+.calicon {
+	width:34px; height:34px; display:block;
+	background-repeat:no-repeat; background-size:contain;
+}
+.caliconbg {
+	background-image:url(../static/images/cal_iconbg.jpg);
+	background-repeat:repeat-y; background-size:contain; background-position:left;
+}
+.caldate {
+	font-size:12px; line-height:24px; text-align:left; margin-right:6px; margin-top:5px;
+	color:#E9003A; width:60px; display:block;
+}
+.bigfont {
+	font-size:14px; line-height:24px; text-align:left; width:100%; display:block; margin-top:5px;
+	color:#999;
+}
+.smallfont {
+	font-size:12px; line-height:20px; text-align:left; margin-top:6px;padding-bottom:10px; display:block;
+	color:#999;
+}
+</style>
+</head>
+
+<body>
+<div id="caltop"></div>
+<div id="calcontent">
+  <div id="caltitle1"></div>
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="0%" align="left" valign="top"><div class="calstar" style="background-image:url(../static/images/cal_star1.jpg)"></div></td>
+    <td width="0%" align="left" valign="top" class="caldate"> 3月15日</td>
+    <td width="0%" align="left" valign="top" class="caliconbg"><div class="calicon" style="background-image:url(../static/images/cal_icon1.jpg)"></div></td>
+    <td width="100%" align="left" valign="top" style="padding-left:6px;"><span class="bigfont">《时尚手册》潮爆发布</span><span class="smallfont">8种风格<br />
+      一秒钟变身红毯焦点</span></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><div class="calstar" style="background-image:url(../static/images/cal_star2.jpg)"></div></td>
+    <td align="left" valign="top" class="caldate">4月15日至5月15日</td>
+    <td align="left" valign="top" class="caliconbg"><div class="calicon" style="background-image:url(../static/images/cal_icon2.jpg)"></div></td>
+    <td align="left" valign="top" style="padding-left:6px;"><span class="bigfont">热选首轮赢家</span><span class="smallfont">网站互动<br />
+      提前感受红毯角逐<br />预选心中着装明星</span></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><div class="calstar" style="background-image:url(../static/images/cal_star3.jpg)"></div></td>
+    <td align="left" valign="top" class="caldate">5月31日</td>
+    <td align="left" valign="top"><div class="calicon" style="background-image:url(../static/images/cal_icon3.jpg)"></div></td>
+    <td align="left" valign="top" style="padding-left:6px;"><span class="bigfont">青英号时尚集结</span><span class="smallfont">时尚大片密集演练<br />
+      Hold 住明星气场<br />备战釜山之巅终极 PK</span></td>
+  </tr>
+</table>
+  <div style=" width:100%; height:10px; border-top:1px solid #C8BDC1; position: relative; float:left; margin-top:10px;"></div>
+  <div id="caltitle2"></div>
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="0%" align="left" valign="top" class="caliconbg"><div class="calicon" style="background-image:url(../static/images/cal_icon4.jpg)"></div></td>
+      <td width="100%" align="left" valign="top" style="padding-left:6px;"><span class="bigfont" style="margin-bottom:20px;">红毯走秀</span></td>
+    </tr>
+    <tr>
+      <td align="left" valign="top" class="caliconbg"><div class="calicon" style="background-image:url(../static/images/cal_icon5.jpg)"></div></td>
+      <td align="left" valign="top" style="padding-left:6px;"><span class="bigfont" style="margin-bottom:20px;">明星写真</span></td>
+    </tr>
+    <tr>
+      <td align="left" valign="top" class="caliconbg"><div class="calicon" style="background-image:url(../static/images/cal_icon6.jpg)"></div></td>
+      <td align="left" valign="top" style="padding-left:6px;"><span class="bigfont" style="margin-bottom:20px;">“最佳着装奖”终极 PK</span></td>
+    </tr>
+    <tr>
+      <td align="left" valign="top" class="caliconbg"><div class="calicon" style="background-image:url(../static/images/cal_icon7.jpg)"></div></td>
+      <td align="left" valign="top" style="padding-left:6px;"><span class="bigfont" style="margin-bottom:20px;">尹恩惠颁奖</span></td>
+    </tr>
+    <tr>
+      <td align="left" valign="top"><div class="calicon" style="background-image:url(../static/images/cal_icon8.jpg)"></div></td>
+      <td align="left" valign="top" style="padding-left:6px;"><span class="bigfont" style="margin-bottom:20px;">K-pop 韩星倾情献艺</span></td>
+    </tr>
+  </table>
+</div>
+<div id="calbottom"></div>
+<script>
+$(document).ready(function() {
+  ajustsize();
+  /*获取地址中的姓名*/
+  var urlinfo = decodeURI(window.location.href);//获取url 
+  var invitationName = urlinfo.split("=")[1].split("&")[0];
+  re = /\s/g;
+  var showname = invitationName.replace(re,"、");
+  $("#name").text(showname)
+
+})
+/*窗口大小发生变化时，重新调整宽度*/
+$( window ).resize(function() {
+  ajustsize()
+});
+
+function ajustsize() {
+  var pagewidth =  $("#caltop").width();
+  var topheight = Number(pagewidth*0.3)
+  var bottomheight = Number(pagewidth*0.25)
+  
+  $("#caltop").css("height", topheight + "px" )
+  $("#calbottom").css("height", bottomheight + "px" )
+}
+
+</script>
+</body>
+</html>
