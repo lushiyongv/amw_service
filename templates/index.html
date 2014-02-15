@@ -11,7 +11,7 @@
 <style>
 html { margin:0px; padding: 0px;}
 body {
-	margin:0px;
+	margin:0px; padding:0px;
 	background-color:#F8F8F8;
 }
 header {
@@ -28,16 +28,18 @@ footer {
 	width: 100%; position: fixed; bottom: 0px;
 	height:240px; max-width:640px;
 	background-image:url(/static/images/footer.png);
-	background-position: left bottom;
+	background-position:left bottom;
 	background-size:contain;
 	background-repeat:no-repeat;
 	z-index:10;
 }
 #inputarea {
 	width:260px;
-	position: relative;
-	margin:80px auto 0px auto;
-	z-index:13;
+	position: absolute;
+	top: 80px;
+	left: 50%;
+	margin-left:-130px;
+	z-index:20;
 }
 h1 {
 	margin-top:0px;
@@ -47,7 +49,6 @@ h1 {
 	text-decoration: none;
 	text-align: center;
 }
-
 h2 {
 	font-size: 14px; line-height:20px;
 	font-style: normal;
@@ -78,7 +79,6 @@ h3 {
     -webkit-box-shadow: 0px 1px 0px 0px #FFFFFF;
     box-shadow:         0px 1px 0px 0px #FFFFFF;
 }
-
 #loginname {
 	width:100%; height:40px; display:block;
 	border: 1px solid #CCC; padding:0px; margin-bottom:20px;
@@ -105,48 +105,124 @@ h3 {
 	-webkit-box-shadow: inset 0px 2px 0px 0px #EB4069;
 	box-shadow:         inset 0px 2px 0px 0px #EB4069;
 }
-#mask {
+#alert {
 	width:100%;
 	height:100%;
-	position:absolute;
+	position: absolute;
 	top: 0px; left: 0px;
-	display:none; z-index:20;
     background: rgba(35,31,32,0.40);
+	z-index:200;
+	display:none;
 }
-.alert {
-	width:220px; position:absolute; top:50%; left:50%; margin-top:-140px; margin-left:-130px; padding:40px 20px 0px 20px;
-    border-radius: 5px; display:none; z-index:21;
-    background: #FFFFFF;
+.alertcontent {
+	width:222px; height:auto; position:absolute; top:50%; left:50%; margin-top:-140px; margin-left:-130px; padding:40px 20px 0px 20px;
+    border-radius: 5px; 
+	background-color: #FFFFFF;
     -moz-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.10);
     -webkit-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.10);
     box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.10);
+	z-index:201;
 }
 .erroricon {
-	height:80px; width:100%; margin-bottom:40px; background-image:url(/static/images/erroricon.png); background-size:contain; background-repeat:no-repeat; background-position:top center;
+	height:80px; width:100%; margin-bottom:20px; background-image:url(/static/images/erroricon.png); background-size:contain; background-repeat:no-repeat; background-position:top center;
 }
-#cover {
-	position:absolute; top:100%; left:0px; display:none;
-	width: 100%; height:100%;
-	background-color: #F2F2F2;
-	background-image:url(/static/images/cover.png);
-	background-repeat:no-repeat; background-size:contain; background-position: top left; border: 1px solid #F2F2F2;
-	z-index:21;
+
+#myloader {
+	width:100%; height:100%;
+	top:0px; left:0px;
+    background: rgba(255,255,255,0.80);
+	position:absolute;
+	z-index:1000;
 }
+.loader {
+	text-align: center;
+	width:80px;
+	height:50px;
+	margin:50% auto;
+}
+.loader span {
+	display: inline-block;
+	vertical-align: middle;
+	width: 10px;
+	height: 10px;
+	margin: 25px auto;
+	background: #DB2825;
+	-moz-border-radius: 50px;
+	-moz-animation: loader 1.3s infinite alternate;
+	-webkit-border-radius: 50px;
+	-webkit-animation: loader 1.3s infinite alternate;
+	border-radius: 50px;
+	animation: loader 1.3s infinite alternate;
+}
+
+#loader_1 {
+	-moz-animation-delay: 0s;
+	-webkit-animation-delay: 0s;
+	animation-delay: 0s;
+}
+
+#loader_2 {
+	-moz-animation-delay: 0.39s;
+	-webkit-animation-delay: 0.39s;
+	animation-delay: 0.39s;
+}
+
+#loader_3 {
+	-moz-animation-delay: 0.78s;
+	-webkit-animation-delay: 0.78s;
+	animation-delay: 0.78s;
+}
+
+@-webkit-keyframes loader {
+0% {
+	width: 10px;
+	height: 10px;
+	background-color:#DB2825;
+	-webkit-transform: translateY(0);
+}
+100% {
+	width: 20px;
+	height: 20px;
+	background-color:#F29017;
+	-webkit-transform: translateY(-21px);
+}
+}
+
+@keyframes loader {
+0% {
+	width: 10px;
+	height: 10px;
+	background-color:#DB2825;
+	transform: translateY(0);
+}
+100% {
+	width: 20px;
+	height: 20px;
+	background-color:#F29017;
+	transform: translateY(-21px);
+}
+} 
 </style>
 </head>
 
 <body>
+<!--头部修饰-->
 <header></header>
-<!--报错对话框-->
-<div class="alert" id="alert">
-  <div class="erroricon"></div>
-  <h2></h2>
-  <div id="btn_close" class="btn">我知道了</div>
+<!--加载动画-->
+<div id="myloader">
+  <div class="loader">
+    <span id="loader_1"></span>
+    <span id="loader_2"></span>
+    <span id="loader_3"></span>
+  </div>
 </div>
-<div id="mask"></div>
-
-<div id="cover">
-  <div id="btn_open" class="btn" style="margin-top:80%; margin-left:auto; margin-right:auto;">查看邀请函</div>
+<!--报错对话框-->
+<div id="alert">
+  <div class="alertcontent">
+    <div class="erroricon"></div>
+    <h2></h2>
+    <div id="btn_close" class="btn">我知道了</div>
+  </div>
 </div>
 <!--输入电话号码的对话框-->
 <div id="inputarea">
@@ -168,10 +244,25 @@ h3 {
 <script>
 $(document).ready(function() {
   /*手机号码输入框聚焦*/
-  $("#loginid").focus(); 
+  /*$("#loginid").focus(); */
+  $("#myloader").hide();
   
-  $("input").focus(function(){
+/*  $("input").focus(function(){
     $("#loginMsg").html(""); 
+  })*/
+  
+  /*点击获取邀请函按钮*/	
+  $("#btn_confirm").bind("click", function() {
+	  checkSubmit();
+  })
+  
+  /*调用alert*/
+  function callalert(){
+	$("#alert").fadeIn();
+  }
+  /*查关闭alert*/	
+  $("#btn_close").bind("click", function() {
+	$("#alert").fadeOut();
   })
   
   function checkSubmit(){ 
@@ -182,15 +273,15 @@ $(document).ready(function() {
 	
 	if(inputid == "" ){
 	  callalert();
-	  $("#alert").children("h2").text("输入您的卡号。");
+	  $(".alertcontent").children("h2").text("输入您的卡号。");
 	}
 	else if(inputid != "" && loginname == "" ){
 	  callalert();
-	  $("#alert").children("h2").text("输入您的姓名。");
+	  $(".alertcontent").children("h2").text("输入您的姓名。");
 	}
 	else if($("#"+inputid).length == 0){
 	  callalert();
-	  $("#alert").children("h2").text("您输入的卡号不在本次研讨会受邀名单之内，如有疑问请向安利当地业务部咨询。");
+	  $(".alertcontent").children("h2").text("您输入的卡号不在本次研讨会受邀名单之内，如有疑问请向安利当地业务部咨询。");
 	}
 	else if($("#"+inputid).length == 1){
       var names = $("#"+inputid).text()
@@ -234,33 +325,18 @@ $(document).ready(function() {
                     window.location.href = encodeURI("/myinvitation?loginname="+ names +"&loginid=" + inputid)
               } else {
                   callalert();
-                  $("#alert").children("h2").text("请正确输入您的姓名，如果您的家庭有多位成员结伴同行，只需输入您自己的姓名即可。");
+                  $(".alertcontent").children("h2").text("请正确输入您的姓名，如果您的家庭有多位成员结伴同行，只需输入您自己的姓名即可。");
               }
 			  }
           });
 	  }
 	  else{
 		  callalert();
-		  $("#alert").children("h2").text("请正确输入您的姓名，如果您的家庭有多位成员结伴同行，只需输入您自己的姓名即可。");
+		  $(".alertcontent").children("h2").text("请正确输入您的姓名，如果您的家庭有多位成员结伴同行，只需输入您自己的姓名即可。");
 	  }
 	}
   }
-
-  /*点击获取邀请函按钮*/	
-  $("#btn_confirm").bind("click", function() {
-	  checkSubmit();
-  })
-  
-  /*调用alert*/
-  function callalert(){
-	$("#mask").fadeIn();
-	$("#alert").fadeIn();
-  }
-  /*查关闭alert*/	
-  $("#btn_close").bind("click", function() {
-	$("#alert").fadeOut();
-	$("#mask").fadeOut();
-  })	
+	
 })
 </script>
 </html>
