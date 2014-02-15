@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url(r'^myinvitation/$', 'qingyinghui_invitation.views.myinvitation'),
     url(r'^login/$', 'qingyinghui_invitation.views.login'),
     url(r'^qyh_schedule/$', 'qingyinghui_invitation.views.schedule'),
+    url(r'^qyh/(\w+).html$', 'qingyinghui_invitation.views.show_qyh_html'),
 
     # Examples:
     # url(r'^$', 'qingyinghui_invitation.views.home', name='home'),

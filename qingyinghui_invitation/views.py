@@ -59,3 +59,7 @@ def login(request):
     user_info['name'] = user_name
     response_data['data'] = user_info
     return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+def show_qyh_html(request, html_page):
+    template = "%s.html" % html_page
+    return render_to_response(template, context_instance=RequestContext(request))
