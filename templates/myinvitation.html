@@ -11,115 +11,50 @@
 <style>
 html { margin:0px; padding: 0px; max-width:640px;}
 body {
-	margin:0px; width:100%;background-image:url(../static/images/invitation2.jpg);
-	background-repeat:repeat-y; background-size:contain;
-	max-width:640px;
+	margin:0px; width:100%; max-width:640px; background-color:#F8F8F8;
+	
 }
-#paper1 {
-	width:100%; position: relative; margin:0px auto;
-	background-image:url(../static/images/invitation1.jpg);
+header {
+	width:100%; position:relative; margin:0px auto; float:left;
+	background-image:url(../static/images/invitation_top.png);
 	background-repeat:no-repeat; background-size:contain;
-	max-width:640px; z-index:10;
+	max-width:640px; z-index:110;
 }
-#paper2 {
-	width:100%; position: relative; margin:0px auto; padding-top:20px;
-	 z-index:12;
-}
-#paper3 {
-	width:100%; position: relative; margin:-160px auto 0px auto;
-	background-image: url(../static/images/invitation3.png);
+footer {
+	width:100%;
+	background-image:url(../static/images/invitation_bottom.png);
 	background-repeat:no-repeat; background-size:contain;
-	max-width:640px; z-index:11;
+	max-width:640px;	
 }
+.contentarea {
+	margin:0px 20px;
+}
+
 h1 {
-	width: 82%;
-	margin: 0px auto;
-	font-size: 16px;
-	line-height: 28px;
-	font-style: normal;
-	color: #333;
-	text-decoration: none;
-	text-align: left; z-index:13;
-	/*font-family: "xingkai";*/
+	font-size: 16px; line-height: 28px; color: #000; text-decoration: none; text-align: left;
+	margin-left:20px; margin-right:20px;
 }
-h2 {
-	width: 82%;
-	margin: 0px auto;
-	font-size: 16px;
-	line-height: 28px;
-	font-style: normal;
-	color: #333;
-	text-decoration: none;
-	text-align: left; z-index:14;
-	/*font-family: "xingkai";*/
+.icon1{
+	width: 55px; height:45px; background-image: url(../static/images/invitation_icon1.png);
+	background-repeat:no-repeat; background-size:contain; display:block;
 }
-/*#tips1 {
-	width:240px;height:120px; z-index:22; display:none;
-	position:absolute; top:0px; right:0px;
-	background-image:url(../static/images/tips1.png);
-	background-repeat:no-repeat; background-size:contain;
+.icon2{
+	width: 55px; height:45px; background-image: url(../static/images/invitation_icon2.png);
+	background-repeat:no-repeat; background-size:contain; display:block;
 }
-#mask {
-	width:100%; height:100%;
-	position:absolute; z-index:21;
-	top: 0px; left: 0px;
-	display:none; z-index:20;
-    background-image: -o-linear-gradient(-90deg, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.00) 100%);
-    background-image: -moz-linear-gradient(-90deg, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.00) 100%);
-    background-image: -webkit-linear-gradient(-90deg, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.00) 100%);
-    background-image: -ms-linear-gradient(-90deg, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.00) 100%);
-    background-image: linear-gradient(-180deg, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.00) 100%);
-}*/
-.mark {
-	width:120px; height:120px; margin:40px 0px 0px 9%;
-	background-image:url(../static/images/mark.jpg);
-	background-repeat:no-repeat; background-size:contain;
-}
-.btn {
-	width:36%; height:32px; display:block;
-    border-radius: 4px;
-	margin-left:9%; margin-top:20px;
-	font-size:12px; line-height:32px; color:#FFF; text-align:center; text-decoration:none;
-	background-image: -o-linear-gradient(-90deg, #E60A3F 0%, #F13E19 100%);
-	background-image: -moz-linear-gradient(-90deg, #E60A3F 0%, #F13E19 100%);
-	background-image: -webkit-linear-gradient(-90deg, #E60A3F 0%, #F13E19 100%);
-	background-image: -ms-linear-gradient(-90deg, #E60A3F 0%, #F13E19 100%);
-	background-image: linear-gradient(-180deg, #E60A3F 0%, #F13E19 100%);
-	border: 1px solid #DB2824;
-	-moz-box-shadow:    inset 0px 2px 0px 0px #EB4069;
-	-webkit-box-shadow: inset 0px 2px 0px 0px #EB4069;
-	box-shadow:         inset 0px 2px 0px 0px #EB4069;
-}
-@font-face {
-	font-family:'xingkai';
-	src: url('font.ttf') format('truetype');
-}
+
 </style>
 </head>
 
 <body>
-<div id="tips1"></div>
-<div id="mask"></div>
-<div id="paper1"></div>
-<div id="paper2">
-  <h1>尊敬的&nbsp;&nbsp;<span id="name" style="color:#DB2824"></span>&nbsp;,</h1><br />
-  <h2>
-  阿尼哈赛呦，您好！<br />
-  我在釜山给大家拜个年，<br />
-  祝大家幸福如意。<br />
-  借这个机会邀请您来我家做客，<br />
-  6月1日，<br />
-  美丽的釜山妆扮一新，等您到来。<br /><br />
-  
-  我会和韩国最一线的明星，<br />
-  站在红毯上迎接您——<br />
-  因为，<br />
-  您才是那晚真正的明星！<br />
-  </h2>
-  <div class="mark"></div>
-  <a href="/qyh_schedule/" target="_self" class="btn">查看青英晚会日程</a>
-</div>
-<div id="paper3"></div>
+<!--页面内容-->
+<header></header>
+<h1>尊敬的&nbsp;&nbsp;<span id="name" style="color:#DB2824"></span>&nbsp;,</h1>
+<h1>欢迎参加“I am a Star.我是大明星—釜山青英盛典”，这里有一封尹恩惠亲笔写就的邀请函等你开启！<div class="icon1"></div>
+</h1>
+<h1>晚会当天，大咖来袭，提前揭秘韩星大咖。<div class="icon2"></div></h1>
+<h1>红毯走秀、“最佳着装奖”终极PK、K-pop韩星倾情献艺……无限精彩，就等你来！</h1>
+<footer></footer>
 
 <script>
 $(document).ready(function() {
@@ -139,6 +74,14 @@ $(document).ready(function() {
   re = /\s/g;
   var showname = invitationName.replace(re,"、");
   $("#name").text(showname)
+  
+  $(".icon1").bind("click", function() {
+	  window.location.href = encodeURI("myinvitationletter.html?loginname="+ invitationName +"&loginid=" + invitationId)
+  })
+  $(".icon2").bind("click", function() {
+	  window.location.href = "photo.html"
+  })
+  
 
 })
 /*窗口大小发生变化时，重新调整宽度*/
@@ -147,12 +90,12 @@ $( window ).resize(function() {
 });
 
 function ajustsize() {
-  var pagewidth =  $("#paper1").width();
-  var paper1height = Number(pagewidth*0.4)
-  var paper3height = Number(pagewidth*1.1)
+  var pagewidth =  $("body").width();
+  var headerheight = Number(pagewidth*0.4)
+  var footerheight = Number(pagewidth*0.4)
   
-  $("#paper1").css("height", paper1height + "px" )
-  $("#paper3").css("height", paper3height + "px" )
+  $("header").css("height", headerheight + "px" )
+  $("footer").css("height", footerheight + "px" )
 }
 
 </script>
