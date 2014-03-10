@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>安利邀约卡</title>
+    <meta name="description" content="安利邀约卡">
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!-- <link rel="icon" href="http://static.zuimeia.com/product/img/favicon.ico" type="image/x-icon"> -->
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Apple -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+
+    <!-- Our CSS stylesheet file -->
+    <link rel="stylesheet" href="css/normalize.css" />
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <style>
+            header{
+                background-repeat:repeat;
+            }
+          </style>
+    <![endif]-->
+
+    <!--[if IE]>
+    <style>
+            html ,h1 , h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, div, a, p{
+                font-family: "Microsoft Yahei", "微软雅黑", "Tahoma", "Arial", "Helvetica", "STHeiti";
+            }
+            .copyright{
+                width: 300px;
+            }
+            h1,.orange,h5,.big-font{
+                font-weight:normal;
+            }
+          </style>
+    <![endif]-->
+    <style>
+    html,body {
+        background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');
+    }
+    .card-container{
+        padding: 100px 20px 0 20px;
+        overflow: hidden;
+        position: relative;
+        background:url('img/Amway贺卡_aq01.jpg');
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        width: 600px;
+        min-height: 900px;
+        margin:auto;
+    }
+    .hidden,#card_image,#main-poster{
+        width:0px;
+        height:0px;
+        overflow:hidden;
+        display: block;
+    }
+
+    .card-detail {        
+        width: 100%;
+        min-height:200px;
+        padding: 10px 0;
+        opacity: 0.96;
+        min-height: 248px;
+        overflow: auto;
+    }
+    .receiver, .main-body, .sender {
+        width: 100%;
+    }
+    .main-body,
+    .receive-para,
+    .send-para{
+        color: #777;
+        padding: 8px 0;
+        font-size: 16px;
+    }
+    .receive-para {
+    }
+    .send-para {
+        text-align: right;
+    }
+    /*-----发送按钮-----*/
+    .send-button {
+        background-color: #0ab5e1;
+        border: 0;
+        color: #FFF;
+        padding: 10px;
+        width: 110px;
+        margin: 0px auto 15px;
+        display: block;
+        -webkit-box-shadow: 0px 1px 1px rgba(0,0,0,.18);
+        box-shadow: 0px 1px 1px rgba(0,0,0,.18);
+        -webkit-border-radius: 1px;
+        border-radius: 1px;
+        font-weight: bold;
+        font-size: 16px;
+        text-align: center;
+    }
+    .re-change,
+    .re-choose{
+        float: left;
+        display: block;
+    }
+    .send-wrapper{
+        width: 280px;
+        overflow: hidden;
+    }
+    .send-wrapper,
+    .send-too {
+        margin: 60px auto 0;
+    }
+    .re-choose{
+        margin-left: 20px;
+    }
+
+    /*-----footer-----*/
+    footer {
+        position: relative;
+        overflow: hidden;
+        margin-top: 0px;
+    }
+    .footer-power {
+        font-size: 16px;
+        color: #bdbdbd;
+        overflow: hidden;
+        margin: 20px auto;
+        text-align: center;
+    }
+    .power-link {
+        color: #ffa200;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .power-link:hover, .power-link:active {
+        opacity: .9;
+    }
+    a {
+        -webkit-tap-highlight-color: inherit;
+    }
+    .card-list-item:before,
+    .card-list-item:after{
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+    /*----animation----*/
+    .animation {
+        -webkit-animation-duration: 1.5s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+    .flydown {
+        -webkit-animation-name: flydown;
+        -moz-animation-name: flydown;
+        -ms-animation-name: flydown;
+        -o-animation-name: flydown;
+        animation-name: flydown;
+        -webkit-animation-duration: 1s;
+           -moz-animation-duration: 1s;
+            -ms-animation-duration: 1s;
+             -o-animation-duration: 1s;
+                animation-duration: 1s;
+        -webkit-animation-delay: 1s;
+        -moz-animation-delay: 1s;
+        -ms-animation-delay: 1s;
+        -o-animation-delay: 1s;
+        animation-delay: 1s;
+    }
+    .fadein {
+        -webkit-animation-name: fadein;
+        -moz-animation-name: fadein;
+        -ms-animation-name: fadein;
+        -o-animation-name: fadein;
+        animation-name: fadein;
+        -webkit-animation-duration: 1s;
+           -moz-animation-duration: 1s;
+            -ms-animation-duration: 1s;
+             -o-animation-duration: 1s;
+                animation-duration: 1s;
+        -webkit-animation-delay: 3s;
+        -moz-animation-delay: 3s;
+        -ms-animation-delay: 3s;
+        -o-animation-delay: 3s;
+        animation-delay: 3s;
+    }
+    .fadecover{
+        -webkit-animation-name: fadecover;
+        -moz-animation-name: fadecover;
+        -ms-animation-name: fadecover;
+        -o-animation-name: fadecover;
+        animation-name: fadecover;
+        -webkit-animation-duration: .5s;
+           -moz-animation-duration: .5s;
+            -ms-animation-duration: .5s;
+             -o-animation-duration: .5s;
+                animation-duration: .5s;
+        -webkit-animation-delay: 3s;
+        -moz-animation-delay: 3s;
+        -ms-animation-delay: 3s;
+        -o-animation-delay: 3s;
+        animation-delay: 3s;
+    }
+    .slidein{
+        -webkit-animation-name: slidein;
+        -moz-animation-name: slidein;
+        -ms-animation-name: slidein;
+        -o-animation-name: slidein;
+        animation-name: slidein;
+        -webkit-animation-duration: .5s;
+           -moz-animation-duration: .5s;
+            -ms-animation-duration: .5s;
+             -o-animation-duration: .5s;
+                animation-duration: .5s;
+        -webkit-animation-delay: 3s;
+        -moz-animation-delay: 3s;
+        -ms-animation-delay: 3s;
+        -o-animation-delay: 3s;
+        animation-delay: 3s;
+    }
+    @keyframes flydown {
+        0% {
+            -webkit-transform: translateY(-500px) scale(.1) perspective(15px) rotateX(5deg);
+            -moz-transform: translateY(-500px) scale(.1) perspective(15px) rotateX(5deg);
+            -ms-transform: translateY(-500px) scale(.1) perspective(15px) rotateX(5deg);
+            -o-transform: translateY(-500px) scale(.1) perspective(15px) rotateX(5deg);
+            transform: translateY(-500px) scale(.1) perspective(15px) rotateX(5deg);
+            opacity: .8;
+            
+        }
+        100% {
+            -webkit-transform: translateY(0px) scale(1) perspective(20px) rotateX(0deg);
+            -moz-transform: translateY(0px) scale(1) perspective(20px) rotateX(0deg);
+            -ms-transform: translateY(0px) scale(1) perspective(20px) rotateX(0deg);
+            -o-transform: translateY(0px) scale(1) perspective(20px) rotateX(0deg);
+            transform: translateY(0px) scale(1) perspective(20px) rotateX(0deg);
+            opacity: .95;
+        }
+    }
+    @-webkit-keyframes flydown {
+       0% {
+            -webkit-transform: translateY(-500px) scale(.1) perspective(15px) rotateX(5deg);
+            -moz-transform: translateY(-500px) scale(.1) perspective(15px) rotateX(5deg);
+            -ms-transform: translateY(-500px) scale(.1) perspective(15px) rotateX(5deg);
+            -o-transform: translateY(-500px) scale(.1) perspective(15px) rotateX(5deg);
+            transform: translateY(-500px) scale(.1) perspective(15px) rotateX(5deg);
+            opacity: .8;
+            
+        }
+        100% {
+            -webkit-transform: translateY(0px) scale(1) perspective(20px) rotateX(0deg);
+            -moz-transform: translateY(0px) scale(1) perspective(20px) rotateX(0deg);
+            -ms-transform: translateY(0px) scale(1) perspective(20px) rotateX(0deg);
+            -o-transform: translateY(0px) scale(1) perspective(20px) rotateX(0deg);
+            transform: translateY(0px) scale(1) perspective(20px) rotateX(0deg);
+            opacity: .95;
+        }
+    }
+    @keyframes slidein {
+        0% {
+            -webkit-transform: translateX(-768px);
+            -moz-transform: translateX(-768px);
+            -ms-transform: translateX(-768px);
+            -o-transform: translateX(-768px);
+            transform: translateX(-768px);
+        }
+        100% {
+            -webkit-transform: translateX(0px);
+            -moz-transform: translateX(0px);
+            -ms-transform: translateX(0px);
+            -o-transform: translateX(0px);
+            transform: translateX(0px);
+        }
+    }
+    @-webkit-keyframes slidein {
+        0% {
+            -webkit-transform: translateX(-768px);
+            -moz-transform: translateX(-768px);
+            -ms-transform: translateX(-768px);
+            -o-transform: translateX(-768px);
+            transform: translateX(-768px);
+        }
+        100% {
+            -webkit-transform: translateX(0px);
+            -moz-transform: translateX(0px);
+            -ms-transform: translateX(0px);
+            -o-transform: translateX(0px);
+            transform: translateX(0px);
+        }
+    }
+    @keyframes fadein {
+        0% {
+            -webkit-transform: translateY(-50px);
+            -moz-transform: translateY(-50px);
+            -ms-transform: translateY(-50px);
+            -o-transform: translateY(-50px);
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+            -webkit-transform: translateY(0px);
+            -moz-transform: translateY(0px);
+            -ms-transform: translateY(0px);
+            -o-transform: translateY(0px);
+            transform: translateY(0px);
+        }
+    }
+    @-webkit-keyframes fadein {
+        0% {
+            opacity: 0;
+            -webkit-transform: translateY(-50px);
+            -moz-transform: translateY(-50px);
+            -ms-transform: translateY(-50px);
+            -o-transform: translateY(-50px);
+            transform: translateY(-50px);
+        }
+        100% {
+            opacity: 1;
+            -webkit-transform: translateY(0px);
+            -moz-transform: translateY(0px);
+            -ms-transform: translateY(0px);
+            -o-transform: translateY(0px);
+            transform: translateY(0px);
+        }
+    }
+    @keyframes fadecover {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @-webkit-keyframes fadecover {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    .special {
+        opacity: 0;
+        height: 0;
+        display: block;
+    }
+    ._view{
+        background: rgba(0,0,0,.5);
+        width: 100%;
+        height: 100%;
+    }
+    /*----成功提示----*/
+    .tip-success{
+        clear: both;
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');
+        top: 0;
+        left: 0;
+        z-index: 1;
+        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
+                box-shadow: 0 1px 1px rgba(0,0,0,.1);
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+        display: none;
+    }
+    .left-part{
+        float: left;
+    }
+    .left-part{
+        background-color: #70C515;
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        vertical-align: middle;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+        padding: 10px;
+    }
+    .success-icon{
+        width: 40px;
+        height: 40px;
+    }
+    .tip-words{
+        overflow: hidden;
+        text-align: center;
+    }
+    .tip{
+        padding: 8px;
+        font-size: 15px;
+        line-height: 1.5;
+        color: #5E5E5E;
+        white-space: inherit;
+    }
+    .wrapper{
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .blackcover{
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        z-index: 1;
+        text-align: center;
+        background-color: rgba(0,0,0,.5);
+    }
+    b{
+        color: #000;
+    }
+    .share-button{
+        width: 280px;
+        height: 50px;
+        background-color: #ffa200;
+        display: block;
+        border-radius: 1px;
+        text-align: center;
+        padding: 15px 10px;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+        color: #FFF;
+        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        font-size:16px;
+        font-weight: bold;
+        margin: 5px auto 0;
+        display: none;
+        cursor: pointer;
+    }
+    /*----下载按钮----*/
+    .download-button{
+        display: block;
+        color: #ffffff;
+        background-color: #ffa200;
+        margin: 13px auto 20px;
+        height: 30px;
+        line-height: 1.7;
+        font-size: 18px;
+        padding: 6px 20%;
+        width: 170px;
+        font-weight: bold;
+        text-align: center;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        -webkit-box-shadow: 0px 1px 1px rgba(0,0,0,.18);
+                box-shadow: 0px 1px 1px rgba(0,0,0,.18);
+    }
+    @media(max-width:800px){
+            .card-container{
+                padding: 50px 20px 0 20px;
+                min-height:900px;
+                max-height:900px;
+                width: 100%;
+            }
+            .card-detail{
+                max-height: 540px;
+            }
+        }
+        @media(max-width:540px){
+            .card-container{
+                min-height:810px;
+                max-height:810px;
+            }
+            .card-detail{
+                max-height: 540px;
+            }
+            
+        }
+        @media(max-width:384px){
+            .card-container{
+                min-height:576px;
+                max-height:576px;
+            }
+            .card-detail{
+                max-height: 440px;
+            }
+            .send-wrapper,
+            .send-too{
+                margin: 30px auto 50px;
+            }
+        }
+        @media(max-width:360px){
+            .card-container{
+                min-height:540px;
+                max-height:540px;
+            }
+            .card-detail{
+                max-height: 440px;
+            }
+            .send-wrapper,
+            .send-too{
+                margin: 60px auto 0px;
+            }
+
+        }
+        @media(max-width:320px){
+            .card-container{
+                min-height:480px;
+                max-height:480px;
+            }
+            .card-detail{
+                max-height: 320px;
+            }
+
+        }
+        .zhufu-download{
+            font-size: 17px;
+        }
+        @media (min-width:800px) {
+            .download-button{
+                padding: 6px 10%;
+            }
+        }
+
+        .copyright{
+            width: 300px;
+            padding: 0 10px 20px;
+        }
+        .card-contact {
+            color: #A3A3A3;
+            font-size: 13px;
+        }
+        .company-number {
+            padding-left: 0px;
+        }
+        .company-number:hover{
+            color: #ffa200;
+        }
+        .footer{
+            text-align: center;
+            padding: 20px 0;
+            color: #AFAFAF;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+    <!-- 贺卡背景 -->
+     <!-- <img src="http://static.zuimeia.com/product/img/zhufu/zhufu_icon_512.png" alt="" id="card_image"> -->
+    <!-- 微博封面 -->
+    <img src="{{ card.get_card_image }}" alt="" id="main-poster">
+        <div class="blackcover animation fadecover"></div>
+        <ul class="tip-success animation slidein">
+            <li class="left-part">
+                <img src="http://static.zuimeia.com/product/img/zhufu_check_icon.png" alt="" class="success-icon">
+            </li>
+            <li class="tip-words">
+                <div class="tip">贺卡制作完成！点击 <b>右上角的按钮</b> <b>分享给朋友</b> 或 <b>分享到朋友圈</b> </div>
+            </li>
+        </ul>
+        <div class="card-container">
+            <!-- 容器开始 -->
+            <div class="card-detail">
+                <!-- 收件人 -->
+                <div class="receiver">
+                    <p class="receive-para">尊敬的李先生：</p>
+                </div>
+
+                <div class="main-body">
+                    <p>
+                    我们诚挚地邀请您参加「安利非洲公益行研讨会」。</br>
+                        时间：2014年04月15日，下午2：00</br>
+                        地点：北京海淀区中关村大厦 603-605</br>
+
+                        我们期待您的到来！
+                    </p>
+                </div>
+                <!-- 发件人 -->
+                <div class="sender">
+                    <p class="send-para">
+                        Jack Lee
+                    </p>
+                </div>
+            </div>
+            <!-- 底部分享按钮 -->
+            <div class="send-wrapper animation fadein">
+                <a class="send-button re-change" href="write_card.html">再改改</a>
+                <a class="send-button re-choose" href="index.html">重新选择模板</a>
+            </div>
+            
+            <a href="http://zuimeia.com/weibo/login" class="share-button weibo-share animation fadein" id="share_weibo">分享到微博</a>
+                    <!-- <a href="http://zuimeia.com/weibo/login" class="share-button weibo-share animation fadein" id="share_weibo">直接分享到微博</a> -->
+            <!-- 发送按钮 -->
+            <a class="send-button send-too animation fadein" href="index.html">我也要发</a>
+
+            
+        </div>
+       
+        <footer>
+            <div class="footer">&copy;2014 安利中国</div>
+        </footer>
+    </div>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
+    <!-- Google Analytics
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-47476591-1', 'zuimeia.com');
+    ga('send', 'pageview');
+    </script>
+    -->
+    <script src="/static/js/event_analysis.js"></script>
+    <script src=" http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=70401495" type="text/javascript" charset="utf-8"></script>
+    <script>
+        function is_weixin(){
+            var ua = navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i)=="micromessenger") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        var $tips=$('.blackcover,.tip-success'),
+            $main_body = $('.main-body').text(),
+            $share_button = $('.share-button'),
+            link_address = document.URL,
+            $sender = $('.sender'),
+            $card_detail_height = $('.card-detail').height(),
+            $link_to_weixin=$('.link-to-weixin');
+
+        $tips.on('touchstart',function(){
+            $tips.hide();
+        })
+
+        if(is_weixin()){
+            $tips.show();
+        }else{
+            $link_to_weixin.attr('href','http://zuimeia.com');
+            $share_button.css('display','block');
+        }
+        $link_to_weixin.on('click',function(){
+            event_tracker('ZhufuDisplaypageLinktoWeixin',source,'Zhufu');
+        })
+        var main_poster = document.getElementById('main-poster').src,
+            jiathis_share_image = main_poster,
+            url_search = window.location.search,
+            structured_url_path = location.protocol + '//' + location.host + location.pathname;
+
+        // [Global] 在这里定义jiathis_config;
+        var uid = 1827042,
+            google_analytics_link = encodeURIComponent("&utm_campaign=referral&utm_medium=share_tool "),
+            google_analytics_end = encodeURIComponent("utm_source=zhufu&utm_medium=share_tool"),
+            jiathis_link_head = "http://www.jiathis.com/send/";
+
+        function list_build_jiathis_url(web_id_name, utm_source_name, at_official_name, pre_title, pre_summary, period) {
+            var jiathis_share_title = "%23安利邀约卡%23 我们诚挚地邀请您参加「安利非洲公益行研讨会」。"+$main_body,
+                jiathis_webid = "?webid=" + web_id_name,
+                google_analytics_info = "?utm_source=" + utm_source_name + google_analytics_link,
+                jiathis_title = "&title=" + pre_title + jiathis_share_title + period,
+                jiathis_summary = "&summary=" + pre_summary ,
+                jiathi_pic = "&pic=" + jiathis_share_image,
+                jiathis_url_building = jiathis_link_head + jiathis_webid + "&url=" + link_address + google_analytics_info + jiathis_title + jiathis_summary + jiathi_pic + "&uid=" + uid;
+            return jiathis_url_building;
+        }
+        var jiathis_tsina_url = list_build_jiathis_url("tsina", "zhufu", "", "", "", "");
+
+        $share_button.on('click',function(){
+            var status = WB2.checkLogin();
+            $this = $(this);
+            if (status){
+                if ($this.attr('id') == "share_weibo") {
+                    document.getElementById('share_weibo').href = jiathis_tsina_url;
+                    event_tracker('ZhufuShare', source, 'Zhufu');
+                }else {
+                document.getElementById('share_weibo').href = 'http://zuimeia.com/weibo/login/';
+                }
+            } 
+        });
+        // IE10 字体修改
+            if (Function('/*@cc_on return document.documentMode===10@*/')()){
+                $('body').css('font-family','"Microsoft Yahei", "微软雅黑", "Tahoma", "Arial", "Helvetica", "STHeiti";');
+                $('h1,.orange,.big-font,h5').css('font-weight','normal');
+            }
+    </script>
+</body>
+
+</html>
