@@ -1,10 +1,11 @@
 # -*- coding:utf-8 -*-
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from django.contrib.sites.models import Site
 from settings import STATIC_ROOT
 
 admin.autodiscover()
-# admin.site.unregister(Site)
+admin.site.unregister(Site)
 urlpatterns = patterns('',
     url(r'^$', 'amway_service.views.index'),
     url(r'^qyh$', 'qingyinghui_invitation.views.index'),
@@ -25,7 +26,7 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 )
 
 print 'settings.STATIC_ROOT', STATIC_ROOT
