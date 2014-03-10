@@ -27,6 +27,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^yaoqingka/', include('yaoqingka.urls')),
 )
 
 print 'settings.STATIC_ROOT', STATIC_ROOT
