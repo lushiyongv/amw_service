@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1.0, minimum-scale=0.5, maximum-scale=1.0">
+<meta name="apple-loginnamee-web-app-capable" content="yes">
+<meta name="apple-loginnamee-web-app-status-bar-style" content="black">
+<meta content="telephone=no"name="format-detection"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<title>韩国青英号研讨会</title>
+<style>
+html { margin:0px; padding: 0px;}
+body {
+	margin:0px; padding:0px;
+	background-color:#F8F8F8;
+}
+header {
+	width: 100%;
+	height:160px; max-width:640px;
+	position:absolute; top: 0px;
+	background-image:url(/static/images/header.jpg);
+	background-position: left top;
+	background-size:contain;
+	background-repeat:no-repeat;
+	z-index:11;
+}
+footer {
+	width: 100%; position: fixed; bottom: 0px;
+	height:240px; max-width:640px;
+	background-image:url(/static/images/footer.png);
+	background-position:left bottom;
+	background-size:contain;
+	background-repeat:no-repeat;
+	z-index:10;
+}
+#inputarea {
+	width:260px;
+	position: absolute;
+	top: 80px;
+	left: 50%;
+	margin-left:-130px;
+	z-index:20;
+}
+h1 {
+	margin-top:0px;
+	font-size: 20px; line-height:20px;
+	font-style: normal;
+	color: #000;
+	text-decoration: none;
+	text-align: center;
+}
+h2 {
+	font-size: 14px; line-height:20px;
+	font-style: normal;
+	color: #000;
+	text-decoration: none;
+	text-align: left;
+}
+h3 {
+	font-size: 12px; line-height:20px; margin-top:0px;
+	font-style: normal;
+	color: #999;
+	text-decoration: none;
+	text-align: left;
+}
+#loginnameMsg {
+	font-size: 14px; line-height:20px; height:20px; 
+	width:100%; display:block;
+	text-align: left;
+}
+#loginid {
+	width:100%; height:40px; display:block;
+	border: 1px solid #CCC; padding:0px; margin-bottom:20px;
+    border-radius: 0px;
+	font-size:16px; line-height:40px; text-indent:8px;
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    -moz-box-shadow:    0px 1px 0px 0px #FFFFFF;
+    -webkit-box-shadow: 0px 1px 0px 0px #FFFFFF;
+    box-shadow:         0px 1px 0px 0px #FFFFFF;
+}
+#loginname {
+	width:100%; height:40px; display:block;
+	border: 1px solid #CCC; padding:0px; margin-bottom:20px;
+    border-radius: 0px;
+	font-size:16px; line-height:40px; text-indent:8px;
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    -moz-box-shadow:    0px 1px 0px 0px #FFFFFF;
+    -webkit-box-shadow: 0px 1px 0px 0px #FFFFFF;
+    box-shadow:         0px 1px 0px 0px #FFFFFF;
+}
+.btn {
+	width:100%; height:40px; display:block;
+    border-radius: 0px;
+	margin:0px 0px 20px 0px;
+	font-size:20px; line-height:40px; color:#FFF; text-align:center;
+	background-image: -o-linear-gradient(-90deg, #E60A3F 0%, #F13E19 100%);
+	background-image: -moz-linear-gradient(-90deg, #E60A3F 0%, #F13E19 100%);
+	background-image: -webkit-linear-gradient(-90deg, #E60A3F 0%, #F13E19 100%);
+	background-image: -ms-linear-gradient(-90deg, #E60A3F 0%, #F13E19 100%);
+	background-image: linear-gradient(-180deg, #E60A3F 0%, #F13E19 100%);
+	border: 1px solid #DB2824;
+	-moz-box-shadow:    inset 0px 2px 0px 0px #EB4069;
+	-webkit-box-shadow: inset 0px 2px 0px 0px #EB4069;
+	box-shadow:         inset 0px 2px 0px 0px #EB4069;
+}
+#alert {
+	width:100%;
+	height:100%;
+	position: absolute;
+	top: 0px; left: 0px;
+    background: rgba(35,31,32,0.40);
+	z-index:200;
+	display:none;
+}
+.alertcontent {
+	width:222px; height:auto; position:absolute; top:50%; left:50%; margin-top:-140px; margin-left:-130px; padding:40px 20px 0px 20px;
+    border-radius: 5px; 
+	background-color: #FFFFFF;
+    -moz-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.10);
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.10);
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.10);
+	z-index:201;
+}
+.erroricon {
+	height:80px; width:100%; margin-bottom:20px; background-image:url(/static/images/erroricon.png); background-size:contain; background-repeat:no-repeat; background-position:top center;
+}
+
+#myloader {
+	width:100%; height:100%;
+	top:0px; left:0px;
+    background: rgba(255,255,255,0.80);
+	position:absolute;
+	z-index:1000;
+}
+.loader {
+	text-align: center;
+	width:80px;
+	height:50px;
+	margin:50% auto;
+}
+.loader span {
+	display: inline-block;
+	vertical-align: middle;
+	width: 10px;
+	height: 10px;
+	margin: 25px auto;
+	background: #DB2825;
+	-moz-border-radius: 50px;
+	-moz-animation: loader 1.3s infinite alternate;
+	-webkit-border-radius: 50px;
+	-webkit-animation: loader 1.3s infinite alternate;
+	border-radius: 50px;
+	animation: loader 1.3s infinite alternate;
+}
+
+#loader_1 {
+	-moz-animation-delay: 0s;
+	-webkit-animation-delay: 0s;
+	animation-delay: 0s;
+}
+
+#loader_2 {
+	-moz-animation-delay: 0.39s;
+	-webkit-animation-delay: 0.39s;
+	animation-delay: 0.39s;
+}
+
+#loader_3 {
+	-moz-animation-delay: 0.78s;
+	-webkit-animation-delay: 0.78s;
+	animation-delay: 0.78s;
+}
+
+@-webkit-keyframes loader {
+0% {
+	width: 10px;
+	height: 10px;
+	background-color:#DB2825;
+	-webkit-transform: translateY(0);
+}
+100% {
+	width: 20px;
+	height: 20px;
+	background-color:#F29017;
+	-webkit-transform: translateY(-21px);
+}
+}
+
+@keyframes loader {
+0% {
+	width: 10px;
+	height: 10px;
+	background-color:#DB2825;
+	transform: translateY(0);
+}
+100% {
+	width: 20px;
+	height: 20px;
+	background-color:#F29017;
+	transform: translateY(-21px);
+}
+} 
+</style>
+</head>
+
+<body>
+<!--头部修饰-->
+<header></header>
+<!--加载动画-->
+<div id="myloader">
+  <div class="loader">
+    <span id="loader_1"></span>
+    <span id="loader_2"></span>
+    <span id="loader_3"></span>
+  </div>
+</div>
+<!--报错对话框-->
+<div id="alert">
+  <div class="alertcontent">
+    <div class="erroricon"></div>
+    <h2></h2>
+    <div id="btn_close" class="btn">我知道了</div>
+  </div>
+</div>
+<!--输入电话号码的对话框-->
+<div id="inputarea">
+  <div id="loginnameMsg"></div>
+  <input name="inputid" type="text" id="loginid" placeholder="请输入您的安利卡号" value="" />
+  <input name="inputname" type="text" id="loginname" placeholder="请输入您的姓名" value="" />
+  <div id="btn_confirm" class="btn">查看邀请函</div>
+  <h3>如阁下是以子女身份出席青英号，请输入您父母的安利卡号进行操作。</h3>
+</div>
+<!--页脚的红色修饰-->
+<footer></footer>
+<!--存放数据-->
+<div id="data" style="display:none;">
+<!--测试账号-->
+<div id="123456">杨慧嘉 于浩 阿迪力·阿力木</div>
+<div id="12679505">董学超 王礼志</div><div id="29479024">王先伟 张爱娥</div><div id="3562144">陈少一 董砺 陈玉娇</div><div id="3196052">石浩 赵明亮</div><div id="3753054">陈颍 武忠</div><div id="5461695">范玲</div><div id="5828292">刘军 王清萍</div><div id="6229398">李云 吴勇</div><div id="10168980">董鹏鹏 董瑜鹏</div><div id="10323886">蔡庆伟 王莉</div><div id="12507877">李标 王侠</div><div id="12689453">徐军 赵侠</div><div id="13107805">郑多洪 朱金花</div><div id="24415055">尚晓红</div><div id="28595669">何影 王鹏</div><div id="39595850">黄梅</div><div id="1430981">关晓 凌德俊</div><div id="2981597">黄鑫 陶刚莉</div><div id="5045802">汤英慧</div><div id="10165012">赵梅 钟慧</div><div id="10329146">汪洋 相龙雏</div><div id="13084034">马贤宏 赵玉</div><div id="792940">许邈 张欢</div><div id="5031371">陈福凤 李洪俊</div><div id="3278458">安卫锋 奚赟琨</div><div id="2074243">胡雪苹 孙述兵</div><div id="27416551">吴慧琴 张骏</div><div id="33730763">江韦薇</div><div id="37151531">李航</div><div id="25991228">李艳东 于志娟</div><div id="49963216">邱若山 陶文萱</div><div id="2455679">王建国 张丽琳</div><div id="3110032">沈宏岩 肖冰清</div><div id="10844581">齐晓晖</div><div id="10994501">张伟 郑伯菊</div><div id="11674763">薛梅 杨彤</div><div id="3541671">王龙光 武志霞</div><div id="749639">楚新颖 王鹏</div><div id="1270279">孙树杰 张敏坤</div><div id="10814980">田家军 周平</div><div id="10842986">苏玮 王雪峰</div><div id="11701087">耿翠玉 漆卫华</div><div id="13625875">程扬 吕海洋</div><div id="28969875">尹丽娟</div><div id="36132163">顾明 吕锦晖</div><div id="36337060">郭英子 宋平贤</div><div id="41007736">陶曼娥 姚松涛</div><div id="3489591">贾恩江 罗丽英</div><div id="5010449">蒋增 张新燕</div><div id="13706325">杨春彦 杨厚忠</div><div id="25645609">宋娜 文幼云</div><div id="43759131">冀芳 王猛</div><div id="1655144">程静</div><div id="3896082">王慧</div><div id="5085017">陈丙亚 聂晋艳</div><div id="11595850">沈益宇</div><div id="12888223">秦志海 张超</div><div id="12975464">何晓燕 郑洲轶</div><div id="13659901">马忠 郑汝珍</div><div id="13696250">王强 钟正玲</div><div id="34069631">冀贤亮 张文杰</div><div id="34502088">张春 张华凤</div><div id="36958634">马云茜</div><div id="40939580">王新中 魏丽慧</div><div id="41099126">张弼昽</div><div id="3137578">蔡松霖</div><div id="6150819">孙畅</div><div id="13606924">胡如意 王妍</div><div id="5253809">张媛 张兆刚</div><div id="10743594">傅伟 时梦星</div><div id="11704200">艾福田</div><div id="12899882">艾福申 刘玉荣</div><div id="13614915">曹涛 冯淼</div><div id="13675444">董翠梅 高飞</div><div id="34773418">苗俊凤 杨炳智</div><div id="38702442">邱英双</div><div id="240200">程一兰</div><div id="728161">柴洪涛 解小丽</div><div id="2487080">陈士友 李朝先</div><div id="3137577">刘洋 王卫华</div><div id="3379971">陈美忠 鲁芸</div><div id="3658254">冯贵田 郝向军</div><div id="4932463">周淑红</div><div id="5272581">成艳阳 王建华</div><div id="10782757">朴玉花 朴正国</div><div id="10856237">董香芹 张军</div><div id="36296710">李宛阳</div><div id="42437456">杨习臣 张学会</div><div id="2933614">徐然</div><div id="3184488">徐梅 张峰</div><div id="3773305">李智慧 姚晓刚</div><div id="6198541">刘治伶 周成桂</div><div id="12046471">罗霞 周涛</div><div id="12254611">陆昌宝 沈琴</div><div id="25135266">黄蓉</div><div id="33042436">郭灿 王品</div><div id="33079259">徐航</div><div id="36063217">冉红华 熊季川</div><div id="42897151">刘小娟 王长林</div><div id="45378975">陈林</div><div id="36229437">王燕 冉启荣</div><div id="12332764">曹显凤 方尔妮</div><div id="13346497">张心露</div><div id="13397627">樊荣 宋茵</div><div id="2288133">徐洋</div><div id="11533982">张建刚 胡丽君</div><div id="12019781">柯芊楠</div><div id="2441746">曾随城 李陶陶</div><div id="5052396">施松</div><div id="5455699">赵瑞琴</div><div id="37770973">陈艳丽 李伟民</div><div id="39251735">陈高峰</div><div id="4820657">王汇杰</div><div id="13364685">彭彩萍 邓涛</div><div id="41114790">张小艳 周继坤</div><div id="6574280">付琦</div><div id="10552590">黄玲丽 马可斌</div><div id="12010806">莫言 吴宜兵</div><div id="73551">任勇 余君</div><div id="562297">辛红梅</div><div id="3310940">曹咏来 王海艳</div><div id="4609645">杨俊 张碧清</div><div id="5284481">付由戊 张玲</div><div id="5454487">沈科</div><div id="5857717">刘璟 姚远</div><div id="6556889">彭曦 张发超</div><div id="10441760">陈帅 喻梦婕</div><div id="10555519">陈丹 陈俊</div><div id="10559703">丁亚娟 范志超</div><div id="10573558">夏燕玲 张立</div><div id="11933592">刘琪 张连娟</div><div id="26537821">沈韵 吴迪</div><div id="27285188">刘永红 张巧玲</div><div id="37729677">陈刚 伍金萍</div><div id="718003">王子畅</div><div id="982837">沈治</div><div id="1165972">曹耀文 王灵芝</div><div id="2294262">国华萍 黄承</div><div id="4217642">于建锋 湛江</div><div id="4544840">廖会琼 马亮</div><div id="5050257">孙千慧 孙千雅</div><div id="5288665">彭丽 苏翔</div><div id="5857587">柳志远</div><div id="5991970">陈左岫川</div><div id="11360855">张瑞胜 周妮秋洁</div><div id="12399079">袁浦</div><div id="14631489">夏德强 徐金金</div><div id="173920">孙博雅</div><div id="1131163">江衍宇</div><div id="2638427">徐建韶 张莹</div><div id="4463934">胡凯廷 陆丹</div><div id="5109233">余玲 余小琳</div><div id="38413425">李蓉 马超</div><div id="4175021">陈家福 刘晶源</div><div id="4450992">李秋彤</div><div id="4621464">候雨芬</div><div id="5563654">边志铖 刘丹丹</div><div id="12064909">巫建朝 夏精华</div><div id="12322571">张洁</div><div id="51007562">林丽莉 林伟</div><div id="1101525">陈竹影</div><div id="1165809">罗宜丰 李可然</div><div id="5301176">王静 望勇</div><div id="10457841">喻伟韡</div><div id="10627132">陈建民 余辉</div><div id="34326660">李红波</div><div id="10512005">蒋杏芳 伍秋红</div><div id="38814318">冒黎斌 杨胜华</div><div id="4187790">彭也宁 朱泳治</div><div id="12004984">何放霏 黄河</div><div id="33124679">陈定先 肖倩茜</div><div id="3742903">李慧芳</div><div id="726155">熊曼丽 姚立知</div><div id="3128864">林星 王露</div><div id="3964288">左雪纯</div><div id="5117197">潘云 肖建辉</div><div id="6124608">古鹏 吴桐</div><div id="6573433">董浩 李景</div><div id="10658957">曾绮 汪发军</div><div id="14629961">侯明 裴海艳</div><div id="34429089">徐慧 阳辉衡</div><div id="35126390">罗超群 杨求功</div><div id="56767">唐敬敬</div><div id="3742774">易群 周惠</div><div id="10480852">邓见喜 李艳华</div><div id="30698896">李小华</div><div id="39666635">刘继发 余丹</div><div id="12661282">郗永光</div><div id="10293193">霍磊 张迎</div><div id="10069856">王正 张静</div><div id="10294211">郎需辉 孙芳</div><div id="14240247">孙文静 朱文华</div><div id="4484623">刘丹 殷伟达</div><div id="13119483">高天 高阳</div><div id="38273292">李会巧 张陆军</div><div id="38942660">刘翠 王汉军</div><div id="3583532">耿少波 张丽君</div><div id="39993413">张童先 范倩倩</div><div id="3659117">高兆清 修军冬</div><div id="4881653">崔巍 苑元</div><div id="5204867">李胜利 鲁春丽</div><div id="5617177">吕兴美</div><div id="6061741">王刚 徐叶红</div><div id="6081561">肖培成</div><div id="6512770">唐芳</div><div id="38238268">李艳 唐蒙</div><div id="10154513">程帅 黄涛</div><div id="13046586">边庆华 马翠丽</div><div id="35780733">顾茂红 张东友</div><div id="5793365">林之泽</div><div id="5924647">申杰红 赵华涛</div><div id="6529319">陈之煌 刘玉霞</div><div id="11419635">李晶</div><div id="3030790">韩非</div><div id="11060043">谢彦卿</div><div id="24228952">张瑛</div><div id="40118040">李克生 吴向萍</div><div id="359918">刘晓彤</div><div id="3052142">王祥</div><div id="3583016">韩洪涛 卢红霞</div><div id="4357007">堵吉强 雷爽</div><div id="5038917">李建文 宋瑞华</div><div id="5041167">何恩敏 徐东霞</div><div id="14131409">曹岭梅 范敬彬</div><div id="14150719">刘燕 张海军</div><div id="31038514">曹智芹</div><div id="33738436">孙晓琳</div><div id="38336497">吴华英 赵伟</div><div id="38367109">李玉晓</div><div id="39644984">李江 张慧</div><div id="5489049">王贵新 徐文</div><div id="714034">陈娟 魏利涛</div><div id="1123024">李蕾 谢书泳</div><div id="1163452">白霞</div><div id="2482499">倪宏根 孙芬芬</div><div id="2952702">邵香山 朱开丁</div><div id="3778721">阮永胜 吴亚东</div><div id="4781936">王莉莉 吴昊</div><div id="14193303">陈丽 高兴刚</div><div id="5223471">原尚娟 张军</div><div id="6401597">蔡晓霞 张晓丰</div><div id="11418666">何晓军</div><div id="31074344">初清照 吕军强</div><div id="6291070">刘海颜 宋述涛</div><div id="11057601">于娜娜</div><div id="11342307">陈婧 聂安宁</div><div id="12545982">柳杨 孙惠丽</div><div id="14469592">姚露程</div><div id="31529812">刘梅清 邱四标</div><div id="41365640">汤建梅 杨金星</div><div id="3666048">赵峰</div><div id="5770826">吴丽娜 薛建伟</div><div id="6280692">孙斌</div><div id="10113002">陈磊 王世武</div><div id="24167612">潘军 潘政</div><div id="39604683">王深鹏 张艳</div><div id="14256284">陈玉卿 李敏</div><div id="26996109">孙利利 张其</div><div id="1481651">宋玉兰 魏善永</div><div id="3525230">张康 朱启霞</div><div id="12156447">熊兵 张仕群</div><div id="12304701">陈会琼 袁德强</div><div id="13487272">陈文芬 张建</div><div id="716855">付姝</div><div id="1456260">李成俊</div><div id="1663698">崔卓韵 熊锐</div><div id="3228247">谢兰睿</div><div id="3330079">陈萍 唐博浪</div><div id="5018286">肖怡茹 杨杜才</div><div id="5404774">王晓鹏 张素英</div><div id="5677052">李芹 刘勇</div><div id="5914827">马明珠 叶浪</div><div id="5952170">王臻筵 肖红霞</div><div id="10423732">唐凌 朱小波</div><div id="10512678">邓艳君 万煜</div><div id="11939454">陈斌</div><div id="12089660">李雪梅 庞东</div><div id="12186988">贾群方 席成友</div><div id="13447591">姜慧 孙强</div><div id="14630985">蒲君 闫晓旭</div><div id="26541994">姚剑</div><div id="34229898">陈星蕾 许孟斯</div><div id="35838018">李臣 任玉霞</div><div id="39019103">蓝锋雷</div><div id="39397946">何沫 余明岷</div><div id="41249896">吴芳菊 杨明</div><div id="42092596">金钊</div><div id="49427509">杨雅童 杨雅凌</div><div id="73220">邓钰 伍叶林</div><div id="3709483">陈聪</div><div id="5377045">李秀平 刘祥锐</div><div id="6509450">黄西荣 张静</div><div id="25409589">彭兴建 杨洁</div><div id="35782341">黄源</div><div id="5952216">宋黎黎</div><div id="4808329">尹强 汪静雯</div><div id="11940855">陈令 季巧</div><div id="6580583">黄玉玲 李勇</div><div id="14653478">税敏</div><div id="2983408">焦亨强 唐建英</div><div id="10550838">蔡军 文桂君</div><div id="11933193">邓嫱 武凌</div><div id="12260686">许敏 袁思亮</div><div id="13436320">邱钰雯 余代春</div><div id="34376416">彭天生 周其芬</div><div id="34529592">刘亮 吴艳</div><div id="3132413">邓清秀 严梓铭</div><div id="4943601">邓彬 李红英</div><div id="12317155">彭必顺 乔小芳</div><div id="33073895">杨仁萍 邓玉平</div><div id="6177268">贺婕妤</div><div id="35718075">邓攀 孙菊</div><div id="42608163">刁国原</div><div id="5044932">李丽 刘涛</div><div id="5637459">冉启慧</div><div id="3554827">李默</div><div id="4286097">马英君 张洋</div><div id="13722982">杜朦 郝雷</div><div id="34579890">刘洋</div><div id="35586422">王莹 靳然</div><div id="38649101">丁海容</div><div id="867407">陈俊仙 代勇强</div><div id="2397785">曹慧 李跃栋</div><div id="3175300">乔宏伟</div><div id="3534622">许国斌 张金艳</div><div id="4263174">王菡</div><div id="10800258">付东文 兰英</div><div id="11623548">刘湍</div><div id="13532349">陈怀宇 丁洁</div><div id="13655788">郝芷豫 靳殿辉</div><div id="35707570">胡杨</div><div id="2336306">郭亮 沈福兴</div><div id="6626861">何桦 李晨东</div><div id="10775238">杜怀钢</div><div id="31939650">梅亚军 隋连志</div><div id="35965413">王平 杨建永</div><div id="12960688">肖书红 萧西彪</div><div id="13681712">王宝军 赵海丽</div><div id="5871659">冯彦润 王丹</div><div id="36219489">马宇超 肖薇薇</div><div id="1625209">伍冠峯</div><div id="4489527">李博</div><div id="4964482">邓燕 王靖宇</div><div id="5342773">刘爱玉 吴海学</div><div id="5345603">朱湘云</div><div id="5457121">王英 鄢宗富</div><div id="5465556">黄燕琦 李俊伟</div><div id="5560110">乔梁 姚桢</div><div id="5653049">平一江</div><div id="6045895">王玲惠 杨云</div><div id="12118635">李苓 朱传宝</div><div id="13385853">徐广配</div><div id="13398398">王福国 叶琼</div><div id="14777534">李吉梅 徐继松</div><div id="25276853">毛利军 杨春萍</div><div id="40669319">翁时明 徐志英</div><div id="42462903">马雷 彭丽霞</div><div id="43350285">黄琨 杨婷婷</div><div id="12247461">王旭光</div><div id="6220112">陈佳 任建红</div><div id="13481278">游小云 余志英</div><div id="103085">陈松龄 叶枫</div><div id="5069760">黄昭阳 翟红玉</div><div id="6276560">白小英 廖云建</div><div id="10086573">陆安萍 夏辉建</div><div id="14717984">戴曜 周亮</div><div id="41382555">孙万红 邹文正</div><div id="735984">黄光华 杨爱琳</div><div id="1064748">王进昊 叶念</div><div id="1928026">费贞全</div><div id="4593373">刘飞 朱美娅</div><div id="4701638">龚玲 唐廷洪</div><div id="5028238">陈正洪 殷文芳</div><div id="5079145">刘裔 吴漪</div><div id="11994945">邓春燕</div><div id="13271356">弋敏</div><div id="36869614">郑心怡</div><div id="3147819">王洋</div><div id="10130289">陈香妹 郑辉兴</div><div id="13182848">林世武 郑风娟</div><div id="14351071">吴宏春 郑凤平</div><div id="35325507">陈敬庄 涂淑洪</div><div id="40531274">陈友勇 李燕飞</div><div id="345643">陈豪 廖丽娜</div><div id="712966">欧秀端 郑家炎</div><div id="785587">牟泓 颜凌虹</div><div id="978804">潘亚英 吴志峰</div><div id="2944717">陈敬太 余琳</div><div id="3088960">吴燕莺 俞英兴</div><div id="3148023">连蕙芸 赵显丰</div><div id="3464718">陈兴国 范玲玲</div><div id="3812859">林大连 邱春娥</div><div id="4349068">吴启迎 郑梅芳</div><div id="5022570">郑惠琴</div><div id="5363230">潘晴红 郑航</div><div id="10107242">符丽芳 胡友童</div><div id="10149912">林大锦 罗小芳</div><div id="11489875">吴琳 俞华玲</div><div id="26987564">杨善军 张志英</div><div id="298016">付云珍 王振宇</div><div id="713108">顾静 王友辉</div><div id="3231251">林秀华 张洪增</div><div id="11372628">连光才 石六秀</div><div id="33999850">李仙花 阙锦辉</div><div id="5276975">蔡良海</div><div id="6232703">黄月花 林华山</div><div id="35232806">蔡阿婷 吴剑清</div><div id="40044031">曾文真 陈秋云</div><div id="6015659">陈银珠 邹冬云</div><div id="5321893">缪少华 郑建铃</div><div id="6858613">连丽玉 王润华</div><div id="6859348">陈锋 陈艳娟</div><div id="6865994">胡晓清 潘德润</div><div id="10145124">陈积梅 刘日国</div><div id="10155411">王惠芳 杨邦礼</div><div id="10229408">张光玉 郑祥光</div><div id="12605236">陈昌容 龚明珠</div><div id="13171254">李丽凤 林斌</div><div id="14103463">吴晓英 张振华</div><div id="15051129">林积乾 张星星</div><div id="33250991">陈振林 庄远清</div><div id="3010464">陈娟 林财钦</div><div id="5179600">胡梅媛 林庆春</div><div id="10111968">陈晓丽 吴群英</div><div id="43025219">潘德生 郑丽双</div><div id="748420">郭小梅 潘灿锋</div><div id="759939">李艺东 任华珠</div><div id="2519606">黄丽疆 林承养</div><div id="4163861">赖志煜 汪德明</div><div id="4463510">陈春颖 王芳礁</div><div id="5020691">王秀春 庄劲松</div><div id="5220604">刘长富 徐爱美</div><div id="5298280">黄西洋 林竹秀</div><div id="5438394">连爱萍 林飞鹏</div><div id="5659481">连智利 苏国明</div><div id="5762777">陈丽贤 张清培</div><div id="12679282">林文鑫 林幼芳</div><div id="13277379">王曦</div><div id="24387448">陈志祥 黄秋蓉</div><div id="39883612">吴沉香 杨荣风</div><div id="48437321">翁进喜 郑秋红</div><div id="51879483">王志坚 吴春兰</div><div id="158924">李聪美 沈添富</div><div id="188684">刘海锋 严妙玲</div><div id="246365">傅梅晗 王军号</div><div id="331693">连达 彭念</div><div id="1468358">黄明丽 柯艺清</div><div id="3000451">纪巧华 蒋武焕</div><div id="3280968">李喆 叶序</div><div id="3513807">陈宏 庄莉</div><div id="3796189">陈秀美</div><div id="3813504">柯珊 钟祥</div><div id="5084103">龙宇霏 王翀</div><div id="5150231">吴玮 许晶晶</div><div id="6241377">吴碧云 钟宝平</div><div id="6888327">胡淑芬 王国平</div><div id="13287037">谢天生 张其芳</div><div id="14452711">黄文仁 罗红梅</div><div id="35227104">曾东成 陈惠真</div><div id="40160919">耿显意 林兴华</div><div id="10115953">黄丽清 朱振胜</div><div id="12678977">陈素联 郭水深</div><div id="17924">蔡昆濠</div><div id="4146668">阮秀容 王兆义</div><div id="5299223">蔡金兰 庄稼苗</div><div id="6190887">彭小丽 吴立鑑</div><div id="10134495">郭焕钢 杨丽碧</div><div id="35341542">罗世炜 向晓梅</div><div id="40754243">蔡文捷 张彩凤</div><div id="12022213">陈翠霞 林主</div><div id="13429302">林进莲 林伟南</div><div id="560010">李佳键 李婕</div><div id="13394214">陈珍 彭仲渊</div><div id="36903003">李顺莲 莫海涛</div><div id="5563598">王薇</div><div id="6181157">龚春兰</div><div id="25317686">李广惠 张成明</div><div id="5764808">余强 钟金玲</div><div id="10521187">陈英宇 林淑玲</div><div id="2961360">汪俊锋 王春苗</div><div id="3056389">陈琦婉 许寿文</div><div id="3095117">王新莉 徐建平</div><div id="3486999">林晓君 周振海</div><div id="3586651">陈俊希</div><div id="5158024">全布森 荀金蓉</div><div id="6189043">贺柒桂 王应峰</div><div id="6521439">付承彬 张穗芳</div><div id="10502286">尹石花</div><div id="10569580">关乐铃 谭敏</div><div id="12020363">范佩红</div><div id="13347643">宋莉梅 唐勇</div><div id="35000238">黄颂华 赖广泉</div><div id="43421285">黄秋华 刘强国</div><div id="979220">洪惜 黄伟</div><div id="3346139">赖广蓝 杨燕芸</div><div id="3913487">陈婷</div><div id="5142068">陈雪凤 李亚周</div><div id="6218945">麦健威 徐凤英</div><div id="10554908">曾祥宋 区润玲</div><div id="12028536">李雅娟 宛金生</div><div id="2938507">李晓晖 李长颐</div><div id="6454951">陈熊钧 李白羽</div><div id="10680881">党文丽 张稳添</div><div id="13395457">骆奇 叶洁珊</div><div id="35651110">刘肯登 刘蓬辉</div><div id="127231">李鸿飞 李晓敏</div><div id="358357">廖美勤 张北安</div><div id="368034">马力嘉</div><div id="1187461">梁文辉 杨玉琴</div><div id="3313351">曾新权 张晶</div><div id="4756057">卢思霖</div><div id="5319414">吕良友 潘小芳</div><div id="5540009">王程飞 张敏</div><div id="10589432">陈春伟 邹秀</div><div id="11981530">梁妹枝 刘国胜</div><div id="12040613">陈丽燕 张运田</div><div id="12077672">张运富 江敏仪</div><div id="12679638">黄妙丹 谢发榜</div><div id="13470006">巢榕生 陈文雯</div><div id="14988335">熊英 周亚东</div><div id="35059557">黄小林 梁翠梅</div><div id="48726929">李建华 黄晓燕</div><div id="752098">成彧 谭斌</div><div id="12044874">莫立能 夏东苗</div><div id="25258565">王文选 叶丽双</div><div id="40667606">叶冰 陈健锋</div><div id="261001">陈晓春 林丹娜</div><div id="10640655">倪隆凯 叶丽彬</div><div id="38808458">江鲁冰</div><div id="521953">谢建文 谢素銮</div><div id="1563735">胡恩驰 林銮铮</div><div id="2368099">陈少雄 汪小洪</div><div id="4744799">黄莹莹 许宁</div><div id="10487990">杨郁海 庄冰容</div><div id="12321492">张斌 张淳纯</div><div id="12341252">曾芝琦 谢珂</div><div id="13448302">林亮武 周燕珠</div><div id="13477071">蔡海钦 陈喜玲</div><div id="29938230">沈西子</div><div id="39239171">郭丽琼 李海洲</div><div id="43520930">吴春丽</div><div id="225607">杨杰杨</div><div id="34360178">廖春霞 孙铭泽</div><div id="40629154">陈维航 张玉杏</div><div id="3378823">付萍 张博</div><div id="25444850">黄泳池 郑燕敏</div><div id="2949959">刘晖 张茉莉</div><div id="5967923">何兰亭 李敏俐</div><div id="12149923">陈国飞</div><div id="3902165">蔡大健 朱偲玮</div><div id="1118344">唐昕</div><div id="14897802">李英凤 谭雨坤</div><div id="2525835">周柳君</div><div id="4501843">邓晴</div><div id="5472064">欧小玲 左仁政</div><div id="5595083">邓捷文 廖小森</div><div id="10460983">林玉发 粟覃欢</div><div id="10491924">刘春燕</div><div id="14731161">陈小凤 韦有盖</div><div id="29745798">谢晓昕</div><div id="33048396">朱坤</div><div id="3722448">傅晓燕 刘毅韬</div><div id="3846510">周仁郎 周胜梅</div><div id="5092335">孙军 张翠</div><div id="5540017">彭月金 朱其辉</div><div id="10484453">莫敬坤 唐丽琴</div><div id="10627007">罗渊渊 叶剑平</div><div id="13400270">唐大龙 韦喜华</div><div id="38457536">覃娇艳 杨琳</div><div id="13430766">符丽荣 王炳贤</div><div id="536617">刘旖旎 张俭</div><div id="558300">黄会 余田枝</div><div id="689172">王雪犬 赵春燕</div><div id="917233">吴翔</div><div id="1268828">许珏</div><div id="3001099">王紫骁</div><div id="3221473">吴家毅 吴淑莉</div><div id="5043128">傅佑锦 李小蔓</div><div id="5466007">金鑫</div><div id="5601261">苏君强 王静河</div><div id="10535167">王品 张海</div><div id="10560454">李琼 许文蔚</div><div id="10680099">陈微微 常柏名</div><div id="12327468">冯幼妮 王槐锋</div><div id="13412937">黄爱晶 林志军</div><div id="13473103">洪剑桃 吴德昌</div><div id="14610206">杨淑敏</div><div id="30843091">丰秀龙</div><div id="34369074">高芳丽 黄昌波</div><div id="14621721">吴彩虹 吴良</div><div id="43790923">王朝雁 王珊珊</div><div id="3453115">陈肖丽 罗长英</div><div id="30900780">王盈 严焕民</div><div id="12635659">刘大伟 左改琴</div><div id="14164552">杨风海 左文菊</div><div id="14211490">秦爱芳 赵瑞军</div><div id="14234185">李庆兵 曲振丽</div><div id="1029504">刘芳芳 刘斐斐</div><div id="1909279">冯艳杰</div><div id="711287">陈丽 裴大涛</div><div id="4977087">李萍 田志勇</div><div id="5962903">耿丽君</div><div id="10175158">陈笑黎 杨金宇</div><div id="27411822">付津阁</div><div id="35372661">刘速 薛刚</div><div id="38460198">关丽丽 李三轻</div><div id="40124766">吕建武 魏朋好</div><div id="43644453">李长红 左香连</div><div id="704413">郭万蕊 张奇</div><div id="1197640">张阳阳</div><div id="3360394">彭春方 余心文</div><div id="5031788">顾霞 赵毅宸</div><div id="5450540">谢学春 张洪涛</div><div id="10156510">刘建银 肖峰</div><div id="14212988">胡建坡 杨喜连</div><div id="14361202">郭建 王艳秋</div><div id="34122833">王春丽 张永生</div><div id="38261235">崔丽平 王清刚</div><div id="41230765">王建 项文青</div><div id="88100">宋星宇 孙午</div><div id="3118760">杜梦甜</div><div id="5818583">郭旭鹏</div><div id="5604050">代道群 王栋</div><div id="6448695">崔小丽 韩海鹏</div><div id="24561704">张柯楠</div><div id="34619151">任文娟 张少林</div><div id="4765774">李梅 孟祥振 李勇 李晓玉</div><div id="5288978">宁倩 王全伟</div><div id="48179463">白鹭 范立</div><div id="3263462">冀鸿飞 郑娅岚</div><div id="5120055">宋鹏</div><div id="5328626">高飞 杨静</div><div id="1198717">谭锋辉 徐文朴</div><div id="4466954">刘远征 马洪涛</div><div id="14168616">杨高峰 张静</div><div id="5297240">陈国星 张瑞芳</div><div id="10090536">李燕 徐晓辉</div><div id="14213650">李旭东 彭月</div><div id="14229946">杨利敏 杨森</div><div id="27851568">马瑞 苑成佳</div><div id="36243315">曹真真</div><div id="1130166">苏青珍 谢会杰</div><div id="3167991">刘会霞 袁士洋</div><div id="3168105">高桂玲 孙景涛</div><div id="3648424">刘红涛</div><div id="5284532">刘昱辰 张芳影</div><div id="5472639">毕晓东 李银</div><div id="6049258">张钦佩</div><div id="10139687">刘洋 张亚军</div><div id="10333832">刘彦方 赵伟</div><div id="11357248">胡翠兰 屈海翔</div><div id="12479905">孙瑞霞 唐涌杰</div><div id="12562480">高新建 花艳霞</div><div id="12598954">杨树雄</div><div id="12610937">闫红丽 岳志军</div><div id="13242180">梁勇 牛宏梅</div><div id="14198682">孙国红 王红霞</div><div id="24513186">翟奥博</div><div id="27563868">刘星 莫先先</div><div id="29393080">陈娜娜 李飞</div><div id="29409165">陈利芳 李倩</div><div id="31227219">孙盼</div><div id="33680966">安国林 关慧芳</div><div id="35376597">王同瑞 王晓博</div><div id="39682863">常欣 秦群</div><div id="39812691">崔逢一</div><div id="40717930">刘玉丽 吴超</div><div id="46344476">杨秋菊 张京</div><div id="47683954">柴燕歌 李向杰</div><div id="1198923">王斌 王晨</div><div id="2954948">杜晓寒 刘娜</div><div id="3716656">程粉霞 董子周</div><div id="13032759">潘红君 王彩风</div><div id="658386">刘莉 徐博</div><div id="1393146">刘大勇 王运红</div><div id="1466704">李一凡</div><div id="6547843">崔晓村 郭小焕</div><div id="2036893">冯卫东 王本梅</div><div id="3026608">冯伟民 张力月</div><div id="11609360">管亮 姜丽杰</div><div id="48685783">初弘阳 王梓</div><div id="2230554">冯俊杰 王本良</div><div id="3366193">裴廷福 孙明艳</div><div id="3527934">牟阳</div><div id="4094177">牛蕊 乔中梁</div><div id="5047953">李委静</div><div id="6210589">姜泽枫</div><div id="10794842">刘小湄 王超</div><div id="11642463">孙健 张银玲</div><div id="37531074">宋玉婷 王峰</div><div id="1258128">崔明</div><div id="4305893">吴强 叶丽</div><div id="6408898">常文广 张帆</div><div id="25825516">刘屹桐 刘子枫</div><div id="38492370">金丹 李求实</div><div id="44249060">黄硕 秦晟英</div><div id="45799658">李金颖 马立海</div><div id="3189700">王绘智</div><div id="2287334">刘宇光 赵俊莹</div><div id="6407585">董德浩</div><div id="1537504">彭永瑜 张鹏</div><div id="2159034">安明琪 彭浩宇</div><div id="4084926">王鹤霏</div><div id="5464325">吕浩然</div><div id="11507530">褚庆德 闵鲲</div><div id="13757275">宫克峰 王庆伟</div><div id="31942509">林玉娟 由远新</div><div id="45956148">白文娇</div><div id="3083864">赵德发</div><div id="5645895">史婷婷</div><div id="12851346">刘泓衫</div><div id="13655582">周子丰</div><div id="34669590">芦莹 王文宪</div><div id="34757436">芦心宇</div><div id="44406485">宋磊</div><div id="3453381">何菲 王非</div><div id="4821602">崔焕宝 王超</div><div id="6430845">娄双 王明辉</div><div id="31899796">贾艳丽 张海东</div><div id="38431727">刘颖 王东</div><div id="43510849">崔继浩 邢影</div><div id="12715993">吴海霞 于常春</div><div id="4617316">楚丽宇 王金全</div><div id="13592043">马云辉 袁淑红</div><div id="26004985">胡伟泉 李洪波</div><div id="35912289">陈晓柳 孙莹</div><div id="42955527">单立军 赵晓明</div><div id="2966763">彭欣 朱学林</div><div id="3068999">张丽梅</div><div id="5490909">彭斌 王艳玲</div><div id="13572868">孙金娥</div><div id="515493">宋昕垚</div><div id="1126668">刘倩含</div><div id="3385273">杨瑞茚 张路</div><div id="3966297">高嘉择 王彦杰</div><div id="6186920">许亮 张伟 范京</div><div id="10817423">成嘉峻 孙嘉伟</div><div id="35597936">陈艳霞 孔轶</div><div id="3919618">王政</div><div id="10779129">高爽 苏维</div><div id="11714991">许文纪 张婷</div><div id="13809381">常洪桥 李雪</div><div id="25605666">李泓政 田芳</div><div id="25847023">王云峰 于桂君</div><div id="33493506">房方 刘胜</div><div id="43256368">孙瑞鑫</div><div id="986865">吴鹤 于振泉</div><div id="2140404">罗士强</div><div id="2399472">崔润顺 何春波</div><div id="3026831">任慕榕</div><div id="3216687">赵洋</div><div id="3496764">刘晓莉 张海龙</div><div id="6104705">李秀平 于昌鹏</div><div id="10846474">焦莉 龙立文</div><div id="11510482">侯宝山 宋香</div><div id="29629797">周婷婷</div><div id="31646548">张虹 张丽</div><div id="34781862">刘存刚 刘颖</div><div id="38831530">李金 李美</div><div id="44115310">李桂华</div><div id="1517572">钟彬</div><div id="35639906">金雪 张明辉</div><div id="40173443">王士宝 王世晶</div><div id="39564982">侯伟纲 金玉爱</div><div id="45570273">王玥姝</div><div id="38078507">丁少楠 李野</div><div id="6188284">吴桐</div><div id="11601186">郭红 王爱军</div><div id="11646857">马国龙 乔爱华</div><div id="35909141">邓晓伟 潘彦龙</div><div id="38445768">凌岳飞 佟琳琳</div><div id="40821655">单萃 徐晓飞</div><div id="36094600">陈英美 马欣欣</div><div id="43114664">孔艺兵</div><div id="3129604">孙岩 王阳</div><div id="4183106">许世华</div><div id="33457016">樊宇 周丽鑫</div><div id="33564349">佟磊</div><div id="39845513">王侃 王诩</div><div id="40094694">张莉</div><div id="41115807">郎兴宇 谢琳</div><div id="48621232">李旭光 刘月</div><div id="49540013">屠振海 姚琳</div><div id="50958539">范颖 杨学震</div><div id="51703399">姜明松 于越</div><div id="719197">王浩州</div><div id="3019437">乔岩 赵维东</div><div id="3423704">范田虹</div><div id="5222327">罗红洋 刘杰</div><div id="5646149">汤安妮 王彦泽</div><div id="6707055">周忠奇 陈湘文</div><div id="11651296">姬娇 吕刚</div><div id="13615178">张妍 张耀宇</div><div id="30648526">李志金 陈巍</div><div id="33323382">郭英香 王伟</div><div id="34559082">高丽红 郭志松</div><div id="35842101">刘士伟 张淑梅</div><div id="42803342">姜雪纯</div><div id="43910179">于娜</div><div id="49085045">顾涛 刘贺</div><div id="49528927">方超 郭兆玲</div><div id="49896075">全辉 宋善龙</div><div id="50011666">王鹏</div><div id="50357962">蔡翠 姜鑫鑫</div><div id="50434215">曲天娇 任延博</div><div id="1656201">敖庆国 刘晓娣</div><div id="13621761">王晨军 张洁</div><div id="3431744">高寅升</div><div id="13542782">杨红丽 赵宇</div><div id="36093644">李丹</div><div id="5531760">原义杰 张春莉</div><div id="35886668">涂巧玲 徐盛猛</div><div id="1715394">王晨</div><div id="5497487">王永艳 张国立</div><div id="5703169">郝丽荣 周利明</div><div id="10650219">孙美玉 张乐小</div><div id="10770615">张艳霞 郭晓龙</div><div id="13641537">高俊英 张瑞军</div><div id="33504997">李进 王雪萍</div><div id="35637636">刘秀凤 孙永胜</div><div id="40660321">李飞 刘洋</div><div id="1924359">韩永林 杨慧欣</div><div id="3314230">耿银云 周秘</div><div id="3538358">王磊 张继</div><div id="3279374">姚成</div><div id="3379568">李冬霞 张海春</div><div id="4517024">鲍彩虹 王东成</div><div id="6758563">马睿</div><div id="2246701">南利明 薛燕</div><div id="3285332">乔安顺 赵雨雨</div><div id="42232253">高云岗 张秀会</div><div id="31988756">白宇亮 李俊慧</div><div id="3685306">常绍侃 张颖</div><div id="5324118">陈治钢 侯爱丽</div><div id="38432494">王晓东 张白杨</div><div id="3977858">崔莹 史申冰</div><div id="42708101">张银英</div><div id="1337173">党慧瑶</div><div id="3526975">董阳 田思雨</div><div id="3990479">王玉</div><div id="12915869">刘国华 王娟</div><div id="34495620">陈香如</div><div id="2961711">陈亚欧</div><div id="3462466">曲卓</div><div id="4857941">蔡胜强 范清华</div><div id="38440475">熊家春 王艳</div><div id="44694784">程孝群 张超科</div><div id="10511532">刘子源</div><div id="6056349">王娜 庄建庭</div><div id="10623169">苏仪</div><div id="13349511">黄庆豪 詹瑞君</div><div id="41027469">黄波 廖晓容</div><div id="3895895">冯燕 廖毅刚</div><div id="13370747">罗芳芳 徐建发</div><div id="13430152">贺志青 胡云</div><div id="1539450">董其源 郑海燕</div><div id="3259015">刘喜霞 卢强春</div><div id="3378566">李永辉 王娜林</div><div id="3673486">任涛 王丽</div><div id="3764716">曹丽萍 车旭荣</div><div id="4195353">吴鹏 徐凯琳</div><div id="4195569">陈艳红 李国刚</div><div id="4424750">黄艳花 李官</div><div id="5573664">李军旺 路小娟</div><div id="10812055">杨秀玲 张小龙</div><div id="33560608">李新会 杨棨博</div><div id="36925371">何兰芳 王新平</div><div id="37001601">王璇</div><div id="42449829">刘刚 沈玉凤</div><div id="35807781">路石 王媛</div><div id="620480">罗鹏 朱莉</div><div id="3921657">张雪峰 张玉华</div><div id="10895045">刘志刚 赵靖霞</div><div id="10992084">刘彦军 温红娜</div><div id="12904283">霍涛 朱亚娟</div><div id="37895058">李玉香 王东</div><div id="642753">胡梦骁</div><div id="3592597">李桂芳 尹富贵</div><div id="3098398">王雨佳</div><div id="1641149">王雅娟 杨光柱</div><div id="3891105">李凯</div><div id="6175304">赵娇娇 赵星宇</div><div id="13021736">董英飞 董英萍</div><div id="35724976">史国栋 宋建涛</div><div id="1447247">张志宇 张志芸</div><div id="3505971">李艳 刘震</div><div id="5331455">谷旭 梁栋</div><div id="3134406">孙伟</div><div id="5341217">寇长琦</div><div id="3550688">崔璨</div><div id="5538620">周伟韬</div><div id="11704211">刘淑华 邢建峰</div><div id="36246717">李彦 王建峰</div><div id="3348355">张坤 张颖</div><div id="3387038">张宇恒</div><div id="5550294">马骏超 张蓉</div><div id="12498100">蒋茜怡</div><div id="13605271">刘陆</div><div id="36711593">赵良辰</div><div id="6494082">刘佳</div><div id="433928">范骞月 费钦宇</div><div id="3581258">肖志强 赵春霞</div><div id="10223114">朱建新 庄玉桂</div><div id="36067033">董毅 顾伟</div><div id="2979620">沈达开</div><div id="2980596">贺玉静 张怀扣</div><div id="2980977">盛伟燕 张建于</div><div id="3292649">王国庆 张艳</div><div id="4736448">陈传青 金波</div><div id="34042405">杨诚</div><div id="10190602">薛晨琳</div><div id="10123479">韩金凤 王朝兵</div><div id="11465487">曹昌日 闫红</div><div id="13053101">陈兆艮</div><div id="13118974">李靖 谢慧</div><div id="13161497">王晓倩</div><div id="35204751">乔月刚 汤金英</div><div id="38895667">刘昌斌 陶玮</div><div id="44096450">吴红鑫 赵芷宁</div><div id="3567628">浦晓燕 张宇</div><div id="5025564">陈韵</div><div id="14123943">吴新萍 薛建东</div><div id="35962989">张妍 杨洋</div><div id="39368451">严伟 杨云燕</div><div id="1583903">张玉华</div><div id="14249760">毛运兵 张玉侠</div><div id="13255077">吕枫 周妍</div><div id="36682239">时立翠 吴谦</div><div id="37147749">孔现勇 庞进</div><div id="38777296">封海霞 潘志斌</div><div id="13223923">黄永恒 张三保</div><div id="14116337">业绪霞 朱军强</div><div id="14163316">戴晨阳</div><div id="37961744">房佳娟 王德华</div><div id="38700400">陈蓉 杨林全</div><div id="41723682">梁龙旭 孟秋菊</div><div id="3123505">胡鹏 王莹</div><div id="5003257">吴蓓蕾 张旭</div><div id="5037264">张颖青</div><div id="5058455">袁宇光</div><div id="5958961">严小燕 张胜华</div><div id="6447494">贝德华 肖荣</div><div id="38309983">鲁世兵 路玉艳</div><div id="43517896">刘晓明 徐春梅</div><div id="1297138">张攀</div><div id="3169600">陈琳</div><div id="3735660">周迅宇</div><div id="38725015">江亮亮</div><div id="40147989">蔡东华 成琴</div><div id="498853">黄海健 李炜玮</div><div id="3335798">倪嘉檀</div><div id="4066643">卞晓栋 施晓雅</div><div id="968405">彭哲</div><div id="2163476">崔琼琼 何沁融</div><div id="3293041">韩璐 王梓名</div><div id="3735791">章殷实 朱海燕</div><div id="5281682">周颖</div><div id="10333726">傅忠祥 姚慧</div><div id="767061">陆莹莹</div><div id="1566840">陆昱成</div><div id="1821775">倪文玲 周先起</div><div id="2217753">徐雨尔</div><div id="2346174">董依凡</div><div id="4956843">顾纯岚 翁世琦</div><div id="5945231">李贵林 刘亚君</div><div id="10123270">尤卫红</div><div id="12443543">陈志华 沈秋月</div><div id="12654599">戈成红 何春</div><div id="14322470">范丽娟</div><div id="33666484">王楠 张莉</div><div id="35684419">刘蕖 许加林</div><div id="35871427">李德 刘莉</div><div id="37291394">黄星 李斌</div><div id="37493251">洪海苏</div><div id="3562754">曹亚林 谭书银</div><div id="15088046">贾雪祥 沐国琴</div><div id="4549588">刘晓剑 徐云</div><div id="5036798">苗婷 曲小光</div><div id="5109294">蒋技新 徐丽华</div><div id="5155610">胡惠红 谢锡芳</div><div id="5267536">陈剑 项宏波</div><div id="11357615">李人杰</div><div id="11459923">谷新华 魏源</div><div id="46743811">鲍俊良 蔡燕丽</div><div id="33613157">储雪丽 刘仪文</div><div id="37147053">唐海涛</div><div id="38722552">房远</div><div id="38816996">彭川 盛萍</div><div id="1071381">杨璐 祝盼盼</div><div id="3201266">胡梦梦 胡阳阳</div><div id="3417612">陈华 尚炳旭</div><div id="5022950">李敏 朱胜兵</div><div id="34127233">王仙歌 许志朋</div><div id="38875730">于耀棋</div><div id="4243561">吕秋阳</div><div id="5059571">赵越铭</div><div id="5277386">彭仕云 严春香</div><div id="6184467">季小雅 崔馥圭</div><div id="6233268">鲁昌锦 鲁思</div><div id="10168739">单耀</div><div id="386017">朱景颢 朱晓庆</div><div id="654928">黄唯一</div><div id="3171902">陈岗 周艳萍</div><div id="4637721">刘燕 殷寿贤</div><div id="6073985">高文骏</div><div id="14298098">秦红美 赵军</div><div id="1615784">蒋汶錞</div><div id="5109296">吴煊臻</div><div id="6105582">王红英 吴永康</div><div id="6105592">陈欣驰</div><div id="11091411">王运开</div><div id="11390517">陈默</div><div id="12686382">闵静</div><div id="24834875">陈华娟 孔祥力</div><div id="35724604">杨洪初 周桃红</div><div id="51045241">蒋淑萍 杨沈钢</div><div id="10299249">陈彪 闫妍</div><div id="11178931">陈剑 徐芳</div><div id="12137717">于建军 郑小荣</div><div id="13345736">冯燕子 李成志</div><div id="3262340">曾宪兰 孙家辉</div><div id="4161898">谭昊宁 谢文慧</div><div id="4902644">王慧 钟和平</div><div id="12071610">彭雪艳 王维忠</div><div id="4420698">钟媛媛</div><div id="6635368">张丽华 章金利</div><div id="3157235">桂良生 詹丽丽</div><div id="5331614">何凌坚 朱智刚</div><div id="5436171">高海宝</div><div id="40465194">黎文军 熊文婷</div><div id="13446857">杨斌 张柳芳</div><div id="33712177">缪海英 徐鹤</div><div id="12260646">马靓 陈军睿</div><div id="13466678">徐卫华 余永程</div><div id="5363624">武敬轩 姚晓昱</div><div id="41710510">黄永在 张彩琴</div><div id="11685513">李宝</div><div id="12889368">李学梅 杨志荣</div><div id="13536062">陈学梅 裴新</div><div id="13772032">李波 于红</div><div id="35870216">周寒冰</div><div id="41442506">常青玲 狄多武</div><div id="6128269">李淑琴</div><div id="6879568">陈娟 施俊杰</div><div id="11572088">徐娅 周会亭</div><div id="13396922">李红梅 王喜龙</div><div id="25798036">刘静 史孔松</div><div id="12974327">陈红波 马菊红</div><div id="5321024">李冲</div><div id="12915270">梁伟 薛利利</div><div id="41891879">刘晓超</div><div id="990268">姜卫平 田文波</div><div id="3267416">陈丽娜 张杨</div><div id="25636544">王华锋 周宁宁</div><div id="33591447">李佳玲 许国宏</div><div id="39188">刘波 薛凌銚</div><div id="4324993">卢卫改 喻志</div><div id="5362294">王华 武钊</div><div id="10349752">韩羽 肖明溪</div><div id="33508073">刘鑫 王旭</div><div id="4603302">马燕</div><div id="5529054">王慧明 张妮</div><div id="33570259">马四虎 李晓建</div><div id="38801030">黄倩雯</div><div id="400583">罗伟 吴婷</div><div id="1159141">顾婷婷 王宏</div><div id="1654616">胡文毅</div><div id="8984906">唐海蓉 仲继勇</div><div id="5124123">曲晓义 王朱逸</div><div id="11107075">黄正杰 唐珍珍</div><div id="11560359">穆刚 赵丽</div><div id="14197465">陈胜</div><div id="14422185">吴晨红 许浩</div><div id="14588568">康忠贤 宋连妹</div><div id="36577284">高春 宋丽达</div><div id="39855455">陶燕燕 张嘉炯</div><div id="770323">顾海英 柳敏耀</div><div id="3675043">许勇锋 杨颖颖</div><div id="5006251">沈丹红 朱永鑫</div><div id="5031295">潘永娟</div><div id="12421596">李宗伟 吴绚晖</div><div id="13043411">李根芳 瞿强军</div><div id="13110625">陈家敏 杨劲松</div><div id="14394357">吴爱平 吴正军</div><div id="14591447">杨晓静 张怀潭</div><div id="3354094">曹臻 刘利</div><div id="33295433">姜小忠 俞英</div><div id="39364136">张政</div><div id="39764227">骆霖</div><div id="46285725">黄赛华 张军英</div><div id="48055949">王瑾 丁勇</div><div id="48265043">黄建萍 穆文蓉</div><div id="6352392">李睿 袁丽燕</div><div id="31151726">何世杰 赵荣平</div><div id="34733245">车文杰</div><div id="39466798">胡平</div><div id="1172570">陈冀唐 许静</div><div id="1291070">孙洁 武云</div><div id="3078191">林继凤 宿浩琪</div><div id="3271890">潘军</div><div id="5202292">孙玉福 周莉萍</div><div id="10162659">王娟</div><div id="11039205">施春婷</div><div id="12471177">杨国勇 张祥利</div><div id="13103637">黄炯 徐姗姗</div><div id="24601404">戴辰光 胡蓉蓉</div><div id="31128306">张侃轶 孙怡</div><div id="33627895">董菊梅 杨永福</div><div id="38843788">楼亦萍 王龙</div><div id="38856321">马晓静</div><div id="39205117">李海燕 刘晓俊</div><div id="40083215">柴剑纬 杨栋梁</div><div id="40310123">蒋家湧 邵如芸</div><div id="49877654">胡季林 曾妮</div><div id="2282339">李青 赵有胜</div><div id="12487672">张柳</div><div id="39238384">李希隆</div><div id="42859537">李慧</div><div id="43903522">谢瑜 王振宇</div><div id="12468142">顾珊</div><div id="6161543">阿迪力·阿力木</div><div id="4898637">艾尔肯·沙布尔 帕夏古丽·萨木萨克</div><div id="5476545">董学 罗胃</div><div id="10793553">帕提古丽·阿布都热衣木 吐逊·克然木</div><div id="13717239">阿布都拉·吾布力 热孜叶古力·买买提依明</div><div id="31644809">赵建新 朱明月</div><div id="33505732">阿卜力孜喀日·奥布力 姑兰拜尔·达毛拉</div><div id="36462809">麦麦提图尔荪·吾舒尔 依再提姑丽·依克穆</div><div id="38352424">达伍提·麦海提</div><div id="39689079">麦麦提图尔荪·马木提 塔吉古丽·萨依提</div><div id="41135645">巴吐尔江·买买提 开丽比努尔·买买提</div><div id="44273117">陈果 姜楠</div><div id="47643950">程宝宝 钟玲</div><div id="4829413">李伟 潘萍</div><div id="5195112">郑志刚</div><div id="39479">刘春艳 刘长利</div><div id="2191640">马萍 袁星</div><div id="2934346">达红 刘江</div><div id="4204477">廖军 王云</div><div id="5158796">邵宇澍 王留阳</div><div id="5443332">王娟 王文化</div><div id="5458361">陈祥玲 熊祉</div><div id="6454873">李蕊 徐延斌</div><div id="10802406">刘晓东</div><div id="39152218">胡尔西丹木·阿不都艾尼 麦麦提艾力·米吉提</div><div id="39411328">古龙 马春玲</div><div id="41283844">马富强 马赛力麦</div><div id="42616792">常晓旭 岳洪</div><div id="4266315">黄小宏 杨惠婷</div><div id="5220366">蔡伟 彭丽华</div><div id="11660546">封居剑 于文婵</div><div id="12766367">牙库甫江·巴热提江</div><div id="39396789">吐腊西·努尔拜 叶克分努尔·佰山</div><div id="43874922">古丽沙提·哈里亚 努尔波生·哈那提</div><div id="791762">江凌霄</div><div id="10336991">沈广兵 许红霞</div><div id="13005317">姜益萍 徐洪流</div><div id="37095679">毛秀英 王世增</div><div id="38401432">齐亚玲 章霄君</div><div id="6208330">朱超中 朱秋仙</div><div id="33293713">沈建峰 严利君</div><div id="33669953">沈克华 王会月</div><div id="607626">徐庆</div><div id="1043021">莫岚 章永华</div><div id="2555124">赵亚妮</div><div id="3223840">黄高伟 王丽珊</div><div id="13637928">杜鹃 孙一博</div><div id="14515493">甄体燕</div><div id="665339">许达</div><div id="1039506">潘圆圆 张伟</div><div id="3025144">卢威 周央央</div><div id="4235272">周书凝</div><div id="5146349">张勤丰 张潇娉</div><div id="6084251">黄文旦 吴丹花</div><div id="6411825">厉玉燕 杨春芳</div><div id="6848128">方新建 章霞飞</div><div id="6879919">陈丽芳 方俊杰</div><div id="11121748">李莺莺 袁海</div><div id="11437975">崔益祥 沈群燕</div><div id="14265299">石锋</div><div id="38803246">顾丹红 叶玉兴</div><div id="44474528">黄丽英 金黎明</div><div id="847567">王声琴 吴斌</div><div id="1291713">姚嘉政</div><div id="5083119">吴维丹 姚亮</div><div id="6978717">沈国强 赵艳</div><div id="10051618">孙建忠 徐延霞</div><div id="10250342">王强 吴建美</div><div id="29331985">沈承润</div><div id="31175039">付应宏 杨红霞</div><div id="35347673">陈其英 孙国峰</div><div id="43923492">程甜 汪忠霞</div><div id="44562310">刘玉青 任双松</div><div id="11299543">邱华婴 汤宝根</div><div id="13063281">陆春娟 邱加中</div><div id="1074523">黄莉 江利兵</div><div id="4710984">程美兰 邹海</div><div id="5458460">金蔚飞 吴国秋</div><div id="6866154">韦希 颜滔</div><div id="12416364">李美珍 周晓江</div><div id="13207507">杨建明 朱美俐</div><div id="14295022">杨美红 张开春</div><div id="38977046">俞敏巧</div><div id="44103327">胡佳 胡敏红</div><div id="45880549">傅帅 张怡</div><div id="47688907">吕康源 应新芽</div><div id="31142581">陈昕 余海玲</div><div id="38718541">仇优优 瞿建晓</div><div id="3023523">蔡周楠</div><div id="4636981">祝志杰</div><div id="5051937">洪伟 郑春霞</div><div id="1036131">陈琴 王鹏</div><div id="2340822">穆秀彩 周凯</div><div id="2980194">甘海霞 闻卓</div><div id="5239804">何万宏 季俊波</div><div id="36379082">曾国卿 王志琴</div><div id="39596589">邓雪维 周晓春</div><div id="40843589">苗黎明 张兴良</div><div id="46098177">高雪霞 何先法</div><div id="48853550">潘婷霞 赵松</div><div id="5505047">宋云飞</div><div id="10172229">刘水高 彭小敏</div><div id="13153797">葛锋 蒋洁</div><div id="14385579">杨生可 应俏健</div><div id="3668623">陈晓慧 温兴同</div><div id="4421994">陈生蚕 王美拉</div><div id="4929566">潘海敏 杨宗校</div><div id="5052050">汤李贺 王细拉</div><div id="6445100">岳丕传 庄秋琴</div><div id="15000372">王晓丰 郑爱华</div><div id="39085202">厉达纬 汤钱绸</div><div id="40679993">蔡莲霞 陈亦久</div><div id="5284985">胡振江 贾林娟</div><div id="11388877">俞华芳</div><div id="11482116">濮春娥 张省毅</div><div id="13045209">赵小兰 周翔宇</div><div id="14507219">曾志青 封爱良</div><div id="35298501">明仁杰</div><div id="42189480">韩根才 韩红芳</div><div id="3034794">丁梅红 高峰</div><div id="3743290">缪红燕 王勤荣</div><div id="5446329">陈正欣 江文明</div><div id="13033461">徐世岳</div><div id="38705129">胡院秀 彭长城</div><div id="40421061">段明印 唐开景</div><div id="3367388">吴彦良</div><div id="4315381">麻欢乐 吴勤峰</div><div id="8967058">刘学武 诸孩</div><div id="10357187">李新春 吴云祖</div><div id="12568327">黄惠信 尤跃跃</div><div id="14102806">倪志厅 泮小催</div><div id="15075401">范秀娟 杨平超</div><div id="1048688">程秀芳 赵高俊</div><div id="6480201">冯亚平 杨勇军</div><div id="31328601">谭玉红</div><div id="38517526">陈慧利 章红娟</div><div id="39993975">刘创泽 王美平</div><div id="6448440">李军 庄海芬</div><div id="6601779">曹洪波 洪水清</div><div id="11410578">金永平</div><div id="35334565">金萍 虞华红</div><div id="41441231">干雪芬 金东坚</div><div id="44185175">简倩桦</div><div id="47938218">罗海 朱淑意</div><div id="5591807">张银宇 周平</div>
+</div>
+</body>
+<script>
+$(document).ready(function() {
+  /*手机号码输入框聚焦*/
+  /*$("#loginid").focus(); */
+  $("#myloader").hide();
+  
+/*  $("input").focus(function(){
+    $("#loginMsg").html(""); 
+  })*/
+  
+  /*点击获取邀请函按钮*/	
+  $("#btn_confirm").bind("click", function() {
+	  checkSubmit();
+  })
+  
+  /*调用alert*/
+  function callalert(){
+	$("#alert").fadeIn();
+  }
+  /*查关闭alert*/	
+  $("#btn_close").bind("click", function() {
+	$("#alert").fadeOut();
+  })
+  
+  function checkSubmit(){ 
+	/*检索姓名库中是否包含输入的姓名*/ 
+	var inputid = $("#loginid").val();
+	var inputname = $("#loginname").val();
+	var loginname = inputname.replace(/[\．|\。|\·|\ |\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?]/g,'·');
+	
+	if(inputid == "" ){
+	  callalert();
+	  $(".alertcontent").children("h2").text("输入您的卡号。");
+	}
+	else if(inputid != "" && loginname == "" ){
+	  callalert();
+	  $(".alertcontent").children("h2").text("输入您的姓名。");
+	}
+	else if($("#"+inputid).length == 0){
+	  callalert();
+	  $(".alertcontent").children("h2").text("您输入的卡号不在本次研讨会受邀名单之内，如有疑问请向安利当地业务部咨询。");
+	}
+	else if($("#"+inputid).length == 1){
+      var names = $("#"+inputid).text()
+	  /*检查姓名的数量*/
+	  var namesNumber = (names.replace(/\S+/g,"*").length+1)/2;
+	  if(namesNumber==1){
+		  re = /(\S+)/;
+	  }
+	  else if(namesNumber==2){ 
+		  re = /(\S+)\s(\S+)/;
+	  }
+	  else if(namesNumber==3){ 
+		  re = /(\S+)\s(\S+)\s(\S+)/;
+	  }
+	  else if(namesNumber==4){ 
+		re = /(\S+)\s(\S+)\s(\S+)\s(\S+)/;
+	  }
+	  else if(namesNumber==5){ 
+		re = /(\S+)\s(\S+)\s(\S+)\s(\S+)\s(\S+)/;
+	  }
+	  else if(namesNumber==6){ 
+		re = /(\S+)\s(\S+)\s(\S+)\s(\S+)\s(\S+)\s(\S+)/;
+	  }
+	  re.exec(names)
+	  var name1 = RegExp.$1,
+	      name2 = RegExp.$2,
+	      name3 = RegExp.$3,
+	      name4 = RegExp.$4,
+	      name5 = RegExp.$5,
+	      name6 = RegExp.$6;
+	  if(loginname==name1||loginname==name2||loginname==name3||loginname==name4||loginname==name5||loginname==name6){
+	  	  /*POST姓名和卡号*/		  
+		  $.ajax({
+			  type: "POST",
+			  url: "/login/",
+			  data: {name:loginname, ada:inputid}, 
+			  success: function(msg){
+				/*alert(msg);*/
+              if (msg['result']) {
+                    /*卡号姓名正确，进入邀请函页面*/
+                    window.location.href = encodeURI("/myinvitation?loginname="+ names +"&loginid=" + inputid)
+              } else {
+                  callalert();
+                  $(".alertcontent").children("h2").text("请正确输入您的姓名，如果您的家庭有多位成员结伴同行，只需输入您自己的姓名即可。");
+              }
+			  }
+          });
+	  }
+	  else{
+		  callalert();
+		  $(".alertcontent").children("h2").text("请正确输入您的姓名，如果您的家庭有多位成员结伴同行，只需输入您自己的姓名即可。");
+	  }
+	}
+  }
+	
+})
+</script>
+</html>

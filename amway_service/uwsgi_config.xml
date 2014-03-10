@@ -1,0 +1,8 @@
+<uwsgi>
+    <socket>127.0.0.1:18888</socket>
+    <chdir>/home/wwwroot/www.brixd.com/amway.brixd.com/amway_service</chdir>
+    <pythonpath>..</pythonpath>
+    <processes>2</processes>
+    <daemonize>../log/uwsgi.log</daemonize>
+    <module>uwsgi_wsgi_product</module>
+</uwsgi>
