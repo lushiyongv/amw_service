@@ -49,7 +49,7 @@
             padding: 100px 20px 0 20px;
             overflow: hidden;
             position: relative;
-            background:url('img/Amway贺卡_aq01.jpg');
+            background:url('img/Amway_normal02.jpg');
             -webkit-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
@@ -75,7 +75,7 @@
             overflow: auto;
         }*/
         .main-body-input{
-            min-height: 100px;
+            min-height: 80px;
         }
         .receiver,
         .main-body,
@@ -385,18 +385,18 @@
     <img src="{{ card.get_card_image }}" alt="" id="card_image">
     <div class="card-container">
     <!-- 容器开始 -->
-    <form action="display_card.html" method="POST">
+    <form action="display_card.html" method="">
         <div class="card-detail">
         <!-- 收件人 -->
             <div class="receiver">
-                <input type="text" placeholder="尊敬的……" class="receiver-input" id="recipient" name="recipient">
+                <input type="text" placeholder="点此输入邀请人姓名" class="receiver-input" id="recipient" name="recipient">
             </div>
             <div class="main-body">
-                <textarea name="content" rows="3" class="main-body-input" id="content" placeholder="我们诚挚地邀请您参加……"></textarea>
+                <textarea name="content" rows="3" class="main-body-input" id="content" placeholder="在这里填写邀请内容……"></textarea>
             </div>
         <!-- 发件人 -->
             <div class="sender">
-                <input type="text" placeholder="您的姓名" class="sender-input" id="addressor" name="addressor">
+                <input type="text" placeholder="点此输入您的名字" class="sender-input" id="addressor" name="addressor">
             </div>
         </div>
             <input type="hidden" name="card_image" value="{{ card.get_card_image }}">

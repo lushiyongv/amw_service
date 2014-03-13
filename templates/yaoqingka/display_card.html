@@ -50,7 +50,7 @@
         padding: 100px 20px 0 20px;
         overflow: hidden;
         position: relative;
-        background:url('img/Amway贺卡_aq01.jpg');
+        background:url('img/Amway_normal02');
         -webkit-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
@@ -80,7 +80,7 @@
     .receive-para,
     .send-para{
         color: #777;
-        padding: 8px 0;
+        padding: 5px 0;
         font-size: 16px;
     }
     .receive-para {
@@ -507,7 +507,7 @@
             }
             .send-wrapper,
             .send-too{
-                margin: 60px auto 0px;
+                margin: 0 auto;
             }
 
         }
@@ -549,7 +549,28 @@
             padding: 20px 0;
             color: #AFAFAF;
         }
-
+        #sina_share{
+            width: 200px;
+            height: 40px;
+            display: block;
+            color: #FFF;
+            background-color: #FFA200;
+            background-image: none;
+            text-align: center;
+            -webkit-box-sizing: border-box;
+               -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            vertical-align: middle;
+            line-height: 1.2;
+            margin: auto;
+            float: none;
+        }
+        #sina_share:hover{
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -565,7 +586,7 @@
                 <img src="http://static.zuimeia.com/product/img/zhufu_check_icon.png" alt="" class="success-icon">
             </li>
             <li class="tip-words">
-                <div class="tip">贺卡制作完成！点击 <b>右上角的按钮</b> <b>分享给朋友</b> 或 <b>分享到朋友圈</b> </div>
+                <div class="tip">邀请卡制作完成！点击 <b>右上角的按钮</b> <b>分享给朋友</b> 或 <b>分享到朋友圈</b> </div>
             </li>
         </ul>
         <div class="card-container">
@@ -580,9 +601,7 @@
                     <p>
                     我们诚挚地邀请您参加「安利非洲公益行研讨会」。</br>
                         时间：2014年04月15日，下午2：00</br>
-                        地点：北京海淀区中关村大厦 603-605</br>
-
-                        我们期待您的到来！
+                        地点：北京海淀区中关村大厦 603-605
                     </p>
                 </div>
                 <!-- 发件人 -->
@@ -598,10 +617,11 @@
                 <a class="send-button re-choose" href="index.html">重新选择模板</a>
             </div>
             
-            <a href="http://zuimeia.com/weibo/login" class="share-button weibo-share animation fadein" id="share_weibo">分享到微博</a>
+            <div class="bdsharebuttonbox" data-tag="share_1">
+                <a class="bds_tsina" data-cmd="tsina" id="sina_share">分享到新浪微博</a>
+            </div>
                     <!-- <a href="http://zuimeia.com/weibo/login" class="share-button weibo-share animation fadein" id="share_weibo">直接分享到微博</a> -->
             <!-- 发送按钮 -->
-            <a class="send-button send-too animation fadein" href="index.html">我也要发</a>
 
             
         </div>
@@ -704,6 +724,28 @@
                 $('h1,.orange,.big-font,h5').css('font-weight','normal');
             }
     </script>
+    <script>
+    window._bd_share_config = {
+        common : {
+            bdText : 'onetwothree', 
+            bdDesc : '自定义分享摘要', 
+            bdUrl : '自定义分享url地址',   
+            bdPic : '自定义分享图片'
+        },
+        share : [{
+            "bdSize" : 16
+        }],
+        image : [{
+            viewType : 'list',
+            viewPos : 'top',
+            viewColor : 'black',
+            viewSize : '16',
+            viewList : ['qzone','tsina','huaban','tqq','renren']
+        }]
+    }
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
 </body>
 
 </html>
