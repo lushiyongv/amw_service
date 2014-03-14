@@ -385,7 +385,8 @@
     <img src="{{ card.get_card_image }}" alt="" id="card_image">
     <div class="card-container">
     <!-- 容器开始 -->
-    <form action="display_card.html" method="">
+    <form action="" method="post">
+        {% csrf_token %}
         <div class="card-detail">
         <!-- 收件人 -->
             <div class="receiver">

@@ -80,6 +80,17 @@
     <!-- 容器开始 -->
     <div class="container">
         <ul class="card-list">
+            {% for card in card_list %}
+                <li class="card-list-item">
+                    <a class="card" href="/yqk/card/template/{{ card.id }}/edit">
+                        {% if forloop.counter < 5  %}
+                            <img src="{{ card.get_card_image }}" alt="" class="card-img">
+                        {% else %}
+                            <img src="http://static.zuimeia.com/product/img/toupiao_img_loading.gif" data-original="{{ card.get_card_image }}" alt="" class="card-img">
+                        {% endif %}
+                    </a>
+                </li>
+            {% endfor %}
                 <li class="card-list-item">
                     <a class="card" href="write_card.html">
                         <img src="http://static.zuimeia.com/product/img/toupiao_img_loading.gif" data-original="img/Amway_normal02.jpg" alt="" class="card-img">
