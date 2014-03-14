@@ -85,6 +85,7 @@ class InviteCard(models.Model):
             super(InviteCard, self).save()
 
         else:  # 新建
+            self.order = self.id * 2 - 1
             super(InviteCard, self).save()
 
             key_cover, relative_path_cover, remote_url = qiniu_utils.upload_image(self.card_image, self.card_image.path)
