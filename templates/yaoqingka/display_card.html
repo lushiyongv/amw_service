@@ -50,7 +50,7 @@
         padding: 100px 20px 0 20px;
         overflow: hidden;
         position: relative;
-        background:url('img/Amway_normal02');
+        background:url('{{ card.get_card_image }}');
         -webkit-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
@@ -591,30 +591,29 @@
         </ul>
         <div class="card-container">
             <!-- 容器开始 -->
+            {{ card.word_postion }}==={{ card.word_color }}
             <div class="card-detail">
                 <!-- 收件人 -->
                 <div class="receiver">
-                    <p class="receive-para">尊敬的李先生：</p>
+                    <p class="receive-para">{{ card.recipient }}</p>
                 </div>
 
                 <div class="main-body">
                     <p>
-                    我们诚挚地邀请您参加「安利非洲公益行研讨会」。</br>
-                        时间：2014年04月15日，下午2：00</br>
-                        地点：北京海淀区中关村大厦 603-605
+                    {{ card.content | safe }}
                     </p>
                 </div>
                 <!-- 发件人 -->
                 <div class="sender">
                     <p class="send-para">
-                        Jack Lee
+                        {{ card.addressor }}
                     </p>
                 </div>
             </div>
             <!-- 底部分享按钮 -->
             <div class="send-wrapper animation fadein">
-                <a class="send-button re-change" href="write_card.html">再改改</a>
-                <a class="send-button re-choose" href="index.html">重新选择模板</a>
+                <a class="send-button re-change" href="edit/">再改改</a>
+                <a class="send-button re-choose" href="/yqk">重新选择模板</a>
             </div>
             
             <div class="bdsharebuttonbox" data-tag="share_1">

@@ -49,7 +49,7 @@
             padding: 100px 20px 0 20px;
             overflow: hidden;
             position: relative;
-            background:url('img/Amway_normal02.jpg');
+            background:url('{{ card.get_card_image }}');
             -webkit-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
@@ -390,17 +390,19 @@
         <div class="card-detail">
         <!-- 收件人 -->
             <div class="receiver">
-                <input type="text" placeholder="点此输入邀请人姓名" class="receiver-input" id="recipient" name="recipient">
+                <input type="text" placeholder="{{ card.recipient }}" class="receiver-input" id="recipient" name="recipient">
             </div>
             <div class="main-body">
-                <textarea name="content" rows="3" class="main-body-input" id="content" placeholder="在这里填写邀请内容……"></textarea>
+                <textarea name="content" rows="3" class="main-body-input" id="content" placeholder="{{ card.content | safe }}"></textarea>
             </div>
         <!-- 发件人 -->
             <div class="sender">
-                <input type="text" placeholder="点此输入您的名字" class="sender-input" id="addressor" name="addressor">
+                <input type="text" placeholder="{{ card.addressor }}" class="sender-input" id="addressor" name="addressor">
             </div>
         </div>
             <input type="hidden" name="card_image" value="{{ card.get_card_image }}">
+            <input type="hidden" name="word_postion" value="{{ card.word_postion }}">
+            <input type="hidden" name="word_color" value="{{ card.word_color }}">
         <!-- 发送按钮 -->
             <input type="submit" value="生成贺卡" class="send-button">
     </form>
