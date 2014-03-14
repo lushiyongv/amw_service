@@ -86,6 +86,8 @@ def edit_card(request, html_key):
         content = request.POST.get('content')
         addressor = request.POST.get('addressor')
         card_image = request.POST.get('card_image')
+        word_postion = request.POST.get('word_postion')
+        word_color = request.POST.get('word_color')
 
         # 保存内容生成唯一页面, 存入mongodb
         chars = (string.ascii_letters+string.digits).lower()
@@ -98,6 +100,8 @@ def edit_card(request, html_key):
         item['content'] = content
         item['addressor'] = addressor
         item['card_image'] = card_image
+        item['word_postion'] = word_postion
+        item['word_color'] = word_color
 
         item['created_at'] = datetime.now()
         cars_db.insert(item)
