@@ -1,0 +1,286 @@
+html, body {
+    width: 100%;
+}
+body {
+    background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');
+}
+.clear {
+    clear: both;
+}
+/*----列表页----*/
+ h2 {
+    text-align: center;
+    font-size: 16px;
+    display: block;
+    width: 110px;
+    margin: auto;
+    color: #686868;
+    line-height: 2;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+/*h2:after {
+    display: block;
+    content:'';
+    width: 110px;
+    height: 1px;
+    background: #DEDEDC;
+    margin-bottom: 8px;
+}*/
+.hidden {
+    display: none;
+}
+.container {
+    width: 100%;
+    margin: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+.container:before, .container:after, .card:before, .card:after, .card-list:before, .card-list:after {
+    content:"";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.title {
+    width: 120px;
+    height: 36px;
+    background-color: #d73646;
+    margin:0 auto 15px;
+    padding: 7px;
+    line-height: 1.2;
+    text-align: center;
+    color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: -1.5px 1.5px 1px rgba(0, 0, 0, .18);
+    box-shadow: -1.5px 1.5px 1px rgba(0, 0, 0, .18);
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 18px;
+}
+.card {
+    display: block;
+}
+.card-list-item {
+    float: left;
+    width: 22.680412371134%;
+    margin: 0 3.092783505155% 30px 0;
+    background-color: #FFF;
+    padding: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+    min-height: 209px;
+}
+.card-list-item:nth-child(4n) {
+    margin-right:0;
+}
+.card-img {
+    width: 100%;
+    display: block;
+}
+.newyearcover {
+    background-color:#ff6c7a;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+.cover-word {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-weight: bold;
+    font-size: 40px;
+    width: 220px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0);
+    line-height: 40px;
+    margin: auto;
+    color: #FFF;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    vertical-align: middle;
+    padding: 7px;
+    display: block;
+}
+/*-----footer-----*/
+ footer {
+    position: relative;
+    overflow: hidden;
+    margin-top: 0px;
+    z-index: 1;
+}
+.footer{
+    text-align: center;
+    padding: 20px 0;
+    color: #AFAFAF;
+}
+.card-list-item:before, .card-list-item:after {
+    content:".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+a {
+    -webkit-tap-highlight-color: inherit;
+}
+/*----下载按钮----*/
+.download-button{
+    display: block;
+    color: #ffffff;
+    background-color: #ffa200;
+    font-weight: bold;
+    margin: 13px auto 20px;
+    height: 30px;
+    line-height: 1.7;
+    font-size: 18px;
+    padding: 6px 20%;
+    width: 170px;
+    text-align: center;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    -webkit-box-shadow: 0px 1px 1px rgba(0,0,0,.18);
+            box-shadow: 0px 1px 1px rgba(0,0,0,.18);
+}
+.zhufu-download{
+    font-size: 17px;
+}
+.container.footer{
+    -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.06);
+            box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.06);
+}
+/*----animation---*/
+ .animation {
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+.flydown {
+    -webkit-animation-name: flydown;
+    -moz-animation-name: flydown;
+    -ms-animation-name: flydown;
+    -o-animation-name: flydown;
+    animation-name: flydown;
+    -webkit-animation-delay: .6s;
+    -moz-animation-delay: .6s;
+    -ms-animation-delay: .6s;
+    -o-animation-delay: .6s;
+    animation-delay: .6s;
+}
+.flyup {
+    -webkit-animation-name: flyup;
+    -moz-animation-name: flyup;
+    -ms-animation-name: flyup;
+    -o-animation-name: flyup;
+    animation-name: flyup;
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    -ms-animation-delay: 1s;
+    -o-animation-delay: 1s;
+    animation-delay: 1s;
+    -webkit-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;
+    -ms-animation-duration: 1.5s;
+    -o-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+}
+@keyframes flydown {
+    0% {
+        -webkit-transform: translateY(-500px);
+        -moz-transform: translateY(-500px);
+        -ms-transform: translateY(-500px);
+        -o-transform: translateY(-500px);
+        transform: translateY(-500px);
+    }
+    100% {
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+        -o-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+}
+@-webkit-keyframes flydown {
+    0% {
+        -webkit-transform: translateY(-500px);
+        -moz-transform: translateY(-500px);
+        -ms-transform: translateY(-500px);
+        -o-transform: translateY(-500px);
+        transform: translateY(-500px);
+    }
+    100% {
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+        -o-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+}
+@keyframes flyup {
+    0% {
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+        -o-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+    100% {
+        -webkit-transform: translateY(-980px);
+        -moz-transform: translateY(-980px);
+        -ms-transform: translateY(-980px);
+        -o-transform: translateY(-980px);
+        transform: translateY(-980px);
+        z-index: -1;
+    }
+}
+@-webkit-keyframes flyup {
+    0% {
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+        -o-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+    100% {
+        -webkit-transform: translateY(-980px);
+        -moz-transform: translateY(-980px);
+        -ms-transform: translateY(-980px);
+        -o-transform: translateY(-980px);
+        transform: translateY(-980px);
+        z-index: -1;
+    }
+}
+@media (max-width:800px) {
+    .card-list-item {
+        float: left;
+        width: 47.5%;
+        margin: 0 5% 5% 0;
+    }
+    .card-list-item:nth-child(2n) {
+        margin-right:0;
+    }
+}
+@media (min-width:800px) {
+    .download-button{
+        padding: 6px 10%;
+    }
+}

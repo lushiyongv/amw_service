@@ -1,53 +1,8 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>安利邀约卡</title>
-    <meta name="description" content="安利邀约卡">
-    <meta content="telephone=no" name="format-detection" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!-- <link rel="icon" href="http://static.zuimeia.com/product/img/favicon.ico" type="image/x-icon"> -->
-
-    <meta name="mobile-web-app-capable" content="yes">
-    <!-- Apple -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta content="telephone=no" name="format-detection" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    
-
-    <!-- Our CSS stylesheet file -->
-    <link rel="stylesheet" href="/static/css/normalize.css" />
-
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <style>
-            header{
-                background-repeat:repeat;
-            }
-          </style>
-    <![endif]-->
-
-    <!--[if IE]>
-    <style>
-            html ,h1 , h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, div, a, p{
-                font-family: "Microsoft Yahei", "微软雅黑", "Tahoma", "Arial", "Helvetica", "STHeiti";
-            }
-            .copyright{
-                width: 300px;
-            }
-            h1,.orange,h5,.big-font{
-                font-weight:normal;
-            }
-          </style>
-    <![endif]-->
-    <style>
-    html,body {
+html,body {
         background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');
     }
     .card-container{
-        padding: 100px 20px 0 20px;
+        padding: 50px 20px 0 20px;
         overflow: hidden;
         position: relative;
         background:url('{{ card.get_card_image }}');
@@ -57,7 +12,6 @@
         width: 600px;
         min-height: 900px;
         margin:auto;
-        color: {{ card.word_color }};
     }
     .hidden,#card_image,#main-poster{
         width:0px;
@@ -66,10 +20,14 @@
         display: block;
     }
 
-    .card-detail {        
+    .card-detail {
+        background-color: #FFF;
+        background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');
+        -webkit-box-shadow: 0px 1px 1px rgba(0,0,0,.18);
+        box-shadow: 0px 1px 1px rgba(0,0,0,.18);
         width: 100%;
         min-height:200px;
-        padding: 10px 0;
+        padding: 10px;
         opacity: 0.96;
         min-height: 248px;
         overflow: auto;
@@ -80,9 +38,9 @@
     .main-body,
     .receive-para,
     .send-para{
-        color: {{ card.word_color }};
-        padding: 5px 0;
-        font-size: 16px;
+        color: #777;
+        padding: 10px;
+        font-size: 17px;
     }
     .receive-para {
     }
@@ -376,7 +334,6 @@
         -webkit-box-sizing: border-box;
            -moz-box-sizing: border-box;
                 box-sizing: border-box;
-        display: none;
     }
     .left-part{
         float: left;
@@ -414,7 +371,6 @@
         height: 100%;
     }
     .blackcover{
-        display: none;
         width: 100%;
         height: 100%;
         position: fixed;
@@ -466,10 +422,14 @@
     }
     @media(max-width:800px){
             .card-container{
-                padding: 50px 20px 0 20px;
                 min-height:900px;
                 max-height:900px;
                 width: 100%;
+            }
+            .sender.fix-bottom{
+                position: absolute;
+                right: 10px;
+                bottom: 10px;
             }
             .card-detail{
                 max-height: 540px;
@@ -508,7 +468,7 @@
             }
             .send-wrapper,
             .send-too{
-                margin: 0 auto;
+                margin: 60px auto 0px;
             }
 
         }
@@ -545,207 +505,3 @@
         .company-number:hover{
             color: #ffa200;
         }
-        .footer{
-            text-align: center;
-            padding: 20px 0;
-            color: #AFAFAF;
-        }
-        #sina_share{
-            width: 200px;
-            height: 40px;
-            display: block;
-            color: #FFF;
-            background-color: #FFA200;
-            background-image: none;
-            text-align: center;
-            -webkit-box-sizing: border-box;
-               -moz-box-sizing: border-box;
-                    box-sizing: border-box;
-            padding: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            vertical-align: middle;
-            line-height: 1.2;
-            margin: auto;
-            float: none;
-        }
-        #sina_share:hover{
-            opacity: 1;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="wrapper">
-    <!-- 贺卡背景 -->
-     <!-- <img src="http://static.zuimeia.com/product/img/zhufu/zhufu_icon_512.png" alt="" id="card_image"> -->
-    <!-- 微博封面 -->
-    <img src="{{ card.get_card_image }}" alt="" id="main-poster">
-        <div class="blackcover animation fadecover"></div>
-        <ul class="tip-success animation slidein">
-            <li class="left-part">
-                <img src="http://static.zuimeia.com/product/img/zhufu_check_icon.png" alt="" class="success-icon">
-            </li>
-            <li class="tip-words">
-                <div class="tip">邀请卡制作完成！点击 <b>右上角的按钮</b> <b>分享给朋友</b> 或 <b>分享到朋友圈</b> </div>
-            </li>
-        </ul>
-        <div class="card-container">
-            <!-- 容器开始 -->
-            {{ card.word_postion }}==={{ card.word_color }}
-            <div class="card-detail">
-                <!-- 收件人 -->
-                <div class="receiver">
-                    <p class="receive-para">{{ card.recipient }}</p>
-                </div>
-
-                <div class="main-body">
-                    <p>
-                    {{ card.content | safe }}
-                    </p>
-                </div>
-                <!-- 发件人 -->
-                <div class="sender">
-                    <p class="send-para">
-                        {{ card.addressor }}
-                    </p>
-                </div>
-            </div>
-            <!-- 底部分享按钮 -->
-            <div class="send-wrapper animation fadein">
-                <a class="send-button re-change" href="edit/">再改改</a>
-                <a class="send-button re-choose" href="/yqk">重新选择模板</a>
-            </div>
-            
-            <div class="bdsharebuttonbox" data-tag="share_1">
-                <a class="bds_tsina" data-cmd="tsina" id="sina_share">分享到新浪微博</a>
-            </div>
-                    <!-- <a href="http://zuimeia.com/weibo/login" class="share-button weibo-share animation fadein" id="share_weibo">直接分享到微博</a> -->
-            <!-- 发送按钮 -->
-
-            
-        </div>
-       
-        <footer>
-            <div class="footer">&copy;2014 安利中国</div>
-        </footer>
-    </div>
-    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
-
-    <!-- Google Analytics
-    <script>
-    (function(i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function() {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-47476591-1', 'zuimeia.com');
-    ga('send', 'pageview');
-    </script>
-    -->
-    <script src="/static/js/event_analysis.js"></script>
-    <script src=" http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=70401495" type="text/javascript" charset="utf-8"></script>
-    <script>
-        function is_weixin(){
-            var ua = navigator.userAgent.toLowerCase();
-            if(ua.match(/MicroMessenger/i)=="micromessenger") {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        var $tips=$('.blackcover,.tip-success'),
-            $main_body = $('.main-body').text(),
-            $share_button = $('.share-button'),
-            link_address = document.URL,
-            $sender = $('.sender'),
-            $card_detail_height = $('.card-detail').height(),
-            $link_to_weixin=$('.link-to-weixin');
-
-        $tips.on('touchstart',function(){
-            $tips.hide();
-        })
-
-        if(is_weixin()){
-            $tips.show();
-        }else{
-            $link_to_weixin.attr('href','http://zuimeia.com');
-            $share_button.css('display','block');
-        }
-        $link_to_weixin.on('click',function(){
-            event_tracker('ZhufuDisplaypageLinktoWeixin',source,'Zhufu');
-        })
-        var main_poster = document.getElementById('main-poster').src,
-            jiathis_share_image = main_poster,
-            url_search = window.location.search,
-            structured_url_path = location.protocol + '//' + location.host + location.pathname;
-
-        // [Global] 在这里定义jiathis_config;
-        var uid = 1827042,
-            google_analytics_link = encodeURIComponent("&utm_campaign=referral&utm_medium=share_tool "),
-            google_analytics_end = encodeURIComponent("utm_source=zhufu&utm_medium=share_tool"),
-            jiathis_link_head = "http://www.jiathis.com/send/";
-
-        function list_build_jiathis_url(web_id_name, utm_source_name, at_official_name, pre_title, pre_summary, period) {
-            var jiathis_share_title = "%23安利邀约卡%23 我们诚挚地邀请您参加「安利非洲公益行研讨会」。"+$main_body,
-                jiathis_webid = "?webid=" + web_id_name,
-                google_analytics_info = "?utm_source=" + utm_source_name + google_analytics_link,
-                jiathis_title = "&title=" + pre_title + jiathis_share_title + period,
-                jiathis_summary = "&summary=" + pre_summary ,
-                jiathi_pic = "&pic=" + jiathis_share_image,
-                jiathis_url_building = jiathis_link_head + jiathis_webid + "&url=" + link_address + google_analytics_info + jiathis_title + jiathis_summary + jiathi_pic + "&uid=" + uid;
-            return jiathis_url_building;
-        }
-        var jiathis_tsina_url = list_build_jiathis_url("tsina", "zhufu", "", "", "", "");
-
-        $share_button.on('click',function(){
-            var status = WB2.checkLogin();
-            $this = $(this);
-            if (status){
-                if ($this.attr('id') == "share_weibo") {
-                    document.getElementById('share_weibo').href = jiathis_tsina_url;
-                    event_tracker('ZhufuShare', source, 'Zhufu');
-                }else {
-                document.getElementById('share_weibo').href = 'http://zuimeia.com/weibo/login/';
-                }
-            } 
-        });
-        // IE10 字体修改
-            if (Function('/*@cc_on return document.documentMode===10@*/')()){
-                $('body').css('font-family','"Microsoft Yahei", "微软雅黑", "Tahoma", "Arial", "Helvetica", "STHeiti";');
-                $('h1,.orange,.big-font,h5').css('font-weight','normal');
-            }
-    </script>
-    <script>
-    window._bd_share_config = {
-        common : {
-            bdText : 'onetwothree', 
-            bdDesc : '自定义分享摘要', 
-            bdUrl : '自定义分享url地址',   
-            bdPic : '自定义分享图片'
-        },
-        share : [{
-            "bdSize" : 16
-        }],
-        image : [{
-            viewType : 'list',
-            viewPos : 'top',
-            viewColor : 'black',
-            viewSize : '16',
-            viewList : ['qzone','tsina','huaban','tqq','renren']
-        }]
-    }
-    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
-
-</body>
-
-</html>
