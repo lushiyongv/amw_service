@@ -1,80 +1,8 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>安利邀约卡</title>
-    <meta name="description" content="安利邀约卡">
-    <meta content="telephone=no" name="format-detection" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!-- <link rel="icon" href="http://static.zuimeia.com/product/img/favicon.ico" type="image/x-icon"> -->
-
-    <meta name="mobile-web-app-capable" content="yes">
-    <!-- Apple -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta content="telephone=no" name="format-detection" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <!-- Our CSS stylesheet file -->
-    <link rel="stylesheet" href="/static/css/normalize.css" />
-    
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <style>
-            header{
-                background-repeat:repeat;
-            }
-          </style>
-    <![endif]-->
-
-    <!--[if IE]>
-    <style>
-            html ,h1 , h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, div, a, p{
-                font-family: "Microsoft Yahei", "微软雅黑", "Tahoma", "Arial", "Helvetica", "STHeiti";
-            }
-            .copyright{
-                width: 300px;
-            }
-            h1,.orange,h5,.big-font{
-                font-weight:normal;
-            }
-          </style>
-    <![endif]-->
-    <style>
-
-        /*------- 改变 placeholder 的颜色 -------*/
-        ::-webkit-input-placeholder { /* WebKit browsers */
-            color: {{ card.word_color }};
-        }
-        :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-            color: {{ card.word_color }};
-        }
-        ::-moz-placeholder { /* Mozilla Firefox 19+ */
-            color: {{ card.word_color }};
-        }
-        :-ms-input-placeholder { /* Internet Explorer 10+ */
-            color: {{ card.word_color }};
-        }
-        /*小米2S bug*/
-        #addressor ::-webkit-input-placeholder { /* WebKit browsers */
-            text-align: right;
-        }
-        #addressor :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-            text-align: right;
-        }
-        #addressor ::-moz-placeholder { /* Mozilla Firefox 19+ */
-            text-align: right;
-        }
-        #addressor :-ms-input-placeholder { /* Internet Explorer 10+ */
-            text-align: right;
-        }
-
-        body,html{
+body,html{
             background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');
         }
         .card-container{
-            padding: 100px 20px 0 20px;
+            padding: 50px 20px 0 20px;
             overflow: hidden;
             position: relative;
             background:url('{{ card.get_card_image }}');
@@ -91,7 +19,7 @@
             overflow:hidden;
             display: block;
         }
-        /*.card-detail{
+        .card-detail{
             background-color: #FFF;
             background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');
             -webkit-box-shadow: 0px 2px 1px rgba(0,0,0,.18);
@@ -101,9 +29,6 @@
             padding: 10px;
             opacity: 0.96;
             overflow: auto;
-        }*/
-        .main-body-input{
-            min-height: 80px;
         }
         .receiver,
         .main-body,
@@ -118,16 +43,14 @@
         textarea:hover,
         textarea:active,
         textarea:focus{
-            position: relative;
             font-size: 16px;
             border: 0;
+            background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');
             width: 100%;
             -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-            color: {{ card.word_color }};
-            background: none;
-            padding: 6px 0;
+               -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+            color: #868686;
         }
         .sender-input{
             text-align: right;
@@ -316,7 +239,6 @@
             .card-container{
                 min-height:900px;
                 max-height:900px;
-                padding: 50px 20px 0 20px;
                 width: 100%;
             }
             .sender.fix-bottom{
@@ -326,8 +248,6 @@
             }
             .card-detail{
                 max-height: 540px;
-                position: relative;
-                top: 10px;
             }
         }
         @media(max-width:540px){
@@ -342,6 +262,7 @@
         }
         @media(max-width:384px){
             .card-container{
+                min-height:576px;
                 min-height:576px;
             }
             .send-button{
@@ -398,154 +319,3 @@
         .company-number:hover{
             color: #ffa200;
         }
-        .footer{
-            text-align: center;
-            padding: 20px 0;
-            color: #AFAFAF;
-        }
-        /*提示信息*/
-        
-        .tip-receiver:after{
-            border-left: 8px solid rgba(0, 0, 0, 0);
-            border-right: 8px solid {{ card.word_color }};
-            border-bottom: 8px solid rgba(0, 0, 0, 0);
-            border-top: 8px solid rgba(0, 0, 0, 0);
-            top: 10px;
-            right: 140px;
-        }
-        .sender,
-        .receiver,
-        .main-body{
-            position: relative;
-        }
-        .tip-receiver,
-        .tip-content,
-        .tip-sender{
-            position: absolute;
-            top: 2px;
-            right: 0;
-            display: block;
-            background-color: {{ card.word_color }};
-            -webkit-border-radius: 2px;
-                    border-radius: 2px;
-            width: 140px;
-            line-height: 1.6;
-            text-align: center;
-            height: 30px;
-            padding: 3px;
-            color: #FFF;
-            font-size: 14px;
-        }
-        .tip-receiver:before,
-        .tip-content:before,
-        .tip-sender:before{
-            content:'';
-            height: 0;
-            top: 6px;
-            right: 140px;
-            position: absolute;
-            border-left: 8px solid rgba(0, 0, 0, 0);
-            border-right: 8px solid {{ card.word_color }};
-            border-bottom: 8px solid rgba(0, 0, 0, 0);
-            border-top: 8px solid rgba(0, 0, 0, 0);
-        }
-        .tip-sender{
-            left: 0;
-        }
-        .tip-sender:before{
-            border-left: 8px solid {{ card.word_color }};
-            border-right: 8px solid rgba(0, 0, 0, 0);
-            border-bottom: 8px solid rgba(0, 0, 0, 0);
-            border-top: 8px solid rgba(0, 0, 0, 0);
-            top: 6px;
-            right: -16px;
-        }
-
-    </style>
-</head>
-
-<body>
-    <!-- 贺卡背景 -->
-     <!-- <img src="http://static.zuimeia.com/product/img/zhufu/zhufu_icon_512.png" alt="" class="hidden"> -->
-    <!-- 贺卡背景 -->
-    <img src="{{ card.get_card_image }}" alt="" id="card_image">
-    <div class="card-container">
-    <!-- 容器开始 -->
-    <form action="" method="post">
-        {% csrf_token %}
-        <div class="card-detail">
-        <!-- 收件人 -->
-            <div class="receiver">
-                <div class="tip-receiver tip">在此输入受邀人姓名</div>
-                <input type="text" placeholder="受邀人姓名" class="receiver-input" id="recipient" name="recipient">
-            </div>
-            <div class="main-body">
-                <div class="tip-content tip">在此输入邀请内容</div>
-                <textarea name="content" rows="3" class="main-body-input" id="content" placeholder="{{ card.content | safe }}"></textarea>
-            </div>
-        <!-- 发件人 -->
-            <div class="sender">
-                <div class="tip-sender tip">在此输入您的姓名</div>
-                <input type="text" placeholder="{{ card.addressor }}" class="sender-input" id="addressor" name="addressor">
-            </div>
-        </div>
-            <input type="hidden" name="card_image" value="{{ card.get_card_image }}">
-            <input type="hidden" name="word_postion" value="{{ card.word_postion }}">
-            <input type="hidden" name="word_color" value="{{ card.word_color }}">
-        <!-- 发送按钮 -->
-            <input type="submit" value="生成贺卡" class="send-button">
-    </form>
-    </div>
-
-
-<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
-<!-- Google Analytics -->
-<script>
-    (function(i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function() {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-47476591-1', 'zuimeia.com');
-    ga('send', 'pageview');
-</script>
-
-<script src="/static/js/event_analysis.js"></script>
-
-<script>
-    var $link_to_weixin=$('.link-to-weixin');
-    $(document).ready(function() {
-        function is_weixin(){
-            var ua = navigator.userAgent.toLowerCase();
-            if(ua.match(/MicroMessenger/i)=="micromessenger") {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        $link_to_weixin.on('click',function(){
-            event_tracker('ZhufuWritePageLinktoWeixin',source,'Zhufu');
-            if(!is_weixin()){
-                window.location.href="http://zuimeia.com";
-            }
-        })
-        if(!is_weixin()){
-            $link_to_weixin.attr('href','http://zuimeia.com');
-        }
-
-    }) //End of document.ready
-    $('.receiver,.main-body,.sender').on('click',function(){
-            $(this).find('.tip').fadeOut();
-    })
-
-</script>
-</body>
-
-</html>
