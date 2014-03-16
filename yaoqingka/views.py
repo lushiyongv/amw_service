@@ -76,6 +76,9 @@ def edit_card(request, html_key):
     # print image
     card.card_image = image
 
+    card.word_postion = item['word_postion']
+    card.word_color = item['word_color']
+
     card.content = card.content.replace('<p>', '')
     card.content = card.content.replace('</p>', '')
     card.content = card.content.replace('</br>', '\n')
