@@ -7,7 +7,7 @@
     <meta name="description" content="安利邀约卡">
     <meta content="telephone=no" name="format-detection" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!-- <link rel="icon" href="http://static.zuimeia.com/product/img/favicon.ico" type="image/x-icon"> -->
+    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
 
     <meta name="mobile-web-app-capable" content="yes">
     <!-- Apple -->
@@ -106,7 +106,7 @@
         font-size: 16px;
         text-align: center;
     }
-    .re-change,
+    .re-edit,
     .re-choose{
         float: left;
         display: block;
@@ -551,10 +551,10 @@
 
 <body>
     <div class="wrapper">
-    <!-- 贺卡背景 -->
-     <!-- <img src="http://static.zuimeia.com/product/img/zhufu/zhufu_icon_512.png" alt="" id="card_image"> -->
+    <!-- 微信封面 -->
+    <img src="/static/images/banner_weibo.jpg" alt="" id="card_image">
     <!-- 微博封面 -->
-    <img src="{{ card.get_card_image }}" alt="" id="main-poster">
+    <img src="/static/images/banner_weibo.jpg" alt="" id="main-poster">
         <div class="blackcover animation fadecover"></div>
         <ul class="tip-success animation slidein">
             <li class="left-part">
@@ -586,46 +586,35 @@
             </div>
             <!-- 底部分享按钮 -->
             <div class="send-wrapper animation fadein">
-                <a class="send-button re-change" href="edit/">再改改</a>
+                <a class="send-button re-edit" href="edit/">再改改</a>
                 <a class="send-button re-choose" href="/yqk">重新选择模板</a>
             </div>
             
             <div class="bdsharebuttonbox" data-tag="share_1">
-                <a class="bds_tsina" data-cmd="tsina" id="sina_share">分享到新浪微博</a>
+                <a class="bds_tsina" data-cmd="tsina" id="sina_share"class="share-button">分享到新浪微博</a>
             </div>
-                    <!-- <a href="http://zuimeia.com/weibo/login" class="share-button weibo-share animation fadein" id="share_weibo">直接分享到微博</a> -->
-            <!-- 发送按钮 -->
-
-            
         </div>
 
     </div>
     <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 
-    <!-- Google Analytics
-    <script>
-    (function(i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function() {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    <!-- Google Analytics -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-47476591-1', 'zuimeia.com');
-    ga('send', 'pageview');
-    </script>
-    -->
+          ga('create', 'UA-46697618-2', 'brixd.com');
+          ga('send', 'pageview');
+
+        </script>
+
     <script src="/static/js/event_analysis.js"></script>
-    <script src=" http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=70401495" type="text/javascript" charset="utf-8"></script>
     <script>
         function is_weixin(){
             var ua = navigator.userAgent.toLowerCase();
-            if(ua.match(/MicroMessenger/i)!=="micromessenger") {
+            if(ua.match(/MicroMessenger/i)=="micromessenger") {
                 return true;
             } else {
                 return false;
@@ -634,11 +623,11 @@
 
         var $tips=$('.blackcover,.tip-success'),
             $main_body = $('.main-body').text(),
-            $share_button = $('.share-button'),
-            link_address = document.URL,
+            $share_button = $('#sina_share'),
             $sender = $('.sender'),
-            $card_detail_height = $('.card-detail').height(),
-            $link_to_weixin=$('.link-to-weixin');
+            $reedit = $('.re-edit'),
+            $rechoose = $('.re-choose');
+        var link_address = document.URL;
 
         $tips.on('touchstart',function(){
             $tips.hide();
@@ -647,52 +636,26 @@
         if(is_weixin()){
             $tips.show();
         }else{
-            $link_to_weixin.attr('href','http://zuimeia.com');
             $share_button.css('display','block');
         }
-        $link_to_weixin.on('click',function(){
-            event_tracker('ZhufuDisplaypageLinktoWeixin',source,'Zhufu');
-        })
+        
         var main_poster = document.getElementById('main-poster').src,
-            jiathis_share_image = main_poster,
             url_search = window.location.search,
             structured_url_path = location.protocol + '//' + location.host + location.pathname;
 
-        // [Global] 在这里定义jiathis_config;
-        var uid = 1827042,
-            google_analytics_link = encodeURIComponent("&utm_campaign=referral&utm_medium=share_tool "),
-            google_analytics_end = encodeURIComponent("utm_source=zhufu&utm_medium=share_tool"),
-            jiathis_link_head = "http://www.jiathis.com/send/";
-
-        function list_build_jiathis_url(web_id_name, utm_source_name, at_official_name, pre_title, pre_summary, period) {
-            var jiathis_share_title = "%23安利邀约卡%23 我们诚挚地邀请您参加「安利非洲公益行研讨会」。"+$main_body,
-                jiathis_webid = "?webid=" + web_id_name,
-                google_analytics_info = "?utm_source=" + utm_source_name + google_analytics_link,
-                jiathis_title = "&title=" + pre_title + jiathis_share_title + period,
-                jiathis_summary = "&summary=" + pre_summary ,
-                jiathi_pic = "&pic=" + jiathis_share_image,
-                jiathis_url_building = jiathis_link_head + jiathis_webid + "&url=" + link_address + google_analytics_info + jiathis_title + jiathis_summary + jiathi_pic + "&uid=" + uid;
-            return jiathis_url_building;
-        }
-        var jiathis_tsina_url = list_build_jiathis_url("tsina", "zhufu", "", "", "", "");
-
+        // 分享按钮 GA 统计
         $share_button.on('click',function(){
-            var status = WB2.checkLogin();
-            $this = $(this);
-            if (status){
-                if ($this.attr('id') == "share_weibo") {
-                    document.getElementById('share_weibo').href = jiathis_tsina_url;
-                    event_tracker('ZhufuShare', source, 'Zhufu');
-                }else {
-                document.getElementById('share_weibo').href = 'http://zuimeia.com/weibo/login/';
-                }
-            } 
+            event_tracker('WeiboShare',source) 
         });
-        // IE10 字体修改
-            if (Function('/*@cc_on return document.documentMode===10@*/')()){
-                $('body').css('font-family','"Microsoft Yahei", "微软雅黑", "Tahoma", "Arial", "Helvetica", "STHeiti";');
-                $('h1,.orange,.big-font,h5').css('font-weight','normal');
-            }
+        // 再改改 GA 统计
+        $reedit.on('click',function(){
+            event_tracker('Zaigaigai',source) 
+        });
+        // 重新选择模板 GA 统计
+        $rechoose.on('click',function(){
+            event_tracker('Chongxinxuanze',source) 
+        });
+
     </script>
     <script>
     window._bd_share_config = {
