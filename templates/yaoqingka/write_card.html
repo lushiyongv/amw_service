@@ -46,18 +46,27 @@
         /*------- 改变 placeholder 的颜色 -------*/
         ::-webkit-input-placeholder { /* WebKit browsers */
             color: {{ card.word_color }};
-            text-align: right;
         }
         :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
             color: {{ card.word_color }};
-            text-align: right;
         }
         ::-moz-placeholder { /* Mozilla Firefox 19+ */
             color: {{ card.word_color }};
-            text-align: right;
         }
         :-ms-input-placeholder { /* Internet Explorer 10+ */
             color: {{ card.word_color }};
+        }
+        /*小米2S bug*/
+        #addressor ::-webkit-input-placeholder { /* WebKit browsers */
+            text-align: right;
+        }
+        #addressor :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            text-align: right;
+        }
+        #addressor ::-moz-placeholder { /* Mozilla Firefox 19+ */
+            text-align: right;
+        }
+        #addressor :-ms-input-placeholder { /* Internet Explorer 10+ */
             text-align: right;
         }
 
@@ -468,16 +477,16 @@
         <!-- 收件人 -->
             <div class="receiver">
                 <div class="tip-receiver tip">在此输入受邀人姓名</div>
-                <input type="text" placeholder="{{ card.recipient }}" value="{{ card.recipient }}" class="receiver-input" id="recipient" name="recipient">
+                <input type="text" placeholder="受邀人姓名" class="receiver-input" id="recipient" name="recipient">
             </div>
             <div class="main-body">
                 <div class="tip-content tip">在此输入邀请内容</div>
-                <textarea name="content" rows="3" class="main-body-input" id="content" placeholder="{{ card.content | safe }}">{{ card.content | safe }</textarea>
+                <textarea name="content" rows="3" class="main-body-input" id="content" placeholder="{{ card.content | safe }}"></textarea>
             </div>
         <!-- 发件人 -->
             <div class="sender">
                 <div class="tip-sender tip">在此输入您的姓名</div>
-                <input type="text" placeholder="{{ card.addressor }}" value="{{ card.addressor }}" class="sender-input" id="addressor" name="addressor">
+                <input type="text" placeholder="{{ card.addressor }}" class="sender-input" id="addressor" name="addressor">
             </div>
         </div>
             <input type="hidden" name="card_image" value="{{ card.get_card_image }}">
