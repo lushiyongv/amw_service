@@ -7,7 +7,7 @@
     <meta name="description" content="安利邀约卡">
     <meta content="telephone=no" name="format-detection" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!-- <link rel="icon" href="http://static.zuimeia.com/product/img/favicon.ico" type="image/x-icon"> -->
+    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
 
     <meta name="mobile-web-app-capable" content="yes">
     <!-- Apple -->
@@ -85,11 +85,13 @@
             width: 600px;
             margin:auto;
         }
-        .hidden,#card_image{
-            width:0px; 
-            height:0px; 
-            overflow:hidden;
-            display: block;
+        .hidden,
+        #card_image,
+        #main-poster{
+                width:0px;
+                height:0px;
+                overflow:hidden;
+                display: block;
         }
         /*.card-detail{
             background-color: #FFF;
@@ -461,14 +463,15 @@
             right: -16px;
         }
 
+
     </style>
 </head>
 
 <body>
-    <!-- 贺卡背景 -->
-     <!-- <img src="http://static.zuimeia.com/product/img/zhufu/zhufu_icon_512.png" alt="" class="hidden"> -->
-    <!-- 贺卡背景 -->
-    <img src="{{ card.get_card_image }}" alt="" id="card_image">
+    <!-- 微信封面 -->
+    <img src="/static/images/banner_weibo.jpg" alt="" id="card_image">
+    <!-- 微博封面 -->
+    <img src="/static/images/banner_weibo.jpg" alt="" id="main-poster">
     <div class="card-container">
     <!-- 容器开始 -->
     <form action="" method="post">
@@ -477,50 +480,42 @@
         <!-- 收件人 -->
             <div class="receiver">
                 <div class="tip-receiver tip">在此输入受邀人姓名</div>
-                <input type="text" placeholder="受邀人姓名" class="receiver-input" id="recipient" name="recipient">
+                <input type="text" placeholder="受邀人姓名" class="receiver-input" id="recipient" name="recipient" value="{{ card.recipient }}">
             </div>
             <div class="main-body">
                 <div class="tip-content tip">在此输入邀请内容</div>
-                <textarea name="content" rows="3" class="main-body-input" id="content" placeholder="{{ card.content | safe }}"></textarea>
+                <textarea name="content" rows="3" class="main-body-input" id="content" placeholder="邀请内容">{{ card.content | safe }}</textarea>
             </div>
         <!-- 发件人 -->
             <div class="sender">
                 <div class="tip-sender tip">在此输入您的姓名</div>
-                <input type="text" placeholder="{{ card.addressor }}" class="sender-input" id="addressor" name="addressor">
+                <input type="text" value="{{ card.addressor }}" placeholder="您的姓名" class="sender-input" id="addressor" name="addressor">
             </div>
         </div>
             <input type="hidden" name="card_image" value="{{ card.get_card_image }}">
             <input type="hidden" name="word_postion" value="{{ card.word_postion }}">
             <input type="hidden" name="word_color" value="{{ card.word_color }}">
         <!-- 发送按钮 -->
-            <input type="submit" value="生成贺卡" class="send-button">
+            <input type="submit" value="生成邀请卡" class="send-button">
     </form>
     </div>
 
 
 <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
 <!-- Google Analytics -->
-<script>
-    (function(i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function() {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-47476591-1', 'zuimeia.com');
-    ga('send', 'pageview');
-</script>
+      ga('create', 'UA-46697618-2', 'brixd.com');
+      ga('send', 'pageview');
 
-<script src="/static/js/event_analysis.js"></script>
+    </script>
 
 <script>
-    var $link_to_weixin=$('.link-to-weixin');
     $(document).ready(function() {
         function is_weixin(){
             var ua = navigator.userAgent.toLowerCase();
@@ -530,20 +525,15 @@
                 return false;
             }
         }
-        $link_to_weixin.on('click',function(){
-            event_tracker('ZhufuWritePageLinktoWeixin',source,'Zhufu');
-            if(!is_weixin()){
-                window.location.href="http://zuimeia.com";
-            }
-        })
-        if(!is_weixin()){
-            $link_to_weixin.attr('href','http://zuimeia.com');
-        }
+        
 
     }) //End of document.ready
+    
+    /**** 当用户点击输入区域的时候，相应的提示消失 ****/
     $('.receiver,.main-body,.sender').on('click',function(){
             $(this).find('.tip').fadeOut();
     })
+    
 
 </script>
 </body>
