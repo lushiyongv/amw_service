@@ -112,6 +112,7 @@ def edit_card(request, html_key):
         # html_key = 'xxxx'
         return HttpResponseRedirect('/yqk/card/show/%s/' % html_key)
 
+    edit_template = False
     return render_to_response('yaoqingka/write_card.html', locals(), context_instance=RequestContext(request))
 
 def edit_template_card(request, template_card_id):
@@ -151,6 +152,7 @@ def edit_template_card(request, template_card_id):
         # html_key = 'xxxx'
         return HttpResponseRedirect('/yqk/card/show/%s/' % html_key)
 
+    edit_template = True
     return render_to_response('yaoqingka/write_card.html', locals(), context_instance=RequestContext(request))
 
 def show_template_card(request):
