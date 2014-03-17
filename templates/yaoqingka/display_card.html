@@ -78,6 +78,10 @@
     .receiver, .main-body, .sender {
         width: 100%;
     }
+    .main-body{
+        max-height: 100px;
+        overflow: scroll;
+    }
     .main-body,
     .receive-para,
     .send-para{
@@ -556,6 +560,7 @@
     <img src="/static/images/banner_weibo.jpg" alt="" id="card_image">
     <!-- 微博封面 -->
     <img src="/static/images/banner_weibo.jpg" alt="" id="main-poster">
+        {% if show_weixin %}
         <div class="blackcover animation fadecover"></div>
         <ul class="tip-success animation slidein">
             <li class="left-part">
@@ -565,6 +570,7 @@
                 <div class="tip">邀请卡制作完成！点击 <b>右上角的按钮</b> <b>分享给朋友</b> 或 <b>分享到朋友圈</b> </div>
             </li>
         </ul>
+        {% endif %}
         <div class="card-container">
             <!-- 容器开始 -->
             <div class="card-detail">
@@ -585,6 +591,7 @@
                     </p>
                 </div>
             </div>
+            {% if show_weixin %}
             <!-- 底部分享按钮 -->
             <div class="send-wrapper animation fadein">
                 <a class="send-button re-edit" href="edit/">再改改</a>
@@ -594,6 +601,7 @@
             <div class="bdsharebuttonbox" data-tag="share_1">
                 <a class="bds_tsina" data-cmd="tsina" id="sina_share"class="share-button">分享到新浪微博</a>
             </div>
+            {% endif %}
         </div>
 
     </div>
