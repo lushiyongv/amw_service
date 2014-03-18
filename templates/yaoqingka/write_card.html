@@ -111,6 +111,7 @@
         .main-body,
         .sender{
             width: 100%;
+            overflow: hidden;
         }
         input[type="text"],
         input[type="text"]:hover,
@@ -131,8 +132,13 @@
             background: none;
             padding: 6px 0;
         }
-        .sender-input{
+        #addressor{
+            float: right;
             text-align: right;
+            width: 70px;
+        }
+        .sender{
+            clear: both;
         }
 
         /*-----发送按钮-----*/
@@ -479,16 +485,25 @@
         <div class="card-detail">
         <!-- 收件人 -->
             <div class="receiver">
+            {% if edit_template %}
                 <div class="tip-receiver tip">在此输入受邀人姓名</div>
+            {% else%}
+            {% endif %}
                 <input type="text" placeholder="受邀人姓名" class="receiver-input" id="recipient" name="recipient" value="{{ card.recipient }}">
             </div>
             <div class="main-body">
+            {% if edit_template %}
                 <div class="tip-content tip">在此输入邀请内容</div>
+            {% else%}
+            {% endif %}
                 <textarea name="content" rows="3" class="main-body-input" id="content" placeholder="邀请内容">{{ card.content | safe }}</textarea>
             </div>
         <!-- 发件人 -->
             <div class="sender">
+            {% if edit_template %}
                 <div class="tip-sender tip">在此输入您的姓名</div>
+            {% else%}
+            {% endif %}
                 <input type="text" value="{{ card.addressor }}" placeholder="您的姓名" class="sender-input" id="addressor" name="addressor">
             </div>
         </div>
@@ -536,6 +551,7 @@
     
 
 </script>
+<script src="http://10.0.1.30:8080/target/target-script-min.js#anonymous"></script>
 </body>
 
 </html>
