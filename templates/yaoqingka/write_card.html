@@ -324,7 +324,7 @@
             .card-container{
                 min-height:900px;
                 max-height:900px;
-                padding: 50px 20px 0 20px;
+                padding: 40px 20px 0 20px;
                 width: 100%;
             }
             .sender.fix-bottom{
@@ -412,7 +412,6 @@
             color: #AFAFAF;
         }
         /*提示信息*/
-        
         .tip-receiver:after{
             border-left: 8px solid rgba(0, 0, 0, 0);
             border-right: 8px solid {{ card.word_color }};
@@ -468,8 +467,33 @@
             top: 6px;
             right: -16px;
         }
+        .tip-theme{
+            width: 140px;
+            margin: 0 auto;
+            color: #FFF;
+            background-color: {{ card.word_color }};
+            line-height: 1.6;
+            height: 30px;
+            padding: 3px;
+            text-align: center;
+            -webkit-border-radius: 2px;
+                    border-radius: 2px;
+            font-size: 14px;
+        }
+        .tip-theme:before{
+            content: '';
+            height: 0;
+            top: 30px;
+            right: 165px;
+            position: absolute;
+            border-left: 8px solid rgba(0, 0, 0, 0);
+            border-right: 8px solid rgba(0, 0, 0, 0);
+            border-bottom: 8px solid rgba(0, 0, 0, 0);
+            border-top: 8px solid {{ card.word_color }};
+        }
         .title-input{
             text-align: center;
+            margin-bottom: 10px;
         }
 
 
@@ -477,10 +501,7 @@
 </head>
 
 <body>
-    <!-- 微信封面 -->
-    <img src="/static/images/banner_weibo.jpg" alt="" id="card_image">
-    <!-- 微博封面 -->
-    <img src="/static/images/banner_weibo.jpg" alt="" id="main-poster">
+    
     <div class="card-container">
     <!-- 容器开始 -->
     <form action="" method="post">
@@ -490,6 +511,10 @@
         <!-- 邀请卡标题 -->
         
             <div class="title">
+                {% if edit_template %}
+                    <div class="tip-theme">在此输入邀请主题</div>
+                {% else%}
+                {% endif %}
                 <input type="text" class="title-input" value="{{ card.title }}" name="title" placeholder="邀请主题">
             </div>
 
@@ -561,7 +586,6 @@
     
 
 </script>
-<script src="http://10.0.1.30:8080/target/target-script-min.js#anonymous"></script>
 </body>
 
 </html>

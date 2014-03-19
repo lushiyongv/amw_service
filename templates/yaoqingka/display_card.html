@@ -80,7 +80,7 @@
     }
     .main-body{
         max-height: 100px;
-        overflow: hidden;
+        overflow: scroll;
     }
     .main-body,
     .receive-para,
@@ -450,7 +450,7 @@
     }
     @media(max-width:800px){
             .card-container{
-                padding: 50px 20px 0 20px;
+                padding: 30px 20px 0 20px;
                 min-height:900px;
                 max-height:900px;
                 width: 100%;
@@ -551,13 +551,19 @@
         #sina_share:hover{
             opacity: 1;
         }
+        .title{
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
 <body>
     <div class="wrapper">
     <!-- 微信封面 -->
-    <img src="/static/images/banner_weibo.jpg" alt="" id="card_image">
+    <img src="/static/images/banner_weixin.jpg" alt="" id="card_image">
     <!-- 微博封面 -->
     <img src="/static/images/banner_weibo.jpg" alt="" id="main-poster">
         {% if show_weixin %}
@@ -574,15 +580,17 @@
         <div class="card-container">
             <!-- 容器开始 -->
             <div class="card-detail">
+                <!-- 邀请主题 -->
+                <div class="title">
+                    <p class="title">{{ card.title }}</p>
+                </div>
                 <!-- 收件人 -->
                 <div class="receiver">
                     <p class="receive-para">{{ card.recipient }}</p>
                 </div>
 
                 <div class="main-body">
-                    <p>
                     {{ card.content | safe }}
-                    </p>
                 </div>
                 <!-- 发件人 -->
                 <div class="sender">
