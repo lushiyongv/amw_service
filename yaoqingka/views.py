@@ -16,6 +16,13 @@ from pymongo import Connection
 from datetime import datetime
 
 def show_index(request):
+    url_referer = get_http_referer(request)
+    print url_referer
+    if url_referer.find('card') > -1:
+        show_animation = False
+    else:
+        show_animation = True
+
     normal_card_list = list()
     kwargs = {}
     kwargs['can_show'] = 1
