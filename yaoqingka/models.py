@@ -30,7 +30,7 @@ def card_image_path(instance, filename):
     return 'amway_service/invit_card/%s' % name
 
 class InviteCard(models.Model):
-    title = models.CharField(max_length=30)  # 标题
+    title = models.CharField(max_length=30, blank=True)  # 标题
     addressor = models.CharField(max_length=50, blank=True)  # 发件人
     recipient = models.CharField(max_length=50, blank=True)  # 收件人
     content = HTMLField(max_length=500, blank=True)  # 内容
@@ -85,8 +85,8 @@ class InviteCard(models.Model):
             super(InviteCard, self).save()
 
         else:  # 新建
-            self.order = self.id * 2 - 1
             super(InviteCard, self).save()
+            self.order = self.id * 2 - 1
 
             key_cover, relative_path_cover, remote_url = qiniu_utils.upload_image(self.card_image, self.card_image.path)
             dst_cover_file = qiniu_utils.dst_file_name(self.card_image.path, relative_path_cover)
