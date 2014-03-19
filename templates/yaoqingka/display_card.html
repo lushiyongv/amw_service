@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="baidu-site-verification" content="4faf0fa7c1509b4fad31615094640d74"/>
-    <title>安利邀约卡</title>
-    <meta name="description" content="安利邀约卡">
+    <title>安利邀请卡</title>
+    <meta name="description" content="安利邀请卡">
     <meta content="telephone=no" name="format-detection" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
@@ -80,7 +80,7 @@
     }
     .main-body{
         max-height: 100px;
-        overflow: hidden;
+        overflow: scroll;
     }
     .main-body,
     .receive-para,
@@ -450,7 +450,7 @@
     }
     @media(max-width:800px){
             .card-container{
-                padding: 50px 20px 0 20px;
+                padding: 30px 20px 0 20px;
                 min-height:900px;
                 max-height:900px;
                 width: 100%;
@@ -547,9 +547,17 @@
             line-height: 1.2;
             margin: auto;
             float: none;
+            -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.18);
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.18);
         }
         #sina_share:hover{
             opacity: 1;
+        }
+        .title{
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -557,9 +565,7 @@
 <body>
     <div class="wrapper">
     <!-- 微信封面 -->
-    <img src="/static/images/banner_weibo.jpg" alt="" id="card_image">
-    <!-- 微博封面 -->
-    <img src="/static/images/banner_weibo.jpg" alt="" id="main-poster">
+    <img src="/static/images/banner_weixin.jpg" alt="" id="card_image">
         {% if show_weixin %}
         <div class="blackcover animation fadecover"></div>
         <ul class="tip-success animation slidein">
@@ -574,15 +580,17 @@
         <div class="card-container">
             <!-- 容器开始 -->
             <div class="card-detail">
+                <!-- 邀请主题 -->
+                <div class="title">
+                    <p class="title">{{ card.title }}</p>
+                </div>
                 <!-- 收件人 -->
                 <div class="receiver">
                     <p class="receive-para">{{ card.recipient }}</p>
                 </div>
 
                 <div class="main-body">
-                    <p>
                     {{ card.content | safe }}
-                    </p>
                 </div>
                 <!-- 发件人 -->
                 <div class="sender">
@@ -603,7 +611,8 @@
             </div>
             {% endif %}
         </div>
-
+        <!-- 微博封面 -->
+        <img src="/static/images/banner_weibo.jpg" alt="" id="main-poster">
     </div>
     <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 
