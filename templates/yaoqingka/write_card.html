@@ -74,7 +74,7 @@
             background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');
         }
         .card-container{
-            padding: 100px 20px 0 20px;
+            padding: 20px 20px 0 20px;
             overflow: hidden;
             position: relative;
             background:url('{{ card.get_card_image }}');
@@ -470,7 +470,7 @@
         .tip-theme{
             position: relative;
             width: 140px;
-            margin: 0 auto;
+            margin: 0 auto 5px;
             color: #FFF;
             background-color: {{ card.word_color }};
             line-height: 1.6;
@@ -492,11 +492,13 @@
             border-bottom: 8px solid rgba(0, 0, 0, 0);
             border-top: 8px solid {{ card.word_color }};
         }
-        .title-input{
+        input.title-input{
             text-align: center;
-            margin-bottom: 10px;
+            width: 200px;
+            display: block;
+            margin: auto;
+            text-align: center;
         }
-
 
     </style>
 </head>
