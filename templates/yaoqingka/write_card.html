@@ -427,7 +427,8 @@
         }
         .tip-receiver,
         .tip-content,
-        .tip-sender{
+        .tip-sender,
+        .tip-theme{
             position: absolute;
             top: 2px;
             right: 0;
@@ -445,7 +446,8 @@
         }
         .tip-receiver:before,
         .tip-content:before,
-        .tip-sender:before{
+        .tip-sender:before,
+        .tip-theme:before{
             content:'';
             height: 0;
             top: 6px;
@@ -468,9 +470,7 @@
             right: -16px;
         }
         .tip-theme{
-            position: relative;
             width: 140px;
-            margin: 0 auto 5px;
             color: #FFF;
             background-color: {{ card.word_color }};
             line-height: 1.6;
@@ -481,23 +481,9 @@
                     border-radius: 2px;
             font-size: 14px;
         }
-        .tip-theme:before{
-            content: '';
-            height: 0;
-            top: 30px;
-            right: 62px;
-            position: absolute;
-            border-left: 8px solid rgba(0, 0, 0, 0);
-            border-right: 8px solid rgba(0, 0, 0, 0);
-            border-bottom: 8px solid rgba(0, 0, 0, 0);
-            border-top: 8px solid {{ card.word_color }};
-        }
+        
         input.title-input{
-            text-align: center;
-            width: 200px;
-            display: block;
-            margin: auto;
-            text-align: center;
+            text-align: left;
         }
 
     </style>
@@ -518,7 +504,7 @@
                     <div class="tip-theme tip">在此输入邀请主题</div>
                 {% else%}
                 {% endif %}
-                <input type="text" class="title-input" value="{{ card.title }}" name="title" placeholder="邀请主题">
+                <input type="text" class="title-input" value="{{ card.title }}" name="title" placeholder="邀请主题" id="title_input">
             </div>
 
         <!-- 收件人 -->
