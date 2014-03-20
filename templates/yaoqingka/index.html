@@ -192,6 +192,7 @@
         <div class="title">安利邀请卡</div>
     </header>
     
+    {% if show_animation %}
     <div class="amway-cover animation flyup">
         <div class="cover-word">
         <img src="/static/images/cover_logo.png" alt="" class="cover-logo">
@@ -199,6 +200,8 @@
              安利邀请卡
         </div>
     </div>
+    {% else%}
+    {% endif %}
     <!-- 容器开始 -->
     <div class="how-wrapper">
         <h2 class="how-tips">
