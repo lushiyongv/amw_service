@@ -324,7 +324,7 @@
             .card-container{
                 min-height:900px;
                 max-height:900px;
-                padding: 40px 20px 0 20px;
+                padding: 10px 20px 0 20px;
                 width: 100%;
             }
             .sender.fix-bottom{
@@ -515,7 +515,7 @@
         
             <div class="title">
                 {% if edit_template %}
-                    <div class="tip-theme">在此输入邀请主题</div>
+                    <div class="tip-theme tip">在此输入邀请主题</div>
                 {% else%}
                 {% endif %}
                 <input type="text" class="title-input" value="{{ card.title }}" name="title" placeholder="邀请主题">
@@ -583,7 +583,7 @@
     }) //End of document.ready
     
     /**** 当用户点击输入区域的时候，相应的提示消失 ****/
-    $('.receiver,.main-body,.sender').on('click',function(){
+    $('.receiver,.main-body,.sender,.title').on('click',function(){
             $(this).find('.tip').fadeOut();
     })
     
