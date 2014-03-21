@@ -107,7 +107,7 @@ class InstallVenv(object):
 
     def pip_install(self, *args):
         self.run_command(['tools/with_venv.sh',
-                         'pip', 'install', '--upgrade -i http://pypi.douban.com/simple/'] + list(args),
+                         'pip', 'install', '--upgrade'] + list(args) + ['-i http://pypi.douban.com/simple/'],
                          redirect_output=False)
 
     def install_dependencies(self):
