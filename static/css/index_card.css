@@ -49,17 +49,17 @@ body {
     position: relative;
     width: 120px;
     height: 36px;
-    background-color: #d73646;
-    margin:0 auto 15px;
+    background-color: #D73646;
+    margin: 0 auto 20px;
     padding: 7px;
     line-height: 1.2;
     text-align: center;
-    color: #fff;
+    color: #FFF;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    -webkit-box-shadow: -1.5px 1.5px 1px rgba(0, 0, 0, .18);
-    box-shadow: -1.5px 1.5px 1px rgba(0, 0, 0, .18);
+    -webkit-box-shadow: -1.5px 1.5px 1px rgba(0, 0, 0, 0.18);
+    box-shadow: -1.5px 1.5px 1px rgba(0, 0, 0, 0.18);
     letter-spacing: 1px;
     font-weight: bold;
     font-size: 18px;
@@ -169,6 +169,12 @@ a {
 .container.footer{
     -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.06);
             box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.06);
+}
+.choose-title{
+    width: 300px;
+    text-align: center;
+    margin: 0 auto 20px;
+    color: #D3D3D3;
 }
 /*----animation---*/
  .animation {
