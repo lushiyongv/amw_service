@@ -66,6 +66,8 @@ def get_card_by_id(card_id):
     return card
 
 def edit_card(request, html_key):
+    template_card_id = request.GET.get("id", 0)
+
     mongoconn = Connection('110.75.189.29', 27017)
     cars_db = mongoconn['yaoqingka']["cards"]
     # print html_key
@@ -86,6 +88,7 @@ def edit_card(request, html_key):
     card.word_postion = item['word_postion']
     card.word_color = item['word_color']
     card.title = item['title']
+    card.id = item['template_card_id']
 
     card.content = card.content.replace('<p>', '')
     card.content = card.content.replace('</p>', '')
@@ -99,6 +102,7 @@ def edit_card(request, html_key):
         card_image = request.POST.get('card_image')
         word_postion = request.POST.get('word_postion')
         word_color = request.POST.get('word_color')
+        template_card_id = request.POST.get('template_card_id')
         title = request.POST.get('title')
 
         # 保存内容生成唯一页面, 存入mongodb
@@ -114,13 +118,14 @@ def edit_card(request, html_key):
         item['card_image'] = card_image
         item['word_postion'] = word_postion
         item['word_color'] = word_color
+        item['template_card_id'] = template_card_id
         item['title'] = title
 
         item['created_at'] = datetime.now()
         cars_db.insert(item)
 
         # html_key = 'xxxx'
-        return HttpResponseRedirect('/yqk/card/show/%s/' % html_key)
+        return HttpResponseRedirect('/yqk/card/show/%s/?id=%d' % (html_key, int(template_card_id)))
 
     edit_template = False
     return render_to_response('yaoqingka/write_card.html', locals(), context_instance=RequestContext(request))
@@ -155,6 +160,7 @@ def edit_template_card(request, template_card_id):
 
         item['word_postion'] = word_postion
         item['word_color'] = word_color
+        item['template_card_id'] = template_card_id
         item['title'] = title
 
         mongoconn = Connection('110.75.189.29', 27017)
@@ -162,7 +168,7 @@ def edit_template_card(request, template_card_id):
         cars_db.insert(item)
 
         # html_key = 'xxxx'
-        return HttpResponseRedirect('/yqk/card/show/%s/' % html_key)
+        return HttpResponseRedirect('/yqk/card/show/%s/?id=%d' % (html_key, int(template_card_id)))
 
     edit_template = True
     return render_to_response('yaoqingka/write_card.html', locals(), context_instance=RequestContext(request))
@@ -182,6 +188,7 @@ def show_template_card(request):
     card_image = request.GET.get('card_image', None)
     word_postion = request.POST.get('word_postion')
     word_color = request.POST.get('word_color')
+    template_card_id = request.POST.get('template_card_id')
     title = request.POST.get('title')
     # card.content = '过去的2013年里，我们一起同舟共济，有过苦、有过累，但此刻再去回想过去的一年的时候，脑海里浮现的满是我们在一起的甜美时光。我好想对你说一声「谢谢」。谢谢你一年来的陪伴和照顾、微笑和阳光。你对我的好是我永远都不会忘记的……'
     card.addressor = addressor
@@ -190,6 +197,7 @@ def show_template_card(request):
     card.card_image = card_image
     card.word_postion = word_postion
     card.word_color = word_color
+    card.id = template_card_id
     card.title = title
     return render_to_response('yaoqingka/display_card.html', locals(), context_instance=RequestContext(request))
 
@@ -227,6 +235,7 @@ def show_card(request, html_key):
 
     card.word_postion = item['word_postion']
     card.word_color = item['word_color']
+    card.id = item['template_card_id']
     card.title = item['title']
 
     return render_to_response('yaoqingka/display_card.html', locals(), context_instance=RequestContext(request))
