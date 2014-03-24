@@ -45,6 +45,8 @@ class InviteCard(models.Model):
                                 default='top')
     # word_postion = models.IntegerField(max_length=5, default=1)  #1 上  2 下
     word_color = RGBColorField()
+    meeting_time = models.CharField(max_length=100, blank=True)  # 会议时间
+    meeting_location = models.CharField(max_length=100, blank=True)  # 会议地点
     can_show = models.BooleanField(default=True)
     author = models.ForeignKey(User,  blank=True, editable=False)
     created_at = models.DateTimeField(auto_now_add=True)

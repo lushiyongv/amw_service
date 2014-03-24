@@ -87,6 +87,8 @@ def edit_card(request, html_key):
 
     card.word_postion = item['word_postion']
     card.word_color = item['word_color']
+    card.meeting_time = item['meeting_time']
+    card.meeting_location = item['meeting_location']
     card.title = item['title']
     card.id = item['template_card_id']
 
@@ -101,6 +103,8 @@ def edit_card(request, html_key):
         addressor = request.POST.get('addressor')
         card_image = request.POST.get('card_image')
         word_postion = request.POST.get('word_postion')
+        meeting_time = request.POST.get('meeting_time')
+        meeting_location = request.POST.get('meeting_location')
         word_color = request.POST.get('word_color')
         template_card_id = request.POST.get('template_card_id')
         title = request.POST.get('title')
@@ -117,6 +121,8 @@ def edit_card(request, html_key):
         item['addressor'] = addressor
         item['card_image'] = card_image
         item['word_postion'] = word_postion
+        item['meeting_time'] = meeting_time
+        item['meeting_location'] = meeting_location
         item['word_color'] = word_color
         item['template_card_id'] = template_card_id
         item['title'] = title
@@ -142,6 +148,8 @@ def edit_template_card(request, template_card_id):
         addressor = request.POST.get('addressor')
         card_image = request.POST.get('card_image')
         word_postion = request.POST.get('word_postion')
+        meeting_time = request.POST.get('meeting_time')
+        meeting_location = request.POST.get('meeting_location')
         word_color = request.POST.get('word_color')
         title = request.POST.get('title')
 
@@ -159,6 +167,8 @@ def edit_template_card(request, template_card_id):
         item['created_at'] = datetime.now()
 
         item['word_postion'] = word_postion
+        item['meeting_time'] = meeting_time
+        item['meeting_location'] = meeting_location
         item['word_color'] = word_color
         item['template_card_id'] = template_card_id
         item['title'] = title
@@ -187,6 +197,8 @@ def show_template_card(request):
     content = request.GET.get('content', None)
     card_image = request.GET.get('card_image', None)
     word_postion = request.POST.get('word_postion')
+    meeting_time = request.POST.get('meeting_time')
+    meeting_location = request.POST.get('meeting_location')
     word_color = request.POST.get('word_color')
     template_card_id = request.POST.get('template_card_id')
     title = request.POST.get('title')
@@ -196,6 +208,8 @@ def show_template_card(request):
     card.content = content
     card.card_image = card_image
     card.word_postion = word_postion
+    card.meeting_time = meeting_time
+    card.meeting_location = meeting_location
     card.word_color = word_color
     card.id = template_card_id
     card.title = title
@@ -234,6 +248,8 @@ def show_card(request, html_key):
     card.card_image = image
 
     card.word_postion = item['word_postion']
+    card.meeting_time = item['meeting_time']
+    card.meeting_location = item['meeting_location']
     card.word_color = item['word_color']
     card.id = item['template_card_id']
     card.title = item['title']
