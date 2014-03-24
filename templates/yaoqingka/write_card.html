@@ -77,11 +77,10 @@
             padding: 20px 20px 0 20px;
             overflow: hidden;
             position: relative;
-            background:url('{{ card.get_card_image }}');
-            -webkit-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            min-height:900px;
+            background:url('{{ card.get_card_image }}') no-repeat;
+            -webkit-background-size: contain;
+            -o-background-size: contain;
+            background-size: contain;
             width: 600px;
             margin:auto;
         }
@@ -318,8 +317,6 @@
     }
      @media(max-width:800px){
             .card-container{
-                min-height:900px;
-                max-height:900px;
                 padding: 10px 20px 0 20px;
                 width: 100%;
             }
@@ -335,11 +332,6 @@
             }
         }
         @media(max-width:540px){
-            .card-container{
-                min-height:810px;
-                max-height:810px;
-            }
-
             .card-detail{
                 max-height: 540px;
             }
@@ -356,10 +348,6 @@
             }
         }
         @media(max-width:360px){
-            .card-container{
-                min-height:540px;
-                max-height:540px;
-            }
             .send-button{
                 margin: 36px auto 20px;
             }
@@ -368,10 +356,6 @@
             }
         }
         @media(max-width:320px){
-            .card-container{
-                min-height:480px;
-                max-height:480px;
-            }
             .send-button{
                 margin: 70px auto 20px;
             }

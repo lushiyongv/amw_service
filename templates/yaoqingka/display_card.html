@@ -51,10 +51,10 @@
         padding: 20px 20px 0 20px;
         overflow: hidden;
         position: relative;
-        background:url('{{ card.get_card_image }}');
-        -webkit-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
+        background:url('{{ card.get_card_image }}') no-repeat;
+        -webkit-background-size: contain;
+        -o-background-size: contain;
+        background-size: contain;
         width: 600px;
         min-height: 900px;
         margin:auto;
@@ -451,8 +451,6 @@
     @media(max-width:800px){
             .card-container{
                 padding: 10px 20px 0 20px;
-                min-height:900px;
-                max-height:900px;
                 width: 100%;
             }
             .card-detail{
@@ -460,20 +458,12 @@
             }
         }
         @media(max-width:540px){
-            .card-container{
-                min-height:810px;
-                max-height:810px;
-            }
             .card-detail{
                 max-height: 540px;
             }
             
         }
         @media(max-width:384px){
-            .card-container{
-                min-height:576px;
-                max-height:576px;
-            }
             .card-detail{
                 max-height: 440px;
             }
@@ -483,10 +473,6 @@
             }
         }
         @media(max-width:360px){
-            .card-container{
-                min-height:540px;
-                max-height:540px;
-            }
             .card-detail{
                 max-height: 440px;
             }
@@ -497,10 +483,6 @@
 
         }
         @media(max-width:320px){
-            .card-container{
-                min-height:480px;
-                max-height:480px;
-            }
             .card-detail{
                 max-height: 320px;
             }
