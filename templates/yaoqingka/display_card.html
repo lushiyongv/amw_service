@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="baidu-site-verification" content="4faf0fa7c1509b4fad31615094640d74"/>
-    <title>{{ card.title }}</title>
-    <meta name="description" content="安利邀请卡">
+    <title>邀请函：{{ card.title }}</title>
+    <meta name="description" content="邀请函">
     <meta content="telephone=no" name="format-detection" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
@@ -75,8 +75,9 @@
         min-height: 200px;
         overflow: auto;
     }
-    .receiver, .main-body, .sender {
+    .receiver, .main-body, .sender, .time, .location {
         width: 100%;
+        margin-bottom: 10px;
     }
     .main-body{
         max-height: 100px;
@@ -86,10 +87,7 @@
     .receive-para,
     .send-para{
         color: {{ card.word_color }};
-        padding: 5px 0;
         font-size: 16px;
-    }
-    .receive-para {
     }
     .send-para {
         text-align: right;
@@ -573,7 +571,7 @@
                 <img src="http://static.zuimeia.com/product/img/zhufu_check_icon.png" alt="" class="success-icon">
             </li>
             <li class="tip-words">
-                <div class="tip">邀请卡制作完成！点击 <b>右上角的按钮</b> <b>分享给朋友</b> 或 <b>分享到朋友圈</b> </div>
+                <div class="tip">邀请函制作完成！点击 <b>右上角的按钮</b> <b>分享给朋友</b> 或 <b>分享到朋友圈</b> </div>
             </li>
         </ul>
         {% endif %}
@@ -588,10 +586,19 @@
                 <div class="receiver">
                     <p class="receive-para">{{ card.recipient }}</p>
                 </div>
-
+                <!-- 内容 -->
                 <div class="main-body">
                     <p>{{ card.content | safe }}</p>
                 </div>
+                <!-- 时间 -->
+                <div class="time">
+                    <p class="time">会议时间：{{ card.time }}</p>
+                </div>
+                <!-- 地点 -->
+                <div class="location">
+                    <p class="location">会议地点：{{ card.location }}</p>
+                </div>
+                
                 <!-- 发件人 -->
                 <div class="sender">
                     <p class="send-para">

@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>填写邀请卡</title>
-    <meta name="description" content="安利邀请卡">
+    <title>填写邀请函</title>
+    <meta name="description" content="邀请函">
     <meta content="telephone=no" name="format-detection" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
@@ -483,45 +483,38 @@
         
         {% csrf_token %}
         <div class="card-detail">
-        <!-- 邀请卡标题 -->
+        <!-- 邀请函标题 -->
         
             <div class="title">
-                {% if edit_template %}
-                    <!-- <div class="tip-theme tip">在此输入邀请主题</div> -->
-                {% else%}
-                {% endif %}
-                <input type="text" class="title-input" value="{{ card.title }}" name="title" placeholder="点此输入邀请主题" id="title_input">
+                <input type="text" class="title-input" value="{{ card.title }}" name="title" placeholder="邀请主题" id="title_input">
             </div>
 
         <!-- 收件人 -->
             <div class="receiver">
-            {% if edit_template %}
-                <!-- <div class="tip-receiver tip">在此输入受邀人姓名</div> -->
-            {% else%}
-            {% endif %}
-                <input type="text" placeholder="点此输入受邀人姓名" class="receiver-input" id="recipient" name="recipient" value="{{ card.recipient }}">
+                <input type="text" placeholder="受邀人姓名" class="receiver-input" id="recipient" name="recipient" value="{{ card.recipient }}">
             </div>
+        <!-- 时间 -->
+            <div class="sender">
+                <input type="text" value="{{ card.time }}" placeholder="会议时间" class="sender-input" id="time" name="time">
+            </div>
+        <!-- 地点 -->
+            <div class="sender">
+                <input type="text" value="{{ card.location }}" placeholder="会议地点" class="sender-input" id="location" name="location">
+            </div>
+        <!-- 内容区域 -->
             <div class="main-body">
-            {% if edit_template %}
-                <!-- <div class="tip-content tip">在此输入邀请内容</div> -->
-            {% else%}
-            {% endif %}
-                <textarea name="content" rows="3" class="main-body-input" id="content" placeholder="点此输入邀请内容">{{ card.content | safe }}</textarea>
+                <textarea name="content" rows="3" class="main-body-input" id="content" placeholder="邀请内容">{{ card.content | safe }}</textarea>
             </div>
         <!-- 发件人 -->
             <div class="sender">
-            {% if edit_template %}
-                <!-- <div class="tip-sender tip">在此输入您的姓名</div> -->
-            {% else%}
-            {% endif %}
-                <input type="text" value="{{ card.addressor }}" placeholder="点此输入您的姓名" class="sender-input" id="addressor" name="addressor">
+                <input type="text" value="{{ card.addressor }}" placeholder="您的姓名" class="sender-input" id="addressor" name="addressor">
             </div>
         </div>
             <input type="hidden" name="card_image" value="{{ card.get_card_image }}">
             <input type="hidden" name="word_postion" value="{{ card.word_postion }}">
             <input type="hidden" name="word_color" value="{{ card.word_color }}">
         <!-- 发送按钮 -->
-            <input type="submit" value="生成邀请卡" class="send-button">
+            <input type="submit" value="生成邀请函" class="send-button">
     </form>
     </div>
 

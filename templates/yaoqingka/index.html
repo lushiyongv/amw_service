@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>选择邀请卡模板</title>
+    <title>选择邀请函模板</title>
     <meta name="description" content="">
     <meta content="telephone=no" name="format-detection" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -67,7 +67,7 @@
             overflow:hidden;
             display: block;
         }
-        /*邀请卡使用说明*/
+        /*邀请函使用说明*/
         .how-wrapper{
             background-color: rgba(0, 0, 0, 0.8);
             width: 100%;
@@ -188,7 +188,7 @@
 <body>
 
     <header>
-        <div class="title">安利邀请卡</div>
+        <div class="title">安利邀请函</div>
     </header>
     
     {% if show_animation %}
@@ -196,7 +196,7 @@
         <div class="cover-word">
         <img src="/static/images/cover_logo@2x.png" alt="" class="cover-logo">
             <br>
-             安利邀请卡
+             安利邀请函
         </div>
     </div>
     {% else%}
@@ -204,16 +204,16 @@
     <!-- 容器开始 -->
     <div class="how-wrapper">
         <h2 class="how-tips">
-            <p class="how-title">欢迎使用安利邀请卡：</p>
+            <p class="how-title">欢迎使用安利邀请函：</p>
                 <ol>
-                    <li>选择心仪的邀请卡模板。</li>
-                    <li>填写邀请卡内容，包括邀请主题、邀请对象、邀请内容以及您的姓名。</li>
-                    <li>生成邀请卡，并发送给伙伴。</li>
+                    <li>选择心仪的邀请函模板。</li>
+                    <li>填写邀请函内容，包括邀请主题、邀请对象、邀请内容以及您的姓名。</li>
+                    <li>生成邀请函，并发送给伙伴。</li>
                 </ol>
         </h2>
         <div class="close-tip">我知道了</div>
     </div>
-    <div class="choose-title">请选择邀请卡模板</div>
+    <div class="choose-title">请选择邀请函模板</div>
     <div class="container">
         
         <ul class="card-list">
@@ -231,7 +231,6 @@
 
         </ul>
     </div>
-
     <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://zuimeia.com/static/js/jquery.lazyload.min.js"></script>
     <!-- Google Analytics -->
@@ -253,8 +252,9 @@
     var url_search = window.location.search,
         structured_url_path = location.protocol + '//' + location.host + location.pathname;
     var $how_wrapper = $('.how-wrapper');
-    $(document).ready(function() {
-        if(localStorage.getItem('close-tip') !== "1"){
+    $(document).ready(function(){
+
+        if(document.cookie.search('close_tip=1') <0){
             $how_wrapper.show();
         }
     	function is_weixin(){
@@ -280,7 +280,7 @@
         }
         $('.close-tip').on('click',function(){
             $how_wrapper.remove();
-            localStorage.setItem("close-tip", 1);
+            document.cookie="close_tip=1";
         })
 
 
