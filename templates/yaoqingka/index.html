@@ -194,7 +194,7 @@
     {% if show_animation %}
     <div class="amway-cover animation flyup">
         <div class="cover-word">
-        <img src="/static/images/cover_logo.png" alt="" class="cover-logo">
+        <img src="/static/images/cover_logo@2x.png" alt="" class="cover-logo">
             <br>
              安利邀请卡
         </div>
@@ -219,7 +219,7 @@
         <ul class="card-list">
             {% for card in card_list %}
                 <li class="card-list-item">
-                    <a class="card" href="/yqk/card/template/{{ card.id }}/edit">
+                    <a class="card" href="/yqk/card/template/{{ card.id }}/edit?id={{ card.id }}">
                         {% if forloop.counter < 5  %}
                             <img src="{{ card.get_card_image }}" alt="" class="card-img">
                         {% else %}
