@@ -51,10 +51,10 @@
         padding: 20px 20px 0 20px;
         overflow: hidden;
         position: relative;
-        background:url('{{ card.get_card_image }}') no-repeat;
-        -webkit-background-size: contain;
-        -o-background-size: contain;
-        background-size: contain;
+        background:url('{{ card.get_card_image }}');
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
         width: 600px;
         min-height: 900px;
         margin:auto;
@@ -80,7 +80,7 @@
     }
     .main-body{
         max-height: 100px;
-        overflow: scroll;
+        overflow: hidden;
     }
     .main-body,
     .receive-para,
@@ -451,6 +451,8 @@
     @media(max-width:800px){
             .card-container{
                 padding: 10px 20px 0 20px;
+                min-height:900px;
+                max-height:900px;
                 width: 100%;
             }
             .card-detail{
@@ -458,12 +460,20 @@
             }
         }
         @media(max-width:540px){
+            .card-container{
+                min-height:810px;
+                max-height:810px;
+            }
             .card-detail{
                 max-height: 540px;
             }
             
         }
         @media(max-width:384px){
+            .card-container{
+                min-height:576px;
+                max-height:576px;
+            }
             .card-detail{
                 max-height: 440px;
             }
@@ -473,6 +483,10 @@
             }
         }
         @media(max-width:360px){
+            .card-container{
+                min-height:540px;
+                max-height:540px;
+            }
             .card-detail{
                 max-height: 440px;
             }
@@ -483,6 +497,10 @@
 
         }
         @media(max-width:320px){
+            .card-container{
+                min-height:480px;
+                max-height:480px;
+            }
             .card-detail{
                 max-height: 320px;
             }
@@ -549,8 +567,8 @@
     <!-- 微信封面 -->
     <img src="/static/images/banner_weixin.png" alt="" id="card_image">
         {% if show_weixin %}
-        <div class="blackcover animation fadecover"></div>
-        <ul class="tip-success animation slidein">
+        <div class="blackcover animation fadecover" id="blackcover"></div>
+        <ul class="tip-success animation slidein" id="success_tip">
             <li class="left-part">
                 <img src="http://static.zuimeia.com/product/img/zhufu_check_icon.png" alt="" class="success-icon">
             </li>
@@ -572,7 +590,7 @@
                 </div>
 
                 <div class="main-body">
-                    {{ card.content | safe }}
+                    <p>{{ card.content | safe }}</p>
                 </div>
                 <!-- 发件人 -->
                 <div class="sender">
@@ -596,7 +614,6 @@
         <!-- 微博封面 -->
         <img src="/static/images/banner_weibo.png" alt="" id="main-poster">
     </div>
-    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 
     <!-- Google Analytics -->
         <script>
@@ -620,41 +637,26 @@
                 return false;
             }
         }
-
-        var $tips=$('.blackcover,.tip-success'),
-            $main_body = $('.main-body').text(),
-            $share_button = $('#sina_share'),
-            $sender = $('.sender'),
-            $reedit = $('.re-edit'),
-            $rechoose = $('.re-choose');
+       
         var link_address = document.URL;
 
-        $tips.on('touchstart',function(){
-            $tips.hide();
-        })
-
-        if(is_weixin()){
-            $tips.show();
-        }else{
-            $share_button.css('display','block');
-        }
-        
         var main_poster = document.getElementById('main-poster').src,
-            url_search = window.location.search,
+            // url_search = window.location.search,
             structured_url_path = location.protocol + '//' + location.host + location.pathname;
 
-        // 分享按钮 GA 统计
-        $share_button.on('click',function(){
-            event_tracker('WeiboShare',source) 
-        });
-        // 再改改 GA 统计
-        $reedit.on('click',function(){
-            event_tracker('Zaigaigai',source) 
-        });
-        // 重新选择模板 GA 统计
-        $rechoose.on('click',function(){
-            event_tracker('Chongxinxuanze',source) 
-        });
+        document.getElementById('sina_share').onclick=function(){
+            event_tracker('WeiboShare',source);
+        }
+        var blackcover = document.getElementById('blackcover'),
+            success_tip = document.getElementById('success_tip');
+        if(!is_weixin()){
+            blackcover.style.display='block';
+            success_tip.style.display='block';
+        }
+        blackcover.addEventListener('touchend', function(event) {
+            blackcover.style.display = 'none';
+            success_tip.style.display = 'none';
+        }, false);
 
     </script>
     <script>
@@ -675,8 +677,7 @@
             viewList : ['qzone','tsina','huaban','tqq','renren']
         }]
     }
-    
-with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+    with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
 </script>
 
 </body>

@@ -77,10 +77,11 @@
             padding: 20px 20px 0 20px;
             overflow: hidden;
             position: relative;
-            background:url('{{ card.get_card_image }}') no-repeat;
-            -webkit-background-size: contain;
-            -o-background-size: contain;
-            background-size: contain;
+            background:url('{{ card.get_card_image }}');
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            min-height:900px;
             width: 600px;
             margin:auto;
         }
@@ -317,6 +318,8 @@
     }
      @media(max-width:800px){
             .card-container{
+                min-height:900px;
+                max-height:900px;
                 padding: 10px 20px 0 20px;
                 width: 100%;
             }
@@ -332,6 +335,11 @@
             }
         }
         @media(max-width:540px){
+            .card-container{
+                min-height:810px;
+                max-height:810px;
+            }
+
             .card-detail{
                 max-height: 540px;
             }
@@ -348,6 +356,10 @@
             }
         }
         @media(max-width:360px){
+            .card-container{
+                min-height:540px;
+                max-height:540px;
+            }
             .send-button{
                 margin: 36px auto 20px;
             }
@@ -356,6 +368,10 @@
             }
         }
         @media(max-width:320px){
+            .card-container{
+                min-height:480px;
+                max-height:480px;
+            }
             .send-button{
                 margin: 70px auto 20px;
             }
@@ -504,14 +520,10 @@
             <input type="hidden" name="card_image" value="{{ card.get_card_image }}">
             <input type="hidden" name="word_postion" value="{{ card.word_postion }}">
             <input type="hidden" name="word_color" value="{{ card.word_color }}">
-            <input type="hidden" name="template_card_id" value="{{ card.id }}">
         <!-- 发送按钮 -->
             <input type="submit" value="生成邀请卡" class="send-button">
     </form>
     </div>
-
-
-<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 
 <!-- Google Analytics -->
     <script>
@@ -525,27 +537,6 @@
 
     </script>
 
-<script>
-    $(document).ready(function() {
-        function is_weixin(){
-            var ua = navigator.userAgent.toLowerCase();
-            if(ua.match(/MicroMessenger/i)=="micromessenger") {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        
-
-    }) //End of document.ready
-    
-    /**** 当用户点击输入区域的时候，相应的提示消失 ****/
-    $('.receiver,.main-body,.sender,.title').on('click',function(){
-            $(this).find('.tip').fadeOut();
-    })
-    
-
-</script>
 </body>
 
 </html>
