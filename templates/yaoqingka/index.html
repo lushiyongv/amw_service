@@ -202,7 +202,7 @@
     {% else%}
     {% endif %}
     <!-- 容器开始 -->
-    <div class="how-wrapper">
+    <div class="how-wrapper" id="how_wrapper">
         <h2 class="how-tips">
             <p class="how-title">欢迎使用安利邀请函：</p>
                 <ol>
@@ -211,7 +211,7 @@
                     <li>生成邀请函，并发送给伙伴。</li>
                 </ol>
         </h2>
-        <div class="close-tip">我知道了</div>
+        <div class="close-tip" id="close_tip">我知道了</div>
     </div>
     <div class="choose-title">请选择邀请函模板</div>
     <div class="container">
@@ -223,7 +223,7 @@
                         {% if forloop.counter < 5  %}
                             <img src="{{ card.get_card_image }}" alt="" class="card-img">
                         {% else %}
-                            <img src="http://static.zuimeia.com/product/img/toupiao_img_loading.gif" data-original="{{ card.get_card_image }}" alt="" class="card-img">
+                            <img src="http://static.zuimeia.com/product/img/toupiao_img_loading.gif" data-echo="{{ card.get_card_image }}" alt="" class="card-img">
                         {% endif %}
                     </a>
                 </li>
@@ -231,8 +231,6 @@
 
         </ul>
     </div>
-    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://zuimeia.com/static/js/jquery.lazyload.min.js"></script>
     <!-- Google Analytics -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -247,15 +245,15 @@
     
 
     <script src="/static/js/event_analysis.js"></script>
+    <script src="/static/js/echo.min.js"></script>
 
     <script>
     var url_search = window.location.search,
         structured_url_path = location.protocol + '//' + location.host + location.pathname;
-    var $how_wrapper = $('.how-wrapper');
-    $(document).ready(function(){
+    var $how_wrapper = document.getElementById('how_wrapper');
 
-        if(document.cookie.search('close_tip=1') <0){
-            $how_wrapper.show();
+        if(document.cookie.search('close_tip = 1') < 0){
+            $how_wrapper.style.display = 'block';
         }
     	function is_weixin(){
     	    var ua = navigator.userAgent.toLowerCase();
@@ -265,26 +263,20 @@
     	        return false;
     	    }
     	}
-        var img = $('img'),
-            $link_to_weixin=$('.link-to-weixin');
+        var img = document.getElementsByTagName('img');
+
         // Lazyload
-        img.lazyload({
-            effect: "fadeIn",
-            threshold: 500
+        Echo.init({
+            offset: 100,
+            throttle: 250
         });
-        $link_to_weixin.on('click',function(){
-        	event_tracker('ZhufuIndexLinktoWeixin',source,'Zhufu');
-        })
-        if(!is_weixin()){
-            $link_to_weixin.attr('href','http://zuimeia.com');
-        }
-        $('.close-tip').on('click',function(){
-            $how_wrapper.remove();
+
+        document.getElementById('close_tip').onclick = function(){
+            $how_wrapper.style.display = 'none';
             document.cookie="close_tip=1";
-        })
+        }
 
 
-    }) //End of document.ready
     </script>
     <!-- 百度分享代码 -->
     <script>
