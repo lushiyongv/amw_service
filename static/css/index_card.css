@@ -108,7 +108,7 @@ body {
     right: 0;
     font-weight: bold;
     font-size: 26px;
-    width: 220px;
+    width: 300px;
     height: 300px;
     background-color: rgba(0, 0, 0, 0);
     line-height: 40px;
@@ -175,6 +175,13 @@ a {
     text-align: center;
     margin: 0 auto 20px;
     color: #D3D3D3;
+}
+.slogan{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #002C63;
+    margin-top: 5px;
 }
 /*----animation---*/
  .animation {
@@ -292,3 +299,5 @@ a {
         padding: 6px 10%;
     }
 }
+
+
