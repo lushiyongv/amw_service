@@ -656,7 +656,7 @@
         }
         var blackcover = document.getElementById('blackcover'),
             success_tip = document.getElementById('success_tip');
-        if(!is_weixin()){
+        if(is_weixin()){
             blackcover.style.display='block';
             success_tip.style.display='block';
         }
