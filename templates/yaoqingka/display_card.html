@@ -60,7 +60,7 @@
         margin:auto;
         color: {{ card.word_color }};
     }
-    .hidden,#card_image,#main-poster{
+    .hidden,#card_image,#main_poster{
         width:0px;
         height:0px;
         overflow:hidden;
@@ -80,7 +80,7 @@
         margin-bottom: 10px;
     }
     .main-body{
-        overflow: hidden;
+        overflow: auto;
     }
     .main-body,
     .receive-para,
@@ -448,32 +448,22 @@
     @media(max-width:800px){
             .card-container{
                 padding: 15px 20px 0 20px;
-                min-height:900px;
-                max-height:900px;
                 width: 100%;
             }
-            .card-detail{
-                max-height: 540px;
-            }
+            
         }
         @media(max-width:540px){
             .card-container{
                 min-height:810px;
-                max-height:810px;
             }
-            .card-detail{
-                max-height: 540px;
-            }
+
             
         }
         @media(max-width:384px){
             .card-container{
                 min-height:576px;
-                max-height:576px;
             }
-            .card-detail{
-                max-height: 440px;
-            }
+            
             .send-wrapper,
             .send-too{
                 margin: 30px auto 50px;
@@ -482,10 +472,6 @@
         @media(max-width:360px){
             .card-container{
                 min-height:540px;
-                max-height:540px;
-            }
-            .card-detail{
-                max-height: 440px;
             }
             .send-wrapper,
             .send-too{
@@ -496,10 +482,6 @@
         @media(max-width:320px){
             .card-container{
                 min-height:480px;
-                max-height:480px;
-            }
-            .card-detail{
-                max-height: 320px;
             }
 
         }
@@ -562,7 +544,7 @@
 <body>
     <div class="wrapper">
     <!-- 微信封面 -->
-    <img src="http://static.zuimeia.com/dev/img/test/WeChat.jpg" alt="" id="card_image">
+    <img src="http://static.zuimeia.com/dev/img/test/WeChat.jpg" alt="" id="main_poster">
         {% if show_weixin %}
         <div class="blackcover animation fadecover" id="blackcover"></div>
         <ul class="tip-success animation slidein" id="success_tip">
@@ -617,8 +599,6 @@
             </div>
             {% endif %}
         </div>
-        <!-- 微博封面 -->
-        <img src="/static/images/banner_weibo.png" alt="" id="main-poster">
     </div>
 
     <!-- Google Analytics -->
@@ -646,7 +626,7 @@
        
         var link_address = document.URL;
 
-        var main_poster = document.getElementById('main-poster').src,
+        var main_poster = document.getElementById('main_poster').src,
             // url_search = window.location.search,
             structured_url_path = location.protocol + '//' + location.host + location.pathname;
 
@@ -666,10 +646,12 @@
 
     </script>
     <script>
+    var content_card = '{{ card.content | safe }}';
+        content_card = content_card.replace(/&nbsp/g,' ');
     window._bd_share_config = {
         common : {
-            bdText : '{{ card.content | safe }}', 
-            bdUrl : link_address,   
+            bdText : content_card, 
+            bdUrl : link_address,
             bdPic : main_poster
         },
         share : [{
@@ -680,11 +662,12 @@
             viewPos : 'top',
             viewColor : 'black',
             viewSize : '16',
-            viewList : ['qzone','tsina','huaban','tqq','renren']
+            viewList : 'tsina'
         }]
     }
+
     with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
-</script>
+    </script>
 
 </body>
 
