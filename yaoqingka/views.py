@@ -78,6 +78,7 @@ def edit_card(request, html_key):
     card.id = 0
     card.recipient = item['recipient']
     card.content = item['content'].replace('\n', '</br>')
+    card.content = item['content'].replace(' ', '&nbsp')
     # print card.content
     card.addressor = item['addressor']
     # print item['card_image']
@@ -95,6 +96,7 @@ def edit_card(request, html_key):
     card.content = card.content.replace('<p>', '')
     card.content = card.content.replace('</p>', '')
     card.content = card.content.replace('</br>', '\n')
+    card.content = card.content.replace('&nbsp', ' ')
 
     if request.POST:
         print request.POST
@@ -240,6 +242,7 @@ def show_card(request, html_key):
     card.id = 0
     card.recipient = item['recipient']
     card.content = item['content'].replace('\n', '</br>')
+    card.content = item['content'].replace(' ', '&nbsp')
     # print card.content
     card.addressor = item['addressor']
     # print item['card_image']
