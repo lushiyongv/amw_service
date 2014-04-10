@@ -1,0 +1,5 @@
+
+#2014.4.10
+ALTER TABLE `yaoqingka_invitecard`
+CHANGE COLUMN `card_image` `card_image` varchar(200) NOT NULL,
+ADD COLUMN `share_image` varchar(200) AFTER `updated_at`;

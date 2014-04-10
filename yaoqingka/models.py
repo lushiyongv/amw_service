@@ -36,6 +36,7 @@ class InviteCard(models.Model):
     content = HTMLField(max_length=500, blank=True)  # 内容
     order = models.IntegerField(max_length=10, default=0)  # 顺序
     card_image = models.ImageField(upload_to=card_image_path, default="")
+    share_image = models.ImageField(upload_to=card_image_path, default="")
     POSITION = (
         ('top', '顶部'),
         ('bottom', '底部'),
@@ -66,6 +67,11 @@ class InviteCard(models.Model):
         return result
 
     @property
+    def get_share_image(self):
+        result = "%s%s%s" % (QINIU_IMAGE_DOMAIN, "img/", self.share_image)
+        return result
+
+    @property
     def get_all_tags(self):
         return self.category.all()
 
@@ -83,6 +89,11 @@ class InviteCard(models.Model):
                 dst_cover_file = qiniu_utils.dst_file_name(self.card_image.path, relative_path_cover)
                 shutil.copyfile(self.card_image.path, dst_cover_file)
                 self.card_image = relative_path_cover
+            if orig.share_image != self.share_image:
+                key, relative_path_cover, remote_url  = qiniu_utils.upload_image(self.share_image, self.share_image.path)
+                dst_cover_file = qiniu_utils.dst_file_name(self.share_image.path, relative_path_cover)
+                shutil.copyfile(self.share_image.path, dst_cover_file)
+                self.share_image = relative_path_cover
 
             super(InviteCard, self).save()
 
@@ -94,6 +105,11 @@ class InviteCard(models.Model):
             dst_cover_file = qiniu_utils.dst_file_name(self.card_image.path, relative_path_cover)
             shutil.copyfile(self.card_image.path, dst_cover_file)
             self.card_image = relative_path_cover
+
+            key_cover, relative_path_cover, remote_url = qiniu_utils.upload_image(self.share_image, self.share_image.path)
+            dst_cover_file = qiniu_utils.dst_file_name(self.share_image.path, relative_path_cover)
+            shutil.copyfile(self.share_image.path, dst_cover_file)
+            self.share_image = relative_path_cover
 
             super(InviteCard, self).save()
 
