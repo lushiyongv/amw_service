@@ -106,6 +106,7 @@ def edit_card(request, html_key):
         content = request.POST.get('content')
         addressor = request.POST.get('addressor')
         card_image = request.POST.get('card_image')
+        share_image = request.POST.get('share_image')
         word_postion = request.POST.get('word_postion')
         meeting_time = request.POST.get('meeting_time')
         meeting_location = request.POST.get('meeting_location')
@@ -124,6 +125,7 @@ def edit_card(request, html_key):
         item['content'] = content
         item['addressor'] = addressor
         item['card_image'] = card_image
+        item['share_image'] = share_image
         item['word_postion'] = word_postion
         item['meeting_time'] = meeting_time
         item['meeting_location'] = meeting_location
@@ -151,6 +153,7 @@ def edit_template_card(request, template_card_id):
         content = request.POST.get('content')
         addressor = request.POST.get('addressor')
         card_image = request.POST.get('card_image')
+        share_image = request.POST.get('share_image')
         word_postion = request.POST.get('word_postion')
         meeting_time = request.POST.get('meeting_time')
         meeting_location = request.POST.get('meeting_location')
@@ -167,6 +170,7 @@ def edit_template_card(request, template_card_id):
         item['content'] = content
         item['addressor'] = addressor
         item['card_image'] = card_image
+        item['share_image'] = share_image
 
         item['created_at'] = datetime.now()
 
