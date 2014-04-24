@@ -547,7 +547,7 @@
 <body>
     <div class="wrapper">
     <!-- 微信封面 -->
-    <img src="http://static.zuimeia.com/dev/img/test/WeChat.jpg" alt="" id="main_poster">
+    <img src="{{ card.get_share_image }}" alt="" id="main_poster">
         {% if show_weixin %}
         <div class="blackcover animation fadecover" id="blackcover"></div>
         <ul class="tip-success animation slidein" id="success_tip">
