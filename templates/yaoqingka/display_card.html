@@ -54,7 +54,7 @@
         padding: 20px 20px 0 20px;
         overflow: hidden;
         position: relative;
-        background:url('{{ card.get_card_image }}');
+        background: {{ card.bg_color }};
         -webkit-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
@@ -513,7 +513,7 @@
         }
         #sina_share{
             width: 200px;
-            height: 40px;
+            height: 60px;
             display: block;
             color: #FFF;
             background-color: #FFA200;
@@ -540,6 +540,12 @@
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 10px;
+        }
+        .bottom-img{
+            width: 100%;
+            -webkit-box-sizing: border-box;
+               -moz-box-sizing: border-box;
+                    box-sizing: border-box;
         }
     </style>
 </head>
@@ -602,6 +608,7 @@
             </div>
             {% endif %}
         </div>
+        <img src="{{ card.get_card_image2 }}" alt="" class="bottom-img">
     </div>
 
     <!-- Google Analytics -->

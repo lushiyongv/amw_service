@@ -71,13 +71,13 @@
         }
 
         body,html{
-            background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');
+            color: #000;
         }
         .card-container{
             padding: 20px 20px 0 20px;
             overflow: hidden;
             position: relative;
-            background:url('{{ card.get_card_image }}');
+            background: {{ card.bg_color }};
             -webkit-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
@@ -187,6 +187,9 @@
             clear: both;
             visibility: hidden;
         }
+        .bottom-img{
+            margin: -20px;
+        }
         /*----下载按钮----*/
         .download-button{
             display: block;
@@ -241,6 +244,7 @@
             -o-animation-delay: .5s;
             animation-delay: .5s;
         }
+
 
     
     @keyframes flyup {
@@ -514,6 +518,7 @@
         <!-- 发送按钮 -->
             <input type="submit" value="生成邀请函" class="send-button">
     </form>
+    <img src="{{ card.get_card_image2 }}" alt="" class="bottom-img">
     </div>
 
 <!-- Google Analytics -->
