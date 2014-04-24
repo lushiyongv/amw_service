@@ -1,4 +1,7 @@
 
+#2014.4.24
+ADD COLUMN `card_image` varchar(200) AFTER `card_image`;
+
 #2014.4.10
 ALTER TABLE `yaoqingka_invitecard`
 CHANGE COLUMN `card_image` `card_image` varchar(200) NOT NULL,
