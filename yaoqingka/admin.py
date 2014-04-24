@@ -9,7 +9,7 @@ from django.contrib import admin
 from yaoqingka.models import InviteCard
 
 class InviteCardAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'content','meeting_time', 'meeting_location', 'word_postion','word_color',
+    list_display = ('id', 'title', 'content','meeting_time', 'meeting_location', 'word_postion','word_color','bg_color',
                     'addressor', 'recipient', 'can_show', 'order', 'author', )
     list_filter = ('can_show', )
     search_fields = ('title', 'content', 'addressor', 'recipient')
