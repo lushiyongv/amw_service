@@ -1,6 +1,8 @@
 
 #2014.4.24
-ADD COLUMN `card_image` varchar(200) AFTER `card_image`;
+ALTER TABLE `yaoqingka_invitecard`
+ADD COLUMN `card_image2` varchar(200) AFTER `card_image`,
+ ADD COLUMN `bg_color` varchar(7) AFTER `card_image2`;
 
 #2014.4.10
 ALTER TABLE `yaoqingka_invitecard`
