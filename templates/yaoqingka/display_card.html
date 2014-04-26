@@ -59,7 +59,6 @@
         -o-background-size: cover;
         background-size: cover;
         width: 600px;
-        min-height: 900px;
         margin:auto;
         color: {{ card.word_color }};
     }
@@ -455,39 +454,20 @@
             }
             
         }
-        @media(max-width:540px){
-            .card-container{
-                min-height:810px;
-            }
-
-            
-        }
         @media(max-width:384px){
-            .card-container{
-                min-height:576px;
-            }
-            
             .send-wrapper,
             .send-too{
                 margin: 30px auto 50px;
             }
         }
         @media(max-width:360px){
-            .card-container{
-                min-height:540px;
-            }
             .send-wrapper,
             .send-too{
                 margin: 0 auto;
             }
 
         }
-        @media(max-width:320px){
-            .card-container{
-                min-height:480px;
-            }
-
-        }
+        
         .zhufu-download{
             font-size: 17px;
         }
@@ -513,7 +493,7 @@
         }
         #sina_share{
             width: 200px;
-            height: 60px;
+            height: 40px;
             display: block;
             color: #FFF;
             background-color: #FFA200;
@@ -542,6 +522,7 @@
             margin-bottom: 10px;
         }
         .bottom-img{
+            display: block;
             width: 100%;
             -webkit-box-sizing: border-box;
                -moz-box-sizing: border-box;

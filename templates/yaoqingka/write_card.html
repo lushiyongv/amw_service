@@ -81,7 +81,6 @@
             -webkit-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
-            min-height:900px;
             width: 600px;
             margin:auto;
         }
@@ -188,7 +187,11 @@
             visibility: hidden;
         }
         .bottom-img{
-            margin: -20px;
+            display: block;
+            width: 100%;
+            -webkit-box-sizing: border-box;
+               -moz-box-sizing: border-box;
+                    box-sizing: border-box;
         }
         /*----下载按钮----*/
         .download-button{
@@ -322,8 +325,6 @@
     }
      @media(max-width:800px){
             .card-container{
-                min-height:900px;
-                max-height:900px;
                 padding: 15px 20px 0 20px;
                 width: 100%;
             }
@@ -334,18 +335,11 @@
             }
         }
         @media(max-width:540px){
-            .card-container{
-                min-height:810px;
-                max-height:810px;
-            }
             .card-detail{
                 max-height: 540px;
             }
         }
         @media(max-width:384px){
-            .card-container{
-                min-height:576px;
-            }
             .send-button{
                 margin: 20px auto 20px;
             }
@@ -354,10 +348,6 @@
             }
         }
         @media(max-width:360px){
-            .card-container{
-                min-height:540px;
-                max-height:540px;
-            }
             .send-button{
                 margin: 36px auto 20px;
             }
@@ -366,10 +356,6 @@
             }
         }
         @media(max-width:320px){
-            .card-container{
-                min-height:480px;
-                max-height:480px;
-            }
             .send-button{
                 margin: 70px auto 20px;
             }
@@ -518,8 +504,8 @@
         <!-- 发送按钮 -->
             <input type="submit" value="生成邀请函" class="send-button">
     </form>
-    <img src="{{ card.get_card_image2 }}" alt="" class="bottom-img">
     </div>
+    <img src="{{ card.get_card_image2 }}" alt="" class="bottom-img">
 
 <!-- Google Analytics -->
     <script>
