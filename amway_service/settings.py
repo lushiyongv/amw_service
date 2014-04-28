@@ -186,9 +186,16 @@ LOGGING = {
 
 
 import logging
+
+SERVER_LOG_PATH = PROJECT_PATH + '/server_log'
+print SERVER_LOG_PATH
+isExists = os.path.exists(SERVER_LOG_PATH)
+if not isExists:
+    os.makedirs(SERVER_LOG_PATH)
+
 logging.basicConfig(
     level = logging.INFO,
     format = '[%(asctime)s]%(levelname)s:%(module)s.%(funcName)s->%(message)s',
-    filename = join(PROJECT_PATH, 'server_log/server.log'),
+    filename = join(SERVER_LOG_PATH, 'server.log'),
 )
 
