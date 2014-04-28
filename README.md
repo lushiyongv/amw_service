@@ -13,4 +13,9 @@ amway_service
 
 
 =============
-xxx
+
+安利会议  问卷调查  答案日志记录
+
+post上传数据接口：http://amway.brixd.com/conference/survey/answers/
+
+日志目录 ~/amway.brixd.com/amway_service/logs/conference
