@@ -3,6 +3,7 @@
 import os
 from os.path import join, dirname
 PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))#当前路径的父目录
+print PROJECT_PATH
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -182,3 +183,12 @@ LOGGING = {
         },
     }
 }
+
+
+import logging
+logging.basicConfig(
+    level = logging.INFO,
+    format = '[%(asctime)s]%(levelname)s:%(module)s.%(funcName)s->%(message)s',
+    filename = join(PROJECT_PATH, 'server_log/server.log'),
+)
+

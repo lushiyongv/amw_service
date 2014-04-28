@@ -1,13 +1,18 @@
+
+import json, logging
+import sys, os
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
+from django.http import HttpResponse
+from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
 from common.util.nice_http_util import get_client_ip
 
-import json
-from datetime import datetime
-
-from django.http import HttpResponse
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
+CONFERENCE_LOG_PATH = './logs/conference_survey'
+isExists = os.path.exists(CONFERENCE_LOG_PATH)
+if not isExists:
+    os.makedirs(CONFERENCE_LOG_PATH)
 
 
 def index(request):
@@ -18,11 +23,9 @@ def conference_survey(request):
     result = 1
     try:
         ip = get_client_ip(request)
-        log_filehandler = open('./logs/conference_survey.'
+        log_filehandler = open(CONFERENCE_LOG_PATH + '/conference_survey.'
                                + datetime.now().strftime('%Y-%m-%d') + '.log', 'a')
-        # name:username, srid:srid, identity:userid, telephone:userphone,
-        # answer1:ans1, answer2:ans2, answer3:ans3, answer4:ans4,
-        # answer5:ans5, answer6:ans6, location:surveylocation,
+
         name = request.POST['name']
         srid = request.POST['srid']
         identity = request.POST['identity']
@@ -35,16 +38,17 @@ def conference_survey(request):
         answer6 = request.POST['answer6']
         surveylocation = request.POST['surveylocation']
 
-        user_login_log = '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s%s' % \
+        conference_survey = '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s%s' % \
                          (ip, datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                           str(name), srid, identity, telephone, answer1, answer2,
                           answer3, answer4, answer5, answer6, surveylocation, '\n')
+        print conference_survey
         # print user_login_log
-        log_filehandler.write('%s' % user_login_log)
+        log_filehandler.write('%s' % conference_survey)
         result = 1
-    except:
-        print 'error:', request
-        print sys.exc_info()[0]
+    except Exception, e:
+        logging.error(e)
+        logging.error(request)
         result = 0
     finally:
         log_filehandler.close()
