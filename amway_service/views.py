@@ -14,7 +14,7 @@ def index(request):
     return HttpResponse('', content_type="text/html")
 
 @csrf_exempt
-def conference_answer(request):
+def conference_survey(request):
     result = 1
     try:
         ip = get_client_ip(request)

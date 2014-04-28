@@ -18,6 +18,9 @@ urlpatterns = patterns('',
     url(r'^qyh_schedule/$', 'qingyinghui_invitation.views.schedule'),
     url(r'^qyh/(\w+).html$', 'qingyinghui_invitation.views.show_qyh_html'),
 
+
+    url(r'^conference/survey/answers/$', 'amway_service.views.conference_survey'),
+
     # Examples:
     # url(r'^$', 'qingyinghui_invitation.views.home', name='home'),
     # url(r'^qingyinghui_invitation/', include('qingyinghui_invitation.foo.urls')),
