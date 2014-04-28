@@ -23,7 +23,7 @@ def conference_survey(request):
     result = 1
     try:
         ip = get_client_ip(request)
-        log_filehandler = open(CONFERENCE_LOG_PATH + '/conference_survey.'
+        log_filehandler = open(CONFERENCE_LOG_PATH + '/conference_survey_answers.'
                                + datetime.now().strftime('%Y-%m-%d') + '.log', 'a')
 
         name = request.POST['name']
