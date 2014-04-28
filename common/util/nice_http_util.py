@@ -37,5 +37,14 @@ def get_request(url):
     obj_array = json.loads(html_content)
     return obj_array
 
+
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
 #print get_request('http://api.wandoujia.com/v1/apps/com.zhan_dui.animetaste?id=zuimeiyingyong&timestamp=139390842495&token=1c20770a94fb2bd99f10b97228e9a381')
 #print get_request('http://itunes.apple.com/lookup?id=739652274')

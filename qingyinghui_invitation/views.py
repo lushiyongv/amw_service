@@ -37,7 +37,8 @@ def login(request):
     #TODO 记录 ip 时间   卡号  id  到文件中， 便于日后统计。
     try:
         ip = get_client_ip(request)
-        log_filehandler = open('./user_login_log/invitation_user_login.' + datetime.now().strftime('%Y-%m-%d') + '.log', 'a')
+        log_filehandler = open('./user_login_log/invitation_user_login.'
+                               + datetime.now().strftime('%Y-%m-%d') + '.log', 'a')
         user_no = request.POST['ada']
         user_name = request.POST['name']
         user_login_log = '%s\t%s\t%s\t%s%s' % (ip, datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
