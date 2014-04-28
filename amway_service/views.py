@@ -9,7 +9,7 @@ from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
 from common.util.nice_http_util import get_client_ip
 
-CONFERENCE_LOG_PATH = './logs/conference_survey'
+CONFERENCE_LOG_PATH = './logs/conference'
 isExists = os.path.exists(CONFERENCE_LOG_PATH)
 if not isExists:
     os.makedirs(CONFERENCE_LOG_PATH)
