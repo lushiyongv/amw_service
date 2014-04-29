@@ -37,12 +37,12 @@ def conference_survey(request):
         answer4 = request.POST['answer4']
         answer5 = request.POST['answer5']
         answer6 = request.POST['answer6']
-        surveylocation = request.POST['surveylocation']
+        location = request.POST['location']
 
         conference_survey = '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s%s' % \
                          (ip, datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                           str(name), srid, identity, telephone, answer1, answer2,
-                          answer3, answer4, answer5, answer6, surveylocation, '\n')
+                          answer3, answer4, answer5, answer6, location, '\n')
         print conference_survey
         # print user_login_log
         log_filehandler.write('%s' % conference_survey)
