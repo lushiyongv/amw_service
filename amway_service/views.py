@@ -21,7 +21,7 @@ def index(request):
 @csrf_exempt
 def conference_survey(request):
     result = 1
-    print request.POST
+    # print request.POST
     try:
         ip = get_client_ip(request)
         log_filehandler = open(CONFERENCE_LOG_PATH + '/conference_survey_answers.'
@@ -43,7 +43,7 @@ def conference_survey(request):
                          (ip, datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                           str(name), srid, identity, telephone, answer1, answer2,
                           answer3, answer4, answer5, answer6, location, '\n')
-        print conference_survey
+        # print conference_survey
         # print user_login_log
         log_filehandler.write('%s' % conference_survey)
         result = 1
