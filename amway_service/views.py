@@ -21,6 +21,7 @@ def index(request):
 @csrf_exempt
 def conference_survey(request):
     result = 1
+    print request.POST
     try:
         ip = get_client_ip(request)
         log_filehandler = open(CONFERENCE_LOG_PATH + '/conference_survey_answers.'
