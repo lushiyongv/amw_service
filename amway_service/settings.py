@@ -123,6 +123,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+
 )
 
 ROOT_URLCONF = 'amway_service.urls'
@@ -149,6 +152,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
+    'corsheaders',
     'qingyinghui_invitation',
     'yaoqingka',
 )
@@ -199,3 +203,8 @@ logging.basicConfig(
     filename = join(SERVER_LOG_PATH, 'server.log'),
 )
 
+#跨域访问
+CORS_ORIGIN_WHITELIST = (
+        'google.com',
+        'a.brixd.com',
+    )
