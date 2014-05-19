@@ -35,6 +35,7 @@ class InviteCard(models.Model):
     recipient = models.CharField(max_length=50, blank=True)  # 收件人
     content = HTMLField(max_length=500, blank=True)  # 内容
     order = models.IntegerField(max_length=10, default=0)  # 顺序
+    image_top = models.ImageField(upload_to=card_image_path, default="")
     card_image = models.ImageField(upload_to=card_image_path, default="")
     card_image2 = models.ImageField(upload_to=card_image_path, default="")
     share_image = models.ImageField(upload_to=card_image_path, default="")
@@ -69,6 +70,11 @@ class InviteCard(models.Model):
         return result
 
     @property
+    def get_image_top(self):
+        result = "%s%s%s" % (QINIU_IMAGE_DOMAIN, "img/", self.image_top)
+        return result
+
+    @property
     def get_card_image2(self):
         result = "%s%s%s" % (QINIU_IMAGE_DOMAIN, "img/", self.card_image2)
         return result
@@ -97,6 +103,12 @@ class InviteCard(models.Model):
                 shutil.copyfile(self.card_image.path, dst_cover_file)
                 self.card_image = relative_path_cover
 
+            if orig.image_top != self.image_top:
+                key, relative_path_cover, remote_url  = qiniu_utils.upload_image(self.image_top, self.card_image.path)
+                dst_cover_file = qiniu_utils.dst_file_name(self.image_top.path, relative_path_cover)
+                shutil.copyfile(self.image_top.path, dst_cover_file)
+                self.image_top = relative_path_cover
+
             if orig.card_image2 != self.card_image2:
                 key, relative_path_cover, remote_url  = qiniu_utils.upload_image(self.card_image2, self.card_image2.path)
                 dst_cover_file = qiniu_utils.dst_file_name(self.card_image2.path, relative_path_cover)
@@ -119,6 +131,11 @@ class InviteCard(models.Model):
             dst_cover_file = qiniu_utils.dst_file_name(self.card_image.path, relative_path_cover)
             shutil.copyfile(self.card_image.path, dst_cover_file)
             self.card_image = relative_path_cover
+
+            key_cover, relative_path_cover, remote_url = qiniu_utils.upload_image(self.image_top, self.image_top.path)
+            dst_cover_file = qiniu_utils.dst_file_name(self.image_top.path, relative_path_cover)
+            shutil.copyfile(self.image_top.path, dst_cover_file)
+            self.image_top = relative_path_cover
 
             key_cover, relative_path_cover, remote_url = qiniu_utils.upload_image(self.card_image2, self.card_image2.path)
             dst_cover_file = qiniu_utils.dst_file_name(self.card_image2.path, relative_path_cover)

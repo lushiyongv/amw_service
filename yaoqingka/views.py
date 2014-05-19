@@ -83,10 +83,12 @@ def edit_card(request, html_key):
     card.addressor = item['addressor']
     # print item['card_image']
     image = item['card_image'].replace('http://qstatic.zuimeia.com/img/', '')
+    image_top = item['image_top'].replace('http://qstatic.zuimeia.com/img/', '')
     image2 = item['card_image2'].replace('http://qstatic.zuimeia.com/img/', '')
     share_image = item['share_image'].replace('http://qstatic.zuimeia.com/img/', '')
     # print image
     card.card_image = image
+    card.image_top = image_top
     card.card_image2 = image2
     card.share_image = share_image
 
@@ -109,6 +111,7 @@ def edit_card(request, html_key):
         content = request.POST.get('content')
         addressor = request.POST.get('addressor')
         card_image = request.POST.get('card_image')
+        image_top = request.POST.get('image_top')
         card_image2 = request.POST.get('card_image2')
         share_image = request.POST.get('share_image')
         word_postion = request.POST.get('word_postion')
@@ -130,6 +133,7 @@ def edit_card(request, html_key):
         item['content'] = content
         item['addressor'] = addressor
         item['card_image'] = card_image
+        item['image_top'] = image_top
         item['card_image2'] = card_image2
         item['share_image'] = share_image
         item['word_postion'] = word_postion
@@ -160,6 +164,7 @@ def edit_template_card(request, template_card_id):
         content = request.POST.get('content')
         addressor = request.POST.get('addressor')
         card_image = request.POST.get('card_image')
+        image_top = request.POST.get('image_top')
         card_image2 = request.POST.get('card_image2')
         share_image = request.POST.get('share_image')
         word_postion = request.POST.get('word_postion')
@@ -179,6 +184,7 @@ def edit_template_card(request, template_card_id):
         item['content'] = content
         item['addressor'] = addressor
         item['card_image'] = card_image
+        item['image_top'] = image_top
         item['card_image2'] = card_image2
         item['share_image'] = share_image
 
@@ -215,7 +221,9 @@ def show_template_card(request):
     recipient = request.GET.get('recipient', None)
     content = request.GET.get('content', None)
     card_image = request.GET.get('card_image', None)
+    image_top = request.GET.get('image_top', None)
     card_image2 = request.GET.get('card_image2', None)
+    image_top = request.GET.get('image_top', None)
     share_image = request.GET.get('share_image', None)
     word_postion = request.POST.get('word_postion')
     meeting_time = request.POST.get('meeting_time')
@@ -229,6 +237,7 @@ def show_template_card(request):
     card.recipient = recipient
     card.content = content
     card.card_image = card_image
+    card.image_top = image_top
     card.card_image2 = card_image2
     card.share_image = share_image
     card.word_postion = word_postion
@@ -270,10 +279,12 @@ def show_card(request, html_key):
     card.addressor = item['addressor']
     # print item['card_image']
     image = item['card_image'].replace('http://qstatic.zuimeia.com/img/', '')
+    image_top = item['image_top'].replace('http://qstatic.zuimeia.com/img/', '')
     image2 = item['card_image2'].replace('http://qstatic.zuimeia.com/img/', '')
     share_image = item['share_image'].replace('http://qstatic.zuimeia.com/img/', '')
     # print image
     card.card_image = image
+    card.image_top = image_top
     card.card_image2 = image2
     card.share_image = share_image
 
