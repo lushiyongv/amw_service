@@ -75,7 +75,7 @@ class InviteCard(models.Model):
         return result
 
     @property
-    def get_card_image2(self):
+    def get_image_bottom(self):
         result = "%s%s%s" % (QINIU_IMAGE_DOMAIN, "img/", self.card_image2)
         return result
 
