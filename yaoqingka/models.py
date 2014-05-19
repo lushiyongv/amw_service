@@ -35,9 +35,9 @@ class InviteCard(models.Model):
     recipient = models.CharField(max_length=50, blank=True)  # 收件人
     content = HTMLField(max_length=500, blank=True)  # 内容
     order = models.IntegerField(max_length=10, default=0)  # 顺序
-    image_top = models.ImageField(upload_to=card_image_path, default="")
+    image_top = models.ImageField(upload_to=card_image_path, default="", verbose_name='顶部图片')
     card_image = models.ImageField(upload_to=card_image_path, default="")
-    card_image2 = models.ImageField(upload_to=card_image_path, default="")
+    card_image2 = models.ImageField(upload_to=card_image_path, default="", verbose_name='底部图片')
     share_image = models.ImageField(upload_to=card_image_path, default="")
     POSITION = (
         ('top', '顶部'),
