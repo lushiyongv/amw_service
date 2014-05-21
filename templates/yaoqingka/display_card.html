@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="baidu-site-verification" content="4faf0fa7c1509b4fad31615094640d74"/>
+    <meta name="baidu-site-verification" content="4faf0fa7c1509b4fad31615094640d74" />
     <title>邀请函：{{ card.title }}</title>
     <meta name="description" content="邀请函">
     <meta content="telephone=no" name="format-detection" />
@@ -16,7 +17,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta content="telephone=no" name="format-detection" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    
+
 
     <!-- Our CSS stylesheet file -->
     <link rel="stylesheet" href="/static/css/normalize.css" />
@@ -44,32 +45,41 @@
           </style>
     <![endif]-->
     <style>
-    html,body {
+    html, body {
         background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');
     }
-    p{
+    p {
         line-height: 1.5;
     }
-    .card-container{
+    .card-container {
         padding: 20px 20px 0 20px;
         overflow: hidden;
         position: relative;
-        background: {{ card.bg_color }};
+        background: {
+            {
+                card.bg_color
+            }
+        }
+        ;
         -webkit-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
         width: 600px;
         margin:auto;
-        color: {{ card.word_color }};
+        color: {
+            {
+                card.word_color
+            }
+        }
+        ;
     }
-    .hidden,#card_image,#main_poster{
+    .hidden, #card_image, #main_poster {
         width:0px;
         height:0px;
         overflow:hidden;
         display: block;
     }
-
-    .card-detail {        
+    .card-detail {
         width: 100%;
         min-height:200px;
         padding: 10px 0;
@@ -81,13 +91,16 @@
         width: 100%;
         margin-bottom: 10px;
     }
-    .main-body{
+    .main-body {
         overflow: auto;
     }
-    .main-body,
-    .receive-para,
-    .send-para{
-        color: {{ card.word_color }};
+    .main-body, .receive-para, .send-para {
+        color: {
+            {
+                card.word_color
+            }
+        }
+        ;
         font-size: 16px;
     }
     .send-para {
@@ -102,37 +115,33 @@
         width: 110px;
         margin: 0px auto 15px;
         display: block;
-        -webkit-box-shadow: 0px 1px 1px rgba(0,0,0,.18);
-        box-shadow: 0px 1px 1px rgba(0,0,0,.18);
+        -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, .18);
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, .18);
         -webkit-border-radius: 1px;
         border-radius: 1px;
         font-weight: bold;
         font-size: 16px;
         text-align: center;
     }
-    .re-edit,
-    .re-choose{
+    .re-edit, .re-choose {
         float: left;
         display: block;
     }
-    .send-wrapper{
+    .send-wrapper {
         width: 280px;
         overflow: hidden;
     }
-    .send-wrapper,
-    .send-too {
+    .send-wrapper, .send-too {
         margin: 60px auto 0;
     }
-    .re-choose{
+    .re-choose {
         margin-left: 20px;
     }
-
     a {
         -webkit-tap-highlight-color: inherit;
     }
-    .card-list-item:before,
-    .card-list-item:after{
-        content: ".";
+    .card-list-item:before, .card-list-item:after {
+        content:".";
         display: block;
         height: 0;
         clear: both;
@@ -151,10 +160,10 @@
         -o-animation-name: flydown;
         animation-name: flydown;
         -webkit-animation-duration: 1s;
-           -moz-animation-duration: 1s;
-            -ms-animation-duration: 1s;
-             -o-animation-duration: 1s;
-                animation-duration: 1s;
+        -moz-animation-duration: 1s;
+        -ms-animation-duration: 1s;
+        -o-animation-duration: 1s;
+        animation-duration: 1s;
         -webkit-animation-delay: 1s;
         -moz-animation-delay: 1s;
         -ms-animation-delay: 1s;
@@ -168,44 +177,44 @@
         -o-animation-name: fadein;
         animation-name: fadein;
         -webkit-animation-duration: 1s;
-           -moz-animation-duration: 1s;
-            -ms-animation-duration: 1s;
-             -o-animation-duration: 1s;
-                animation-duration: 1s;
+        -moz-animation-duration: 1s;
+        -ms-animation-duration: 1s;
+        -o-animation-duration: 1s;
+        animation-duration: 1s;
         -webkit-animation-delay: 1.5s;
         -moz-animation-delay: 1.5s;
         -ms-animation-delay: 1.5s;
         -o-animation-delay: 1.5s;
         animation-delay: 1.5s;
     }
-    .fadecover{
+    .fadecover {
         -webkit-animation-name: fadecover;
         -moz-animation-name: fadecover;
         -ms-animation-name: fadecover;
         -o-animation-name: fadecover;
         animation-name: fadecover;
         -webkit-animation-duration: .5s;
-           -moz-animation-duration: .5s;
-            -ms-animation-duration: .5s;
-             -o-animation-duration: .5s;
-                animation-duration: .5s;
+        -moz-animation-duration: .5s;
+        -ms-animation-duration: .5s;
+        -o-animation-duration: .5s;
+        animation-duration: .5s;
         -webkit-animation-delay: .1s;
         -moz-animation-delay: .1s;
         -ms-animation-delay: .1s;
         -o-animation-delay: .1s;
         animation-delay: .1s;
     }
-    .slidein{
+    .slidein {
         -webkit-animation-name: slidein;
         -moz-animation-name: slidein;
         -ms-animation-name: slidein;
         -o-animation-name: slidein;
         animation-name: slidein;
         -webkit-animation-duration: .5s;
-           -moz-animation-duration: .5s;
-            -ms-animation-duration: .5s;
-             -o-animation-duration: .5s;
-                animation-duration: .5s;
+        -moz-animation-duration: .5s;
+        -ms-animation-duration: .5s;
+        -o-animation-duration: .5s;
+        animation-duration: .5s;
         -webkit-animation-delay: .3s;
         -moz-animation-delay: .3s;
         -ms-animation-delay: .3s;
@@ -220,7 +229,6 @@
             -o-transform: translateY(-500px) scale(.1) perspective(15px) rotateX(5deg);
             transform: translateY(-500px) scale(.1) perspective(15px) rotateX(5deg);
             opacity: .8;
-            
         }
         100% {
             -webkit-transform: translateY(0px) scale(1) perspective(20px) rotateX(0deg);
@@ -232,14 +240,13 @@
         }
     }
     @-webkit-keyframes flydown {
-       0% {
+        0% {
             -webkit-transform: translateY(-500px) scale(.1) perspective(15px) rotateX(5deg);
             -moz-transform: translateY(-500px) scale(.1) perspective(15px) rotateX(5deg);
             -ms-transform: translateY(-500px) scale(.1) perspective(15px) rotateX(5deg);
             -o-transform: translateY(-500px) scale(.1) perspective(15px) rotateX(5deg);
             transform: translateY(-500px) scale(.1) perspective(15px) rotateX(5deg);
             opacity: .8;
-            
         }
         100% {
             -webkit-transform: translateY(0px) scale(1) perspective(20px) rotateX(0deg);
@@ -339,13 +346,13 @@
         height: 0;
         display: block;
     }
-    ._view{
-        background: rgba(0,0,0,.5);
+    ._view {
+        background: rgba(0, 0, 0, .5);
         width: 100%;
         height: 100%;
     }
     /*----成功提示----*/
-    .tip-success{
+    .tip-success {
         clear: both;
         overflow: hidden;
         position: absolute;
@@ -354,61 +361,61 @@
         top: 0;
         left: 0;
         z-index: 1;
-        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.1);
-                box-shadow: 0 1px 1px rgba(0,0,0,.1);
+        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
         -webkit-box-sizing: border-box;
-           -moz-box-sizing: border-box;
-                box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
         display: none;
     }
-    .left-part{
+    .left-part {
         float: left;
     }
-    .left-part{
+    .left-part {
         background-color: #70C515;
         width: 60px;
         height: 60px;
         text-align: center;
         vertical-align: middle;
         -webkit-box-sizing: border-box;
-           -moz-box-sizing: border-box;
-                box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
         padding: 10px;
     }
-    .success-icon{
+    .success-icon {
         width: 40px;
         height: 40px;
     }
-    .tip-words{
+    .tip-words {
         overflow: hidden;
         text-align: center;
     }
-    .tip{
+    .tip {
         padding: 8px;
         font-size: 15px;
         line-height: 1.5;
         color: #5E5E5E;
         white-space: inherit;
     }
-    .wrapper{
+    .wrapper {
         overflow: hidden;
         position: relative;
         width: 100%;
         height: 100%;
     }
-    .blackcover{
+    .blackcover {
         display: none;
         width: 100%;
         height: 100%;
         position: fixed;
         z-index: 1;
         text-align: center;
-        background-color: rgba(0,0,0,.5);
+        background-color: rgba(0, 0, 0, .5);
     }
-    b{
+    b {
         color: #000;
     }
-    .share-button{
+    .share-button {
         width: 280px;
         height: 50px;
         background-color: #ffa200;
@@ -417,8 +424,8 @@
         text-align: center;
         padding: 15px 10px;
         -webkit-box-sizing: border-box;
-           -moz-box-sizing: border-box;
-                box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
         color: #FFF;
         -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
@@ -429,7 +436,7 @@
         cursor: pointer;
     }
     /*----下载按钮----*/
-    .download-button{
+    .download-button {
         display: block;
         color: #ffffff;
         background-color: #ffa200;
@@ -444,97 +451,92 @@
         -webkit-box-sizing: content-box;
         -moz-box-sizing: content-box;
         box-sizing: content-box;
-        -webkit-box-shadow: 0px 1px 1px rgba(0,0,0,.18);
-                box-shadow: 0px 1px 1px rgba(0,0,0,.18);
+        -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, .18);
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, .18);
     }
-    @media(max-width:800px){
-            .card-container{
-                padding: 15px 20px 0 20px;
-                width: 100%;
-            }
-            
-        }
-        @media(max-width:384px){
-            .send-wrapper,
-            .send-too{
-                margin: 30px auto 50px;
-            }
-        }
-        @media(max-width:360px){
-            .send-wrapper,
-            .send-too{
-                margin: 0 auto;
-            }
-
-        }
-        
-        .zhufu-download{
-            font-size: 17px;
-        }
-        @media (min-width:800px) {
-            .download-button{
-                padding: 6px 10%;
-            }
-        }
-
-        .copyright{
-            width: 300px;
-            padding: 0 10px 20px;
-        }
-        .card-contact {
-            color: #A3A3A3;
-            font-size: 13px;
-        }
-        .company-number {
-            padding-left: 0px;
-        }
-        .company-number:hover{
-            color: #ffa200;
-        }
-        #sina_share{
-            width: 200px;
-            height: 40px;
-            display: block;
-            color: #FFF;
-            background-color: #FFA200;
-            background-image: none;
-            text-align: center;
-            -webkit-box-sizing: border-box;
-               -moz-box-sizing: border-box;
-                    box-sizing: border-box;
-            padding: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            vertical-align: middle;
-            line-height: 1.2;
-            margin: auto;
-            float: none;
-            -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.18);
-            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.18);
-        }
-        #sina_share:hover{
-            opacity: 1;
-        }
-        .title{
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .bottom-img{
-            display: block;
+    @media(max-width:800px) {
+        .card-container {
+            padding: 15px 20px 0 20px;
             width: 100%;
-            -webkit-box-sizing: border-box;
-               -moz-box-sizing: border-box;
-                    box-sizing: border-box;
         }
+    }
+    @media(max-width:384px) {
+        .send-wrapper, .send-too {
+            margin: 30px auto 50px;
+        }
+    }
+    @media(max-width:360px) {
+        .send-wrapper, .send-too {
+            margin: 0 auto;
+        }
+    }
+    .zhufu-download {
+        font-size: 17px;
+    }
+    @media (min-width:800px) {
+        .download-button {
+            padding: 6px 10%;
+        }
+    }
+    .copyright {
+        width: 300px;
+        padding: 0 10px 20px;
+    }
+    .card-contact {
+        color: #A3A3A3;
+        font-size: 13px;
+    }
+    .company-number {
+        padding-left: 0px;
+    }
+    .company-number:hover {
+        color: #ffa200;
+    }
+    #sina_share {
+        width: 200px;
+        height: 40px;
+        display: block;
+        color: #FFF;
+        background-color: #FFA200;
+        background-image: none;
+        text-align: center;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        vertical-align: middle;
+        line-height: 1.2;
+        margin: auto;
+        float: none;
+        -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.18);
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.18);
+    }
+    #sina_share:hover {
+        opacity: 1;
+    }
+    .title {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .bottom-img {
+        display: block;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
     </style>
 </head>
 
 <body>
     <div class="wrapper">
-    <!-- 微信封面 -->
-    <img src="{{ card.get_share_image }}" alt="" id="main_poster">
+        <!-- 微信封面 -->
+        <img src="{{ card.get_share_image }}" alt="" id="main_poster">
+        <img src="{{ card.get_image_top }}" alt="">
         {% if show_weixin %}
         <div class="blackcover animation fadecover" id="blackcover"></div>
         <ul class="tip-success animation slidein" id="success_tip">
@@ -542,11 +544,13 @@
                 <img src="http://static.zuimeia.com/product/img/zhufu_check_icon.png" alt="" class="success-icon">
             </li>
             <li class="tip-words">
-                <div class="tip">邀请函制作完成！点击 <b>右上角的按钮</b> <b>分享给朋友</b> 或 <b>分享到朋友圈</b> </div>
+                <div class="tip">邀请函制作完成！点击 <b>右上角的按钮</b>  <b>分享给朋友</b> 或 <b>分享到朋友圈</b> 
+                </div>
             </li>
         </ul>
         {% endif %}
         <div class="card-container">
+            <img src="" alt="">
             <!-- 容器开始 -->
             <div class="card-detail">
                 <!-- 邀请主题 -->
@@ -569,7 +573,7 @@
                 <div class="location">
                     <p class="location">会议地点：{{ card.meeting_location }}</p>
                 </div>
-                
+
                 <!-- 发件人 -->
                 <div class="sender">
                     <p class="send-para">
@@ -583,9 +587,9 @@
                 <a class="send-button re-edit" href="edit/">再改改</a>
                 <a class="send-button re-choose" href="/yqk">重新选择模板</a>
             </div>
-            
+
             <div class="bdsharebuttonbox" data-tag="share_1">
-                <a class="bds_tsina" data-cmd="tsina" id="sina_share"class="share-button">分享到新浪微博</a>
+                <a class="bds_tsina" data-cmd="tsina" id="sina_share" class="share-button">分享到新浪微博</a>
             </div>
             {% endif %}
         </div>
@@ -593,67 +597,72 @@
     </div>
 
     <!-- Google Analytics -->
-        <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-          ga('create', 'UA-46697618-2', 'brixd.com');
-          ga('send', 'pageview');
-
-        </script>
+    ga('create', 'UA-46697618-2', 'brixd.com');
+    ga('send', 'pageview');
+    </script>
 
     <script src="/static/js/event_analysis.js"></script>
     <script>
-        function is_weixin(){
-            var ua = navigator.userAgent.toLowerCase();
-            if(ua.match(/MicroMessenger/i)=="micromessenger") {
-                return true;
-            } else {
-                return false;
-            }
+    function is_weixin() {
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {
+            return true;
+        } else {
+            return false;
         }
-       
-        var link_address = document.URL;
+    }
 
-        var main_poster = document.getElementById('main_poster').src,
-            // url_search = window.location.search,
-            structured_url_path = location.protocol + '//' + location.host + location.pathname;
+    var link_address = document.URL;
 
-        document.getElementById('sina_share').onclick=function(){
-            event_tracker('WeiboShare',source);
-        }
-        var blackcover = document.getElementById('blackcover'),
-            success_tip = document.getElementById('success_tip');
-        if(is_weixin()){
-            blackcover.style.display='block';
-            success_tip.style.display='block';
-        }
-        blackcover.addEventListener('touchend', function(event) {
-            blackcover.style.display = 'none';
-            success_tip.style.display = 'none';
-        }, false);
+    var main_poster = document.getElementById('main_poster').src,
+        // url_search = window.location.search,
+        structured_url_path = location.protocol + '//' + location.host + location.pathname;
 
+    document.getElementById('sina_share').onclick = function() {
+        event_tracker('WeiboShare', source);
+    }
+    var blackcover = document.getElementById('blackcover'),
+        success_tip = document.getElementById('success_tip');
+    if (is_weixin()) {
+        blackcover.style.display = 'block';
+        success_tip.style.display = 'block';
+    }
+    blackcover.addEventListener('touchend', function(event) {
+        blackcover.style.display = 'none';
+        success_tip.style.display = 'none';
+    }, false);
     </script>
     <script>
     var content_card = '{{ card.content | safe }}';
-        content_card = content_card.replace(/&nbsp/g,' ');
+    content_card = content_card.replace(/&nbsp/g, ' ');
     window._bd_share_config = {
-        common : {
-            bdText : content_card, 
-            bdUrl : link_address,
-            bdPic : main_poster
+        common: {
+            bdText: content_card,
+            bdUrl: link_address,
+            bdPic: main_poster
         },
-        share : [{
-            "bdSize" : 16
+        share: [{
+            "bdSize": 16
         }],
-        image : [{
-            viewType : 'list',
-            viewPos : 'top',
-            viewColor : 'black',
-            viewSize : '16',
-            viewList : 'tsina'
+        image: [{
+            viewType: 'list',
+            viewPos: 'top',
+            viewColor: 'black',
+            viewSize: '16',
+            viewList: 'tsina'
         }]
     }
 
