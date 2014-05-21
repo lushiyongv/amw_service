@@ -72,6 +72,7 @@ class InviteCard(models.Model):
     @property
     def get_image_top(self):
         result = "%s%s%s" % (QINIU_IMAGE_DOMAIN, "img/", self.image_top)
+        print result
         return result
 
     @property
@@ -104,7 +105,7 @@ class InviteCard(models.Model):
                 self.card_image = relative_path_cover
 
             if orig.image_top != self.image_top:
-                key, relative_path_cover, remote_url  = qiniu_utils.upload_image(self.image_top, self.card_image.path)
+                key, relative_path_cover, remote_url  = qiniu_utils.upload_image(self.image_top, self.image_top.path)
                 dst_cover_file = qiniu_utils.dst_file_name(self.image_top.path, relative_path_cover)
                 shutil.copyfile(self.image_top.path, dst_cover_file)
                 self.image_top = relative_path_cover
