@@ -536,7 +536,10 @@
     <div class="wrapper">
         <!-- 微信封面 -->
         <img src="{{ card.get_share_image }}" alt="" id="main_poster">
+        {% if card.image_top %}
         <img src="{{ card.get_image_top }}" alt="">
+        {% else %}
+        {% endif %}
         {% if show_weixin %}
         <div class="blackcover animation fadecover" id="blackcover"></div>
         <ul class="tip-success animation slidein" id="success_tip">
