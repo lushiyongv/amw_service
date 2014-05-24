@@ -489,7 +489,9 @@
 <body>
 
     <div class="card-container">
-        <img src="{{ card.get_image_top }}" alt="">
+        {% if card.image_top %}
+            <img src="{{ card.get_image_top }}" alt="">
+        {% endif %}
         <!-- 容器开始 -->
         <form action="" method="post">
 
