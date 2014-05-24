@@ -1,10 +1,18 @@
-
+# -*- coding:utf-8 -*-
 import json, logging
+import random
 import sys, os
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+import qrcode
+from amway_service import settings
+from conference.models import Survey
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 from django.http import HttpResponse
+import time
 from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
 from common.util.nice_http_util import get_client_ip
@@ -18,9 +26,29 @@ if not isExists:
 def index(request):
     return HttpResponse('', content_type="text/html")
 
+def conference_reward(request, srid):
+    tips='已经领过了'
+    try:
+        survey = Survey.objects.get(srid=srid)
+        if survey.reward is False:#成功信息
+            pass
+            survey.reward=True
+            survey.save()
+            tips='尚未领取'
+        else: #已经领过了提示
+            pass
+    except Exception, e:
+        logging.exception(e)
+        #失败信息
+
+    return render_to_response('conference/reward.html', locals(), context_instance=RequestContext(request))
+
+
+
 @csrf_exempt
 def conference_survey(request):
     result = 1
+    qrcode_url = ''
     # print request.POST
     try:
         ip = get_client_ip(request)
@@ -46,10 +74,32 @@ def conference_survey(request):
         # print conference_survey
         # print user_login_log
         log_filehandler.write('%s' % conference_survey)
+
+        # 记录存入数据库
+        try:
+            survey = Survey()
+            survey.srid = srid
+            survey.name = name
+            survey.identity = identity
+            survey.telephone = telephone
+            survey.answer1 = answer1
+            survey.answer2 = answer2
+            survey.answer3 = answer3
+            survey.answer4 = answer4
+            survey.answer5 = answer5
+            survey.answer6 = answer6
+            survey.location = location
+
+            survey.save()
+        except Exception, e:
+            logging.exception(e)
+
+        # 生成二维码
+        qrcode_url = makeqrimage(srid)
         result = 1
     except Exception, e:
-        logging.error(e)
-        logging.error(request)
+        logging.exception(e)
+        # logging.error(request)
         result = 0
     finally:
         log_filehandler.close()
@@ -57,5 +107,43 @@ def conference_survey(request):
 
     response_data = {}
     response_data['result'] = result
-    response_data['data'] = {}
+    response_data['data'] = {'qrcode_url':qrcode_url}
     return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+
+def makeqrimage(sr_no):
+    print "makding qrcode..."
+    qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10,
+                   border=4, ) #initialize settings for Output Qrcode
+    # qr.add_data(article.download_url) #adds the data to the qr cursor
+    qrcode_url = "http://amway.brixd.com/conference/survey/reward/%s" % sr_no
+    print qrcode_url
+    qr.add_data(qrcode_url)
+    qr.make(fit=True)
+    img4qr = qr.make_image()
+    qrfilename = "sr_%s" % sr_no
+    # # print "\n"
+    # file_extension = "jpeg"#10k
+    file_extension = "png"#4k
+    qrfilename = qrfilename + '.' + file_extension
+    filename = rename_file(qrfilename)
+
+    filepath = '%s/conference/' % settings.MEDIA_ROOT
+    if not os.path.exists(filepath):
+        os.makedirs(filepath)
+
+    image_file = open("%s%s" % (filepath, filename), 'w +') #will open the file, if file does not exist, it will be created and opened.
+    img4qr.save(image_file, file_extension.upper()) #write qrcode encoded data to the image file.
+    image_file.close() #close the opened file handler.
+
+    print filename
+    return filepath.replace(settings.MEDIA_ROOT,'http://amway.brixd.com/media/') + filename
+
+
+def rename_file(filename):
+    parts = filename.split(".")
+    new_name = time.strftime('%Y%m%d%H%M%S')
+    new_name += '%d' % random.randint(10000, 99999)
+    new_name += '.%s' % parts[-1]
+
+    return new_name

@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.contrib.sites.models import Site
@@ -20,6 +21,7 @@ urlpatterns = patterns('',
 
 
     url(r'^conference/survey/answers/$', 'amway_service.views.conference_survey'),
+    url(r'^conference/survey/reward/(.+)/$', 'amway_service.views.conference_reward'),
 
     # Examples:
     # url(r'^$', 'qingyinghui_invitation.views.home', name='home'),
@@ -31,6 +33,12 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^yqk/', include('yaoqingka.urls')),
+
+
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT,
+                                                               'show_indexes': False}),
+    url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT,
+                                                                'show_indexes': False}),
 )
 
 print 'settings.STATIC_ROOT', STATIC_ROOT
