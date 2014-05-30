@@ -46,7 +46,8 @@
     <![endif]-->
     <style>
     html, body {
-        background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');
+        /*background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');*/
+        background-color: {{ card.bg_color }};
     }
     p {
         line-height: 1.5;
@@ -508,7 +509,7 @@
         font-weight: bold;
         vertical-align: middle;
         line-height: 1.2;
-        margin: auto;
+        margin: 0 auto 20px;
         float: none;
         -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.18);
         box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.18);
@@ -529,6 +530,9 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
+    .top-image{
+        width: 100%;
+    }
     </style>
 </head>
 
@@ -537,7 +541,7 @@
         <!-- 微信封面 -->
         <img src="{{ card.get_share_image }}" alt="" id="main_poster">
         {% if card.image_top %}
-        <img src="{{ card.get_image_top }}" alt="">
+        <img src="{{ card.get_image_top }}" alt="" class="top-image">
         {% else %}
         {% endif %}
         {% if show_weixin %}
