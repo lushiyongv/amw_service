@@ -46,7 +46,8 @@
     <![endif]-->
     <style>
     html, body {
-        background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');
+        /*background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');*/
+        background-color: {{ card.bg_color }};
     }
     p {
         line-height: 1.5;
@@ -55,23 +56,13 @@
         padding: 20px 20px 0 20px;
         overflow: hidden;
         position: relative;
-        background: {
-            {
-                card.bg_color
-            }
-        }
-        ;
+        background: {{ card.bg_color }};
         -webkit-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
         width: 600px;
         margin:auto;
-        color: {
-            {
-                card.word_color
-            }
-        }
-        ;
+        color: {{ card.word_color }};
     }
     .hidden, #card_image, #main_poster {
         width:0px;
@@ -82,7 +73,7 @@
     .card-detail {
         width: 100%;
         min-height:200px;
-        padding: 10px 0;
+        padding: 60px 0;
         opacity: 0.96;
         min-height: 200px;
         overflow: auto;
@@ -95,12 +86,7 @@
         overflow: auto;
     }
     .main-body, .receive-para, .send-para {
-        color: {
-            {
-                card.word_color
-            }
-        }
-        ;
+        color: {{ card.word_color }};
         font-size: 16px;
     }
     .send-para {
@@ -398,10 +384,16 @@
         white-space: inherit;
     }
     .wrapper {
+        padding: 20px 0;
         overflow: hidden;
         position: relative;
-        width: 100%;
-        height: 100%;
+        background: #FBFBFB;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        width: 600px;
+        margin: auto;
+        min-height: 100%;
     }
     .blackcover {
         display: none;
@@ -455,8 +447,14 @@
         box-shadow: 0px 1px 1px rgba(0, 0, 0, .18);
     }
     @media(max-width:800px) {
+        .wrapper{
+            width: 100%;
+        }
+        .card-detail{
+            padding-top: 0;
+        }
         .card-container {
-            padding: 15px 20px 0 20px;
+            padding: 35px 20px 0 20px;
             width: 100%;
         }
     }
@@ -508,7 +506,7 @@
         font-weight: bold;
         vertical-align: middle;
         line-height: 1.2;
-        margin: auto;
+        margin: 0 auto 20px;
         float: none;
         -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.18);
         box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.18);
@@ -516,11 +514,21 @@
     #sina_share:hover {
         opacity: 1;
     }
-    .title {
+    .title{
+        position: relative;
+        top: 8px;
+        display: table;
+        margin: 0 auto;
+        z-index: 2;
+        width: 200px;
+    }
+    .title-name {
         text-align: center;
         font-size: 18px;
         font-weight: bold;
-        margin-bottom: 10px;
+        color: #FFF;
+        display: table-cell;
+        vertical-align: middle; 
     }
     .bottom-img {
         display: block;
@@ -528,6 +536,12 @@
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
+    }
+    .top-image{
+        width: 100%;
+        position: absolute;
+        z-index: 1;
+        top: 0;
     }
     </style>
 </head>
@@ -537,7 +551,8 @@
         <!-- 微信封面 -->
         <img src="{{ card.get_share_image }}" alt="" id="main_poster">
         {% if card.image_top %}
-            <img src="{{ card.get_image_top }}" alt="">
+        <img src="{{ card.get_image_top }}" alt="" class="top-image">
+        {% else %}
         {% endif %}
         {% if show_weixin %}
         <div class="blackcover animation fadecover" id="blackcover"></div>
@@ -551,14 +566,15 @@
             </li>
         </ul>
         {% endif %}
+        <!-- 邀请主题 -->
+        <div class="title">
+            <p class="title-name">{{ card.title }}</p>
+        </div>
         <div class="card-container">
             <img src="" alt="">
             <!-- 容器开始 -->
             <div class="card-detail">
-                <!-- 邀请主题 -->
-                <div class="title">
-                    <p class="title">{{ card.title }}</p>
-                </div>
+                
                 <!-- 收件人 -->
                 <div class="receiver">
                     <p class="receive-para">{{ card.recipient }}</p>

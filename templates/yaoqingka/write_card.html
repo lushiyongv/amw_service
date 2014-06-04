@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="baidu-site-verification" content="4faf0fa7c1509b4fad31615094640d74" />
     <title>填写邀请函</title>
     <meta name="description" content="邀请函">
     <meta content="telephone=no" name="format-detection" />
@@ -46,39 +47,19 @@
     /*------- 改变 placeholder 的颜色 -------*/
     ::-webkit-input-placeholder {
         /* WebKit browsers */
-        color: {
-            {
-                card.word_color
-            }
-        }
-        ;
+        color: {{ card.word_color }};
     }
     :-moz-placeholder {
         /* Mozilla Firefox 4 to 18 */
-        color: {
-            {
-                card.word_color
-            }
-        }
-        ;
+        color: {{card.word_color}};
     }
     ::-moz-placeholder {
         /* Mozilla Firefox 19+ */
-        color: {
-            {
-                card.word_color
-            }
-        }
-        ;
+        color: {{card.word_color}};
     }
     :-ms-input-placeholder {
         /* Internet Explorer 10+ */
-        color: {
-            {
-                card.word_color
-            }
-        }
-        ;
+        color: {{card.word_color}};
     }
     /*小米2S bug*/
     #addressor ::-webkit-input-placeholder {
@@ -99,39 +80,29 @@
     }
     body, html {
         color: #000;
+        background-color: {{ card.bg_color }};
     }
     .card-container {
         padding: 20px 20px 0 20px;
         overflow: hidden;
         position: relative;
-        background: {
-            {
-                card.bg_color
-            }
-        }
-        ;
+        background: {{ card.bg_color }};
         -webkit-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
         width: 600px;
         margin:auto;
+        min-height: 100%;
+    }
+    .card-detail {
+        padding: 0 10px;
     }
     .hidden, #card_image, #main-poster {
         width:0px;
         height:0px;
         display: block;
     }
-    /*.card-detail{
-            background-color: #FFF;
-            background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');
-            -webkit-box-shadow: 0px 2px 1px rgba(0,0,0,.18);
-                    box-shadow: 0px 2px 1px rgba(0,0,0,.18);
-            width: 100%;
-            min-height:200px;
-            padding: 10px;
-            opacity: 0.96;
-            overflow: auto;
-        }*/
+    
     .main-body-input {
         min-height: 80px;
     }
@@ -149,12 +120,7 @@
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
-        color: {
-            {
-                card.word_color
-            }
-        }
-        ;
+        color: {{card.word_color}};
         background: none;
         padding: 6px 5px;
     }
@@ -201,6 +167,9 @@
     }
     a {
         -webkit-tap-highlight-color: inherit;
+    }
+    form{
+        margin-top: 110px;
     }
     .card-list-item:before, .card-list-item:after {
         content:".";
@@ -344,13 +313,17 @@
     }
     @media(max-width:800px) {
         .card-container {
-            padding: 15px 20px 0 20px;
+            padding: 0;
             width: 100%;
         }
         .card-detail {
             max-height: 540px;
             position: relative;
             top: 10px;
+            padding: 0 10px;
+        }
+        form{
+            margin-top: 80px;
         }
     }
     @media(max-width:540px) {
@@ -412,12 +385,7 @@
     /*提示信息*/
     .tip-receiver:after {
         border-left: 8px solid rgba(0, 0, 0, 0);
-        border-right: 8px solid {
-            {
-                card.word_color
-            }
-        }
-        ;
+        border-right: 8px solid {{ card.word_color }};
         border-bottom: 8px solid rgba(0, 0, 0, 0);
         border-top: 8px solid rgba(0, 0, 0, 0);
         top: 10px;
@@ -431,12 +399,7 @@
         top: 2px;
         right: 0;
         display: block;
-        background-color: {
-            {
-                card.word_color
-            }
-        }
-        ;
+        background-color: {{ card.word_color }};
         -webkit-border-radius: 2px;
         border-radius: 2px;
         width: 140px;
@@ -454,24 +417,14 @@
         right: 140px;
         position: absolute;
         border-left: 8px solid rgba(0, 0, 0, 0);
-        border-right: 8px solid {
-            {
-                card.word_color
-            }
-        }
-        ;
+        border-right: 8px solid {{ card.word_color }};
         border-bottom: 8px solid rgba(0, 0, 0, 0);
         border-top: 8px solid rgba(0, 0, 0, 0);
     }
     .tip-theme {
         width: 140px;
         color: #FFF;
-        background-color: {
-            {
-                card.word_color
-            }
-        }
-        ;
+        background-color: {{ card.word_color }};
         line-height: 1.6;
         height: 30px;
         padding: 3px;
@@ -483,6 +436,12 @@
     input.title-input {
         text-align: left;
     }
+    .top-image{
+        width: 100%;
+        position: absolute;
+        top: 0;
+    }
+    
     </style>
 </head>
 
@@ -490,7 +449,9 @@
 
     <div class="card-container">
         {% if card.image_top %}
-            <img src="{{ card.get_image_top }}" alt="">
+        <img src="{{ card.get_image_top }}" alt="" class="top-image">
+        {% else %}
+
         {% endif %}
         <!-- 容器开始 -->
         <form action="" method="post">
