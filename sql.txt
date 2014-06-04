@@ -1,3 +1,6 @@
+#2014.6.4
+ALTER TABLE `yaoqingka_invitecard` ADD COLUMN `title_color` varchar(7) AFTER `bg_color`;
+
 #2014.5.19
 ALTER TABLE `yaoqingka_invitecard`
 ADD COLUMN `image_top` varchar(200) AFTER `card_image`;

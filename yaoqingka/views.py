@@ -95,6 +95,7 @@ def edit_card(request, html_key):
     card.word_postion = item['word_postion']
     card.word_color = item['word_color']
     card.bg_color = item['bg_color']
+    card.title_color = item['title_color']
     card.meeting_time = item['meeting_time']
     card.meeting_location = item['meeting_location']
     card.title = item['title']
@@ -119,6 +120,7 @@ def edit_card(request, html_key):
         meeting_location = request.POST.get('meeting_location')
         word_color = request.POST.get('word_color')
         bg_color = request.POST.get('bg_color')
+        title_color = request.POST.get('title_color')
         template_card_id = request.POST.get('template_card_id')
         title = request.POST.get('title')
 
@@ -141,6 +143,7 @@ def edit_card(request, html_key):
         item['meeting_location'] = meeting_location
         item['word_color'] = word_color
         item['bg_color'] = bg_color
+        item['title_color'] = title_color
         item['template_card_id'] = template_card_id
         item['title'] = title
 
@@ -172,6 +175,7 @@ def edit_template_card(request, template_card_id):
         meeting_location = request.POST.get('meeting_location')
         word_color = request.POST.get('word_color')
         bg_color = request.POST.get('bg_color')
+        title_color = request.POST.get('title_color')
         title = request.POST.get('title')
 
         chars = (string.ascii_letters+string.digits).lower()
@@ -195,6 +199,7 @@ def edit_template_card(request, template_card_id):
         item['meeting_location'] = meeting_location
         item['word_color'] = word_color
         item['bg_color'] = bg_color
+        item['title_color'] = title_color
         item['template_card_id'] = template_card_id
         item['title'] = title
 
@@ -230,6 +235,7 @@ def show_template_card(request):
     meeting_location = request.POST.get('meeting_location')
     word_color = request.POST.get('word_color')
     bg_color = request.POST.get('bg_color')
+    title_color = request.POST.get('title_color')
     template_card_id = request.POST.get('template_card_id')
     title = request.POST.get('title')
     # card.content = '过去的2013年里，我们一起同舟共济，有过苦、有过累，但此刻再去回想过去的一年的时候，脑海里浮现的满是我们在一起的甜美时光。我好想对你说一声「谢谢」。谢谢你一年来的陪伴和照顾、微笑和阳光。你对我的好是我永远都不会忘记的……'
@@ -245,6 +251,7 @@ def show_template_card(request):
     card.meeting_location = meeting_location
     card.word_color = word_color
     card.bg_color = bg_color
+    card.title_color = title_color
     card.id = template_card_id
     card.title = title
     return render_to_response('yaoqingka/display_card.html', locals(), context_instance=RequestContext(request))
@@ -293,6 +300,7 @@ def show_card(request, html_key):
     card.meeting_location = item['meeting_location']
     card.word_color = item['word_color']
     card.bg_color = item['bg_color']
+    card.title_color = item['title_color']
     card.id = item['template_card_id']
     card.title = item['title']
 
