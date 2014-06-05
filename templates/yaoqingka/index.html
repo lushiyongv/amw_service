@@ -256,8 +256,21 @@
         structured_url_path = location.protocol + '//' + location.host + location.pathname;
     var $how_wrapper = document.getElementById('how_wrapper');
 
+    // 关闭新手引导后记录 cookie 并隐藏
     if (document.cookie.search('close_tip=1') < 0) {
         $how_wrapper.style.display = 'block';
+    }
+
+    document.getElementById('close_tip').onclick = function() {
+        $how_wrapper.style.display = 'none';
+        document.cookie = "close_tip=1";
+    }
+
+    // 第一次访问的时候记录 cookie，之后不显示开机页面
+    if (document.cookie.search('startup=1') > 0) {
+        document.getElementsByClassName('amway-cover')[0].style.display='none';
+    }else{
+        document.cookie = "startup=1";
     }
 
     function is_weixin() {
@@ -276,10 +289,8 @@
         throttle: 600
     });
 
-    document.getElementById('close_tip').onclick = function() {
-        $how_wrapper.style.display = 'none';
-        document.cookie = "close_tip=1";
-    }
+    
+
     </script>
     <!-- 百度分享代码 -->
     <script>
