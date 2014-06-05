@@ -322,9 +322,16 @@
             top: 10px;
             padding: 0 10px;
         }
+        {% if card.image_top %}
         form{
             margin-top: 80px;
         }
+        {% else %}
+        form{
+            margin-top: 0px;
+        }
+        {% endif %}
+        
     }
     @media(max-width:540px) {
         .card-detail {
@@ -440,6 +447,7 @@
         width: 100%;
         position: absolute;
         top: 0;
+        z-index: 1;
     }
     
     </style>
