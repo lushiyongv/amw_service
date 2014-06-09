@@ -22,9 +22,10 @@ isExists = os.path.exists(CONFERENCE_LOG_PATH)
 if not isExists:
     os.makedirs(CONFERENCE_LOG_PATH)
 
-# DOMAIN = 'http://amway.brixd.com'
-DOMAIN = 'http://0.0.0.0:8000'
+DOMAIN = 'http://amway.brixd.com'
+# DOMAIN = 'http://0.0.0.0:8000'
 
+#php和静态代码路径/home/wwwroot/www.brixd.com/amway/invitation2014
 def index(request):
     return HttpResponse('', content_type="text/html")
 
