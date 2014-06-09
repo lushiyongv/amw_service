@@ -34,8 +34,8 @@ def conference_reward(request):
     result = 1
     # tips='已经领过了'
     try:
-        srid = request.POST['srid']
-        survey = Survey.objects.get(srid=srid)
+        id = request.POST['id']
+        survey = Survey.objects.get(pk=id)
         if survey.reward is False:#成功信息
             pass
             survey.reward=True
@@ -136,10 +136,10 @@ def makeqrimage(sr_no):
     if survey.reward is True:
         reward = 1
     else:
-        reward =0
+        reward = 0
 
-    qrcode_content_url = "http://a.brixd.com/conference05/gift_confirm.html?srid=%s&name=%s&telephone=%s&reward=%d" \
-                 % (survey.srid, survey.name, survey.telephone, reward)
+    qrcode_content_url = "http://a.brixd.com/conference05/gift_confirm.html?id=%d&srid=%s&name=%s" \
+                         "&telephone=%s&reward=%d" % (survey.id, survey.srid, survey.name, survey.telephone, reward)
     print qrcode_content_url
     qr.add_data(qrcode_content_url)
     qr.make(fit=True)

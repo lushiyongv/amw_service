@@ -6,7 +6,7 @@ class Survey(models.Model):
     ip = models.CharField(max_length=100, blank=True)  #
     created_at = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=100)  #
-    srid = models.CharField(max_length=100, unique=True)  #
+    srid = models.CharField(max_length=100)  #
     identity = models.CharField(max_length=100, blank=True)  #
     telephone = models.CharField(max_length=100, blank=True)  #
     answer1 = models.CharField(max_length=100, blank=True)  #
