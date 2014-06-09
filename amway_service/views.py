@@ -22,26 +22,37 @@ isExists = os.path.exists(CONFERENCE_LOG_PATH)
 if not isExists:
     os.makedirs(CONFERENCE_LOG_PATH)
 
+# DOMAIN = 'http://amway.brixd.com'
+DOMAIN = 'http://0.0.0.0:8000'
 
 def index(request):
     return HttpResponse('', content_type="text/html")
 
-def conference_reward(request, srid):
-    tips='已经领过了'
+@csrf_exempt
+def conference_reward(request):
+    result = 1
+    # tips='已经领过了'
     try:
+        srid = request.POST['srid']
         survey = Survey.objects.get(srid=srid)
         if survey.reward is False:#成功信息
             pass
             survey.reward=True
             survey.save()
-            tips='尚未领取'
+            # tips='尚未领取'
         else: #已经领过了提示
             pass
     except Exception, e:
         logging.exception(e)
         #失败信息
+        result = 0
 
+    # return render_to_response('conference/reward.html', locals(), context_instance=RequestContext(request))
     return render_to_response('conference/reward.html', locals(), context_instance=RequestContext(request))
+    response_data = {}
+    response_data['result'] = result
+    response_data['data'] = {}
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 
 
@@ -95,7 +106,7 @@ def conference_survey(request):
             logging.exception(e)
 
         # 生成二维码
-        qrcode_url = makeqrimage(srid)
+        qrcode_image_url = makeqrimage(srid)
         result = 1
     except Exception, e:
         logging.exception(e)
@@ -107,18 +118,28 @@ def conference_survey(request):
 
     response_data = {}
     response_data['result'] = result
-    response_data['data'] = {'qrcode_url':qrcode_url}
+    response_data['data'] = {'qrcode_url':qrcode_image_url}
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 
 def makeqrimage(sr_no):
+    survey = Survey.objects.get(srid=sr_no)
+
     print "makding qrcode..."
     qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10,
                    border=4, ) #initialize settings for Output Qrcode
     # qr.add_data(article.download_url) #adds the data to the qr cursor
-    qrcode_url = "http://amway.brixd.com/conference/survey/reward/%s" % sr_no
-    print qrcode_url
-    qr.add_data(qrcode_url)
+    # qrcode_url = "http://amway.brixd.com/conference/survey/reward/%s" % sr_no
+
+    if survey.reward is True:
+        reward = 1
+    else:
+        reward =0
+
+    qrcode_content_url = "http://a.brixd.com/conference05/gift_confirm.html?srid=%s&name=%s&telephone=%s&reward=%d" \
+                 % (survey.srid, survey.name, survey.telephone, reward)
+    # print qrcode_url
+    qr.add_data(qrcode_content_url)
     qr.make(fit=True)
     img4qr = qr.make_image()
     qrfilename = "sr_%s" % sr_no
@@ -137,7 +158,7 @@ def makeqrimage(sr_no):
     image_file.close() #close the opened file handler.
 
     print filename
-    return filepath.replace(settings.MEDIA_ROOT,'http://amway.brixd.com/media/') + filename
+    return filepath.replace(settings.MEDIA_ROOT, DOMAIN + '/media') + filename
 
 
 def rename_file(filename):
