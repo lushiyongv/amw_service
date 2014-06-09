@@ -49,7 +49,6 @@ def conference_reward(request):
         result = 0
 
     # return render_to_response('conference/reward.html', locals(), context_instance=RequestContext(request))
-    return render_to_response('conference/reward.html', locals(), context_instance=RequestContext(request))
     response_data = {}
     response_data['result'] = result
     response_data['data'] = {}
@@ -107,7 +106,7 @@ def conference_survey(request):
             logging.exception(e)
 
         # 生成二维码
-        qrcode_image_url = makeqrimage(srid)
+        qrcode_image_url = makeqrimage(survey.id)
         print qrcode_image_url
         result = 1
     except Exception, e:
@@ -120,12 +119,16 @@ def conference_survey(request):
 
     response_data = {}
     response_data['result'] = result
-    response_data['data'] = {'qrcode_url':qrcode_image_url}
+    if result == 1:
+        response_data['data'] = {'qrcode_url':qrcode_image_url}
+    else:
+        response_data['data'] = {}
+
     return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 
-def makeqrimage(sr_no):
-    survey = Survey.objects.get(srid=sr_no)
+def makeqrimage(sv_id):
+    survey = Survey.objects.get(pk=sv_id)
 
     print "makding qrcode..."
     qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10,
@@ -144,7 +147,7 @@ def makeqrimage(sr_no):
     qr.add_data(qrcode_content_url)
     qr.make(fit=True)
     img4qr = qr.make_image()
-    qrfilename = "sr_%s" % sr_no
+    qrfilename = "sr_%s" % sv_id
     # # print "\n"
     # file_extension = "jpeg"#10k
     file_extension = "png"#4k
