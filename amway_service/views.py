@@ -108,6 +108,7 @@ def conference_survey(request):
 
         # 生成二维码
         qrcode_image_url = makeqrimage(srid)
+        print qrcode_image_url
         result = 1
     except Exception, e:
         logging.exception(e)
@@ -139,7 +140,7 @@ def makeqrimage(sr_no):
 
     qrcode_content_url = "http://a.brixd.com/conference05/gift_confirm.html?srid=%s&name=%s&telephone=%s&reward=%d" \
                  % (survey.srid, survey.name, survey.telephone, reward)
-    # print qrcode_url
+    print qrcode_content_url
     qr.add_data(qrcode_content_url)
     qr.make(fit=True)
     img4qr = qr.make_image()
