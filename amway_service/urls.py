@@ -21,7 +21,7 @@ urlpatterns = patterns('',
 
 
     url(r'^conference/survey/answers/$', 'amway_service.views.conference_survey'),
-    url(r'^conference/survey/reward/(.+)/$', 'amway_service.views.conference_reward'),
+    url(r'^conference/survey/reward/$', 'amway_service.views.conference_reward'),
 
     # Examples:
     # url(r'^$', 'qingyinghui_invitation.views.home', name='home'),
