@@ -46,7 +46,6 @@
     <![endif]-->
     <style>
     html, body {
-        /*background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');*/
         background-color: {{ card.bg_color }};
     }
     p {
@@ -56,7 +55,7 @@
         padding: 20px 20px 0 20px;
         overflow: hidden;
         position: relative;
-        background: {{ card.bg_color }};
+        background-color: {{ card.bg_color }};
         -webkit-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
@@ -350,7 +349,7 @@
         background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');
         top: 0;
         left: 0;
-        z-index: 1;
+        z-index: 10;
         -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
         box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
         -webkit-box-sizing: border-box;
@@ -388,10 +387,9 @@
         white-space: inherit;
     }
     .wrapper {
-        padding: 20px 0;
+        padding: 20px 0 0;
         overflow: hidden;
         position: relative;
-        background: #FBFBFB;
         -webkit-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
@@ -544,8 +542,8 @@
     .top-image{
         width: 100%;
         position: absolute;
-        z-index: 1;
         top: 0;
+        z-index: 1;
     }
     </style>
 </head>
@@ -575,7 +573,6 @@
             <p class="title-name">{{ card.title }}</p>
         </div>
         <div class="card-container">
-            <img src="" alt="">
             <!-- 容器开始 -->
             <div class="card-detail">
                 
