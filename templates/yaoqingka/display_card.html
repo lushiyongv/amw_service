@@ -582,7 +582,7 @@
                 </div>
                 <!-- 内容 -->
                 <div class="main-body">
-                    <p>{{ card.content | safe }}</p>
+                    <p class="main-body-content">{{ card.content | safe }}</p>
                 </div>
                 <!-- 时间 -->
                 <div class="time">
@@ -634,6 +634,7 @@
     </script>
 
     <script src="/static/js/event_analysis.js"></script>
+    <script src="/static/js/weixin.js"></script>
     <script>
     function is_weixin() {
         var ua = navigator.userAgent.toLowerCase();
@@ -663,6 +664,16 @@
         blackcover.style.display = 'none';
         success_tip.style.display = 'none';
     }, false);
+
+    // 更改微信分享时的文字布局
+    var imgUrl = document.getElementById('main_poster').src;
+    console.log('imgUrl'+imgUrl);
+    var lineLink = document.URL;
+    console.log('lineLink'+lineLink);
+    var shareTitle = document.getElementsByClassName('title-name')[0].innerHTML;
+    console.log('shareTitle'+shareTitle);
+    var descContent = document.getElementsByClassName('main-body-content')[0].innerHTML;
+    console.log('descContent'+descContent);
     </script>
     <script>
     var content_card = '{{ card.content | safe }}';
