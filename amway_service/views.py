@@ -30,6 +30,35 @@ def index(request):
     return HttpResponse('', content_type="text/html")
 
 @csrf_exempt
+def get_reward_status(request):
+    result = 1
+    try:
+        id = request.POST['id']
+        survey = Survey.objects.get(pk=id)
+    except Exception, e:
+        logging.exception(e)
+        #失败信息
+        result = 0
+
+    response_data = {}
+
+    if survey is None:
+        result = 0
+
+    response_data['result'] = result
+    if result == 1:
+        if survey.reward is True:
+            reward = 1
+        else:
+            reward = 0
+        # , survey.srid, survey.name, survey.telephone, reward
+        response_data['data'] = {'id':survey.id,'name':survey.name,'telephone':survey.telephone,'reward':reward}
+    else:
+        response_data['data'] = {}
+
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+@csrf_exempt
 def conference_reward(request):
     result = 1
     # tips='已经领过了'
@@ -136,13 +165,8 @@ def makeqrimage(sv_id):
     # qr.add_data(article.download_url) #adds the data to the qr cursor
     # qrcode_url = "http://amway.brixd.com/conference/survey/reward/%s" % sr_no
 
-    if survey.reward is True:
-        reward = 1
-    else:
-        reward = 0
 
-    qrcode_content_url = "http://a.brixd.com/conference05/gift_confirm.html?id=%d&srid=%s&name=%s" \
-                         "&telephone=%s&reward=%d" % (survey.id, survey.srid, survey.name, survey.telephone, reward)
+    qrcode_content_url = "http://a.brixd.com/conference05/gift_confirm.html?id=%d" % (survey.id)
     print qrcode_content_url
     qr.add_data(qrcode_content_url)
     qr.make(fit=True)
