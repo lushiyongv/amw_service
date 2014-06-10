@@ -2,8 +2,6 @@
 import json, logging
 import random
 import sys, os
-from django.shortcuts import render_to_response
-from django.template import RequestContext
 import qrcode
 from amway_service import settings
 from conference.models import Survey
