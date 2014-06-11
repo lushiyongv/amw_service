@@ -193,7 +193,7 @@
         top: 0;
         z-index: 70;
         padding: 10px;
-        margin: auto;
+        margin: 25% 5%;
         border-radius: 4px;
     }
     #button_more_template {
@@ -366,14 +366,19 @@
             transform: translateY(-50px);
         }
     }
+    @media(max-height:580px){
+        #post_area{
+            height: 208px;
+        }
+    }
     @media(max-height:536px){
         #post_area{
-            height: 45%;
+            height: 220px;
         }
     }
     @media(max-height:420px){
         #post_area{
-            height: 50%;
+            height: 210px;
         }
     }
     </style>
@@ -515,6 +520,7 @@
         blackcover.className = 'hidden';
         post_area.className = 'hidden';
         e.preventDefault();
+        return false;
     }
     blackcover.addEventListener('touchstart',function(e){
         hide_post(e);
