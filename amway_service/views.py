@@ -37,6 +37,7 @@ def get_reward_status(request):
         logging.exception(e)
         #失败信息
         result = 0
+        survey = None
 
     response_data = {}
 
