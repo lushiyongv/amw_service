@@ -1,5 +1,3 @@
-
-
 function shareFriend() {
     WeixinJSBridge.invoke('sendAppMessage', {
         "img_url": imgUrl,

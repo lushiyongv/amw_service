@@ -1,5 +1,6 @@
 html, body {
     width: 100%;
+    height: auto;
 }
 body {
     background: url('http://static.zuimeia.com/product/img/zhufu_texture.png');
@@ -37,6 +38,7 @@ body {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     padding: 0 10px;
+    overflow: hidden;
 }
 .container:before, .container:after, .card:before, .card:after, .card-list:before, .card-list:after {
     content:"";
