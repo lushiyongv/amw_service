@@ -51,7 +51,7 @@ def get_reward_status(request):
         else:
             reward = 0
         # , survey.srid, survey.name, survey.telephone, reward
-        response_data['data'] = {'id':survey.id,'name':survey.name,'telephone':survey.telephone,'reward':reward}
+        response_data['data'] = {'id':survey.id, 'srid':survey.srid, 'name':survey.name,'telephone':survey.telephone,'reward':reward}
     else:
         response_data['data'] = {}
 
