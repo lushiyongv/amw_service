@@ -1,15 +1,18 @@
 # -*- coding:utf-8 -*-
+import json
+import logging
 import string
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponsePermanentRedirect, HttpResponseRedirect
+from django.http import HttpResponsePermanentRedirect, HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, render_to_response
 from django.core.cache import cache
 from django.core import serializers
 
 # Create your views here.
 from django.template import RequestContext
+from django.views.decorators.csrf import csrf_exempt
 from common.util.nice_http_util import get_http_referer
-from yaoqingka.models import InviteCard
+from yaoqingka.models import InviteCard, Template_wish
 from django.template.defaultfilters import linebreaksbr
 import random
 from pymongo import Connection
@@ -306,5 +309,19 @@ def show_card(request, html_key):
 
     return render_to_response('yaoqingka/display_card.html', locals(), context_instance=RequestContext(request))
 
+@csrf_exempt
 def save_user_template_wish(request):
-    pass
+    result = 1
+    try:
+        details = request.POST['details']
+        wish = Template_wish()
+        wish.details = details
+        wish.save()
+    except Exception, e:
+        logging.exception(e)
+        result = 0
+
+    response_data = {}
+    response_data['result'] = result
+    response_data['data'] = {}
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
