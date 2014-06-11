@@ -184,7 +184,7 @@
     #post_area{
         overflow: hidden;
         width: 90%;
-        height: 39%;
+        height: 50%;
         background-color: #FFF;
         position: fixed;
         left: 0;
@@ -225,6 +225,12 @@
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
+        -webkit-box-shadow: none;
+                box-shadow: none;
+        -webkit-appearance: none;
+        padding: 5px;
+        -webkit-border-radius: 2px;
+                border-radius: 2px;
     }
     .post-title{
         text-align: center;
@@ -254,10 +260,14 @@
         display: none;
     }
     .show{
-        display: block;
+        -webkit-animation-name: show;
+            -moz-animation-name: show;
+            -ms-animation-name: show;
+            -o-animation-name: show;
+            animation-name: show;
     }
     #blackcover{
-        background-color: rgba(0, 0, 0, 0.3);
+        background-color: rgba(0, 0, 0, 0.5);
         width: 100%;
         position: fixed;
         left: 0;
@@ -265,6 +275,106 @@
         bottom: 0;
         top: 0;
         z-index: 50;
+    }
+    #success{
+        background-color: rgba(0,0,0, 0.8);
+        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        color: #fff;
+        padding: 10px 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 20;
+        width: 100%;
+        line-height: 1.5;
+        font-size: 16px;
+        text-align: center;
+        -webkit-transform: translateY(-50px);
+           -moz-transform: translateY(-50px);
+            -ms-transform: translateY(-50px);
+             -o-transform: translateY(-50px);
+                transform: translateY(-50px);
+    }
+    
+    .animation {
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+    .weixin-alert {
+        -webkit-animation-name: short-alert;
+        -moz-animation-name: short-alert;
+        -ms-animation-name: short-alert;
+        -o-animation-name: short-alert;
+        animation-name: short-alert;
+        -webkit-animation-duration: 3s;
+        -moz-animation-duration: 3s;
+        -ms-animation-duration: 3s;
+        -o-animation-duration: 3s;
+        animation-duration: 3s;
+    }
+    @keyframes short-alert {
+        0% {
+            -webkit-transform: translateY(-50px);
+            -moz-transform: translateY(-50px);
+            -ms-transform: translateY(-50px);
+            -o-transform: translateY(-50px);
+            transform: translateY(-50px);
+        }
+        30% {
+            -webkit-transform: translateY(0);
+            -moz-transform: translateY(0);
+            -ms-transform: translateY(0);
+            -o-transform: translateY(0);
+            transform: translateY(0);
+        }
+        100% {
+            -webkit-transform: translateY(-50px);
+            -moz-transform: translateY(-50px);
+            -ms-transform: translateY(-50px);
+            -o-transform: translateY(-50px);
+            transform: translateY(-50px);
+        }
+    }
+    @-webkit-keyframes short-alert {
+        0% {
+            -webkit-transform: translateY(-50px);
+            -moz-transform: translateY(-50px);
+            -ms-transform: translateY(-50px);
+            -o-transform: translateY(-50px);
+            transform: translateY(-50px);
+        }
+        10% {
+            -webkit-transform: translateY(0);
+            -moz-transform: translateY(0);
+            -ms-transform: translateY(0);
+            -o-transform: translateY(0);
+            transform: translateY(0);
+        }
+        90%{
+            -webkit-transform: translateY(0);
+            -moz-transform: translateY(0);
+            -ms-transform: translateY(0);
+            -o-transform: translateY(0);
+            transform: translateY(0);
+        }
+        100% {
+            -webkit-transform: translateY(-50px);
+            -moz-transform: translateY(-50px);
+            -ms-transform: translateY(-50px);
+            -o-transform: translateY(-50px);
+            transform: translateY(-50px);
+        }
+    }
+    @media(max-height:536px){
+        #post_area{
+            height: 45%;
+        }
+    }
+    @media(max-height:420px){
+        #post_area{
+            height: 50%;
+        }
     }
     </style>
 </head>
@@ -319,9 +429,10 @@
         
         <div id="post_area" class="hidden">
             <p class="post-title">您觉得还应该有哪些模板？</p>
-            <textarea name="" id="post_text" rows="5" placeholder="请告诉我们你想要的模板"></textarea>
+            <textarea name="" id="post_text" rows="5" placeholder="请输入你想要的模板…"></textarea>
             <div id="submit">提交</div>
         </div>
+        <div id="success">提交成功！</div>
     </div>
     
     <!-- Google Analytics -->
@@ -395,14 +506,18 @@
         button_more_template = d.getElementById('button_more_template'),
         blackcover = d.getElementById('blackcover'),
         submit = d.getElementById('submit');
-    button_more_template.onclick = function(){
+    button_more_template.addEventListener('touchstart',function(){
         blackcover.className = 'show';
         post_area.className = 'show';
-    }
-    blackcover.addEventListener('touchstart',function(e){
-        this.className = 'hidden';
+    })
+        
+    var hide_post = function(e){
+        blackcover.className = 'hidden';
         post_area.className = 'hidden';
         e.preventDefault();
+    }
+    blackcover.addEventListener('touchstart',function(e){
+        hide_post(e);
     })
     submit.addEventListener('touchstart',function(e){
         var text = d.getElementById('post_text').value;
@@ -410,6 +525,11 @@
         xmlhttp.open("POST",'/yqk/card/template_wish/',true);
         xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         xmlhttp.send('details='+text);
+        d.getElementById('success').className = 'animation weixin-alert';
+        hide_post(e);
+        setTimeout(function(){
+          d.getElementById('success').className = '';  
+        },4000)
     })
     </script>
     <!-- 百度分享代码 -->
