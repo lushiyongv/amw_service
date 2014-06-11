@@ -8,4 +8,5 @@ urlpatterns = patterns('yaoqingka.views',
     (r'^card/$', 'show_template_card'),
     (r'^card/show/(\w+)/$', 'show_card'),
     (r'^card/show/(\w+)/edit/$', 'edit_card'),
+    (r'^card/template_wish/$', 'save_user_template_wish'),
 )

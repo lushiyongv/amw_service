@@ -156,3 +156,12 @@ class InviteCard(models.Model):
         ordering = ['-order']
         verbose_name = '邀请卡'
         verbose_name_plural = '【邀请卡管理】邀请卡'
+
+
+class Template_wish(models.Model):
+    details = models.CharField(max_length=1000)  # 内容
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    class Meta:
+        verbose_name = '用户期望提供的邀请卡'
+        verbose_name_plural = '【邀请卡管理】用户期望提供的邀请卡'

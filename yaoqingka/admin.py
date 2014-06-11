@@ -6,7 +6,8 @@ from django.contrib import admin
 from django.contrib import admin
 
 # Register your models here.
-from yaoqingka.models import InviteCard
+from yaoqingka.models import InviteCard, Template_wish
+
 
 class InviteCardAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'content','meeting_time', 'meeting_location', 'word_postion','word_color','bg_color',
@@ -19,5 +20,9 @@ class InviteCardAdmin(admin.ModelAdmin):
         if change is False:
             obj.author = request.user
         obj.save()
+class Template_wishAdmin(admin.ModelAdmin):
+    list_display = ('id', 'details','created_at' , 'updated_at')
+    search_fields = ('details',)
 
 admin.site.register(InviteCard, InviteCardAdmin)
+admin.site.register(Template_wish, Template_wishAdmin)

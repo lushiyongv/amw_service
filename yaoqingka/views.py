@@ -305,3 +305,6 @@ def show_card(request, html_key):
     card.title = item['title']
 
     return render_to_response('yaoqingka/display_card.html', locals(), context_instance=RequestContext(request))
+
+def save_user_template_wish(request):
+    pass
