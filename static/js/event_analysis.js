@@ -47,7 +47,7 @@ function detect_mobile_platform() {
 }
 platform = detect_mobile_platform();
 
-function event_tracker(name, source) {
+function event_tracker(name, source, id) {
     event_info = name + '-' + device + '-' + platform;
-    ga('send', 'event', event_info, source);
+    ga('send', 'event', event_info, source, card_id);
 }

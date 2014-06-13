@@ -513,12 +513,14 @@
     </div>
     
     <script src="/static/js/weixin.js"></script>
+    <script src="/static/js/event_analysis.js"></script>
     <script>
         // 更改微信分享时的文字布局
         var imgUrl = document.getElementById('main_poster').src;
         var lineLink = document.URL;
         var shareTitle = document.getElementsByClassName('title-input')[0].value;
         var descContent = document.getElementsByClassName('main-body-input')[0].value;
+        var card_id= {{ card.id }};
     </script>
     <!-- Google Analytics -->
     <script>
@@ -536,6 +538,11 @@
 
     ga('create', 'UA-46697618-2', 'brixd.com');
     ga('send', 'pageview');
+    </script>
+    <script>
+        document.getElementsByClassName('send-button')[0].onclick = function(){
+            event_tracker('CompleteCard', source, card_id);
+        }
     </script>
 
 

@@ -7,6 +7,7 @@ function shareFriend() {
         "desc": descContent,
         "title": shareTitle
     }, function(res) {
+        event_tracker('WeixinFriend', source, card_id);
         _report('send_msg', res.err_msg);
     })
 }
@@ -20,6 +21,7 @@ function shareTimeline() {
         "desc": descContent,
         "title": shareTitle
     }, function(res) {
+        event_tracker('Pengyouquan', source, card_id);
         _report('timeline', res.err_msg);
     });
 }
@@ -29,6 +31,7 @@ function shareWeibo() {
         "content": descContent,
         "url": lineLink,
     }, function(res) {
+        event_tracker('TengxunWeibo', source, card_id);
         _report('weibo', res.err_msg);
     });
 }
