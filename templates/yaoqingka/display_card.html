@@ -462,16 +462,6 @@
             width: 100%;
         }
     }
-    @media(max-width:384px) {
-        .send-wrapper, .send-too {
-            margin: 30px auto 50px;
-        }
-    }
-    @media(max-width:360px) {
-        .send-wrapper, .send-too {
-            margin: 0 auto;
-        }
-    }
     .zhufu-download {
         font-size: 17px;
     }
@@ -675,8 +665,8 @@
     var descContent = document.getElementsByClassName('main-body-content')[0].innerHTML;
     
     </script>
-    <script>
 
+    <script>
     var content_card = '{{ card.content | safe }}';
         content_card = content_card.replace(/&nbsp/g, ' ');
     var card_id = {{ card.id }};

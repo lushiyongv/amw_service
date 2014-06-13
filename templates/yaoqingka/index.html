@@ -522,9 +522,11 @@
         e.preventDefault();
         return false;
     }
+    
     blackcover.addEventListener('touchstart',function(e){
         hide_post(e);
     })
+
     submit.addEventListener('touchstart',function(e){
         var text = d.getElementById('post_text').value;
         var xmlhttp=new XMLHttpRequest();

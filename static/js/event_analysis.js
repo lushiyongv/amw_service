@@ -1,7 +1,7 @@
 // GA 统计的变量
 var source = "direct",
-	url_search_value=window.location.search,
-	structured_url_path = location.protocol+'//'+location.host+location.pathname,
+    url_search_value = window.location.search,
+    structured_url_path = location.protocol + '//' + location.host + location.pathname,
     device,
     platform,
     event_info;
