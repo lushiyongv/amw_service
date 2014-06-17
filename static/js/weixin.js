@@ -1,9 +1,12 @@
 function shareFriend() {
+    if(document.getElementById('sina_share') !== null){
+        lineLink = lineLink + '&utm_source=wexin&utm_campaign=referral&utm_medium=weixin';
+    }
     WeixinJSBridge.invoke('sendAppMessage', {
         "img_url": imgUrl,
         "img_width": "640",
         "img_height": "640",
-        "link": lineLink + '&utm_source=wexin&utm_campaign=referral&utm_medium=weixin',
+        "link": lineLink,
         "desc": descContent,
         "title": shareTitle
     }, function(res) {
@@ -13,11 +16,14 @@ function shareFriend() {
 }
 
 function shareTimeline() {
+    if(document.getElementById('sina_share') !== null){
+        lineLink = lineLink + '&utm_source=wexin&utm_campaign=referral&utm_medium=pengyouquan';
+    }
     WeixinJSBridge.invoke('shareTimeline', {
         "img_url": imgUrl,
         "img_width": "640",
         "img_height": "640",
-        "link": lineLink + '&utm_source=wexin&utm_campaign=referral&utm_medium=pengyouquan',
+        "link": lineLink,
         "desc": descContent,
         "title": shareTitle
     }, function(res) {
@@ -27,9 +33,12 @@ function shareTimeline() {
 }
 
 function shareWeibo() {
+    if(document.getElementById('sina_share') !== null){
+        lineLink = lineLink + '&utm_source=wexin&utm_campaign=referral&utm_medium=tengxunweibo';
+    }
     WeixinJSBridge.invoke('shareWeibo', {
         "content": descContent,
-        "url": lineLink + '&utm_source=wexin&utm_campaign=referral&utm_medium=tengxunweibo',
+        "url": lineLink,
     }, function(res) {
         event_tracker('TengxunWeibo', source, card_id);
         _report('weibo', res.err_msg);
