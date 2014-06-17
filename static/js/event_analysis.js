@@ -1,7 +1,7 @@
 // GA 统计的变量
 var source = "direct",
-	url_search_value=window.location.search,
-	structured_url_path = location.protocol+'//'+location.host+location.pathname,
+    url_search_value = window.location.search,
+    structured_url_path = location.protocol + '//' + location.host + location.pathname,
     device,
     platform,
     event_info;
@@ -47,7 +47,7 @@ function detect_mobile_platform() {
 }
 platform = detect_mobile_platform();
 
-function event_tracker(name, source) {
+function event_tracker(name, source, id) {
     event_info = name + '-' + device + '-' + platform;
-    ga('send', 'event', event_info, source);
+    ga('send', 'event', event_info, source, card_id);
 }

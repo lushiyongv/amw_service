@@ -1,14 +1,13 @@
-
-
 function shareFriend() {
     WeixinJSBridge.invoke('sendAppMessage', {
         "img_url": imgUrl,
         "img_width": "640",
         "img_height": "640",
-        "link": lineLink,
+        "link": lineLink + '&utm_source=wexin&utm_campaign=referral&utm_medium=weixin',
         "desc": descContent,
         "title": shareTitle
     }, function(res) {
+        event_tracker('WeixinFriend', source, card_id);
         _report('send_msg', res.err_msg);
     })
 }
@@ -18,10 +17,11 @@ function shareTimeline() {
         "img_url": imgUrl,
         "img_width": "640",
         "img_height": "640",
-        "link": lineLink,
+        "link": lineLink + '&utm_source=wexin&utm_campaign=referral&utm_medium=pengyouquan',
         "desc": descContent,
         "title": shareTitle
     }, function(res) {
+        event_tracker('Pengyouquan', source, card_id);
         _report('timeline', res.err_msg);
     });
 }
@@ -29,8 +29,9 @@ function shareTimeline() {
 function shareWeibo() {
     WeixinJSBridge.invoke('shareWeibo', {
         "content": descContent,
-        "url": lineLink,
+        "url": lineLink + '&utm_source=wexin&utm_campaign=referral&utm_medium=tengxunweibo',
     }, function(res) {
+        event_tracker('TengxunWeibo', source, card_id);
         _report('weibo', res.err_msg);
     });
 }

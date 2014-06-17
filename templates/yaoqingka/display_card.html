@@ -81,6 +81,7 @@
         width: 100%;
         margin-bottom: 10px;
     }
+    .receive-para,
     .time,
     .location{
         color: {{ card.title_color }};
@@ -88,7 +89,7 @@
     .main-body {
         overflow: auto;
     }
-    .main-body, .receive-para, .send-para {
+    .main-body, .send-para {
         color: {{ card.word_color }};
         font-size: 16px;
     }
@@ -402,6 +403,7 @@
         width: 100%;
         height: 100%;
         position: fixed;
+        top: 0;
         z-index: 1;
         text-align: center;
         background-color: rgba(0, 0, 0, .5);
@@ -458,16 +460,6 @@
         .card-container {
             padding: 35px 20px 0 20px;
             width: 100%;
-        }
-    }
-    @media(max-width:384px) {
-        .send-wrapper, .send-too {
-            margin: 30px auto 50px;
-        }
-    }
-    @media(max-width:360px) {
-        .send-wrapper, .send-too {
-            margin: 0 auto;
         }
     }
     .zhufu-download {
@@ -633,8 +625,6 @@
     ga('send', 'pageview');
     </script>
 
-    <script src="/static/js/event_analysis.js"></script>
-    <script src="/static/js/weixin.js"></script>
     <script>
     function is_weixin() {
         var ua = navigator.userAgent.toLowerCase();
@@ -651,37 +641,46 @@
         // url_search = window.location.search,
         structured_url_path = location.protocol + '//' + location.host + location.pathname;
 
-    document.getElementById('sina_share').onclick = function() {
-        event_tracker('WeiboShare', source);
+    if(document.getElementById('sina_share') !== null){
+        document.getElementById('sina_share').onclick = function(){
+            event_tracker('SinaWeibo', source);
+        }
     }
+    
     var blackcover = document.getElementById('blackcover'),
         success_tip = document.getElementById('success_tip');
     if (is_weixin()) {
         blackcover.style.display = 'block';
         success_tip.style.display = 'block';
     }
-    blackcover.addEventListener('touchend', function(event) {
-        blackcover.style.display = 'none';
-        success_tip.style.display = 'none';
-    }, false);
+    if(blackcover !== null){
+        blackcover.addEventListener('touchend', function(event) {
+            blackcover.style.display = 'none';
+            success_tip.style.display = 'none';
+        }, false);
+    }
+    
 
     // 更改微信分享时的文字布局
     var imgUrl = document.getElementById('main_poster').src;
-    console.log('imgUrl'+imgUrl);
+    
     var lineLink = document.URL;
-    console.log('lineLink'+lineLink);
+    
     var shareTitle = document.getElementsByClassName('title-name')[0].innerHTML;
-    console.log('shareTitle'+shareTitle);
+    
     var descContent = document.getElementsByClassName('main-body-content')[0].innerHTML;
-    console.log('descContent'+descContent);
+    
     </script>
+
     <script>
     var content_card = '{{ card.content | safe }}';
-    content_card = content_card.replace(/&nbsp/g, ' ');
+        content_card = content_card.replace(/&nbsp/g, ' ');
+    var card_id = {{ card.id }};
+
     window._bd_share_config = {
         common: {
             bdText: content_card,
-            bdUrl: link_address,
+            bdUrl: link_address+'&utm_source=sinaweibo&utm_campaign=referral&utm_medium=sinaweibo',
             bdPic: main_poster
         },
         share: [{
@@ -699,6 +698,8 @@
     with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
     </script>
 
+    <script src="/static/js/event_analysis.js"></script>
+    <script src="/static/js/weixin.js"></script>
 </body>
 
 </html>
