@@ -641,9 +641,12 @@
         // url_search = window.location.search,
         structured_url_path = location.protocol + '//' + location.host + location.pathname;
 
-    document.getElementById('sina_share').onclick = function() {
-        event_tracker('SinaWeibo', source);
+    if(document.getElementById('sina_share').length>0){
+        document.getElementById('sina_share').addEventListener('click',function(){
+            event_tracker('SinaWeibo', source);
+        })      
     }
+    
     var blackcover = document.getElementById('blackcover'),
         success_tip = document.getElementById('success_tip');
     if (is_weixin()) {
