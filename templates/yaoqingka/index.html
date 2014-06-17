@@ -461,7 +461,6 @@
 
     <script src="/static/js/event_analysis.js"></script>
     <script src="/static/js/echo.min.js"></script>
-    <script src="/static/js/weixin.js"></script>
 
     <script>
     var url_search = window.location.search,
@@ -539,6 +538,37 @@
           d.getElementById('success').className = '';  
         },4000)
     })
+
+    // 禁止用户分享
+    function shareFriend(e) {
+        e.preventDefault();
+    }
+
+    function shareTimeline(e) {
+        e.preventDefault();
+    }
+
+    function shareWeibo(e) {
+        e.preventDefault();
+    }
+    // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+        // 发送给好友
+        WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+            shareFriend(e);
+        });
+
+        // 分享到朋友圈
+        WeixinJSBridge.on('menu:share:timeline', function(argv) {
+            shareTimeline(e);
+        });
+
+        // 分享到微博
+        WeixinJSBridge.on('menu:share:weibo', function(argv) {
+            shareWeibo(e);
+        });
+    }, false);
     </script>
     <!-- 百度分享代码 -->
     <script>
