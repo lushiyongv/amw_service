@@ -641,7 +641,7 @@
         // url_search = window.location.search,
         structured_url_path = location.protocol + '//' + location.host + location.pathname;
 
-    if(document.getElementById('sina_share').length>0){
+    if(document.getElementById('sina_share')!==null){
         document.getElementById('sina_share').addEventListener('click',function(){
             event_tracker('SinaWeibo', source);
         })      
