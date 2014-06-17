@@ -641,10 +641,10 @@
         // url_search = window.location.search,
         structured_url_path = location.protocol + '//' + location.host + location.pathname;
 
-    if(document.getElementById('sina_share')!==null){
-        document.getElementById('sina_share').addEventListener('click',function(){
+    if(document.getElementById('sina_share') !== null){
+        document.getElementById('sina_share').onclick = function(){
             event_tracker('SinaWeibo', source);
-        })      
+        }
     }
     
     var blackcover = document.getElementById('blackcover'),
@@ -653,10 +653,13 @@
         blackcover.style.display = 'block';
         success_tip.style.display = 'block';
     }
-    blackcover.addEventListener('touchend', function(event) {
-        blackcover.style.display = 'none';
-        success_tip.style.display = 'none';
-    }, false);
+    if(blackcover !== null){
+        blackcover.addEventListener('touchend', function(event) {
+            blackcover.style.display = 'none';
+            success_tip.style.display = 'none';
+        }, false);
+    }
+    
 
     // 更改微信分享时的文字布局
     var imgUrl = document.getElementById('main_poster').src;
