@@ -276,7 +276,8 @@
         top: 0;
         z-index: 50;
     }
-    #success{
+    #success,
+    #fail{
         background-color: rgba(0,0,0, 0.8);
         -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
@@ -381,6 +382,26 @@
             height: 210px;
         }
     }
+    @media(min-width:420px){
+        #post_area{
+            width: 50%;
+            height: 42%;
+            padding: 30px 50px;
+            margin: 12% 25%;
+        }
+        .post-title{
+            margin-bottom: 15px;
+        }
+        #submit{
+            margin: 30px auto 20px;
+            cursor: pointer;
+        }
+        #button_more_template{
+            width: 300px;
+            cursor: pointer;
+        }
+    }
+    
     </style>
 </head>
 
@@ -438,6 +459,7 @@
             <div id="submit">提交</div>
         </div>
         <div id="success">提交成功！</div>
+        <div id="fail">内容不能为空…</div>
     </div>
     
     <!-- Google Analytics -->
@@ -484,7 +506,7 @@
     }else{
         d.cookie = "startup=1";
     }
-
+    // 判断是否是微信浏览器
     function is_weixin() {
         var ua = navigator.userAgent.toLowerCase();
         if (ua.match(/MicroMessenger/i) == "micromessenger") {
@@ -494,6 +516,17 @@
         }
     }
     var img = d.getElementsByTagName('img');
+
+    // 判断是否是手持设备
+    function is_touch_device() {
+        return 'ontouchstart' in window // works on most browsers
+        || 'onmsgesturechange' in window; // works on ie10
+    };
+    if(is_touch_device()){
+        var gesture = 'touchstart';
+    }else{
+        var gesture = 'click';
+    }
 
     // Lazyload
     Echo.init({
@@ -510,7 +543,7 @@
         button_more_template = d.getElementById('button_more_template'),
         blackcover = d.getElementById('blackcover'),
         submit = d.getElementById('submit');
-    button_more_template.addEventListener('touchstart',function(){
+    button_more_template.addEventListener(gesture,function(){
         blackcover.className = 'show';
         post_area.className = 'show';
     })
@@ -522,21 +555,30 @@
         return false;
     }
     
-    blackcover.addEventListener('touchstart',function(e){
+    blackcover.addEventListener(gesture,function(e){
         hide_post(e);
     })
 
-    submit.addEventListener('touchstart',function(e){
+    submit.addEventListener(gesture,function(e){
         var text = d.getElementById('post_text').value;
-        var xmlhttp=new XMLHttpRequest();
-        xmlhttp.open("POST",'/yqk/card/template_wish/',true);
-        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        xmlhttp.send('details='+text);
-        d.getElementById('success').className = 'animation weixin-alert';
-        hide_post(e);
-        setTimeout(function(){
-          d.getElementById('success').className = '';  
-        },4000)
+        if(text == ''){
+            d.getElementById('fail').className = 'animation weixin-alert';
+            hide_post(e);
+            setTimeout(function(){
+              d.getElementById('fail').className = '';  
+            },4000)
+        }else{
+            var xmlhttp=new XMLHttpRequest();
+            xmlhttp.open("POST",'/yqk/card/template_wish/',true);
+            xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            xmlhttp.send('details='+text);
+            d.getElementById('success').className = 'animation weixin-alert';
+            hide_post(e);
+            setTimeout(function(){
+              d.getElementById('success').className = '';  
+            },4000)
+        }
+        
     })
 
     // 禁止用户分享
