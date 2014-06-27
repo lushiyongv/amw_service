@@ -1,4 +1,5 @@
 function shareFriend() {
+    
     if(document.getElementById('sina_share') !== null){
         lineLink = lineLink + '&utm_source=wexin&utm_campaign=referral&utm_medium=weixin';
     }
