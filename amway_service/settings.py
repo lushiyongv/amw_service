@@ -33,7 +33,7 @@ DATABASES = {
         'NAME': 'amway_service',                      # Or path to database file if using sqlite3.
         'USER': 'cms',                      # Not used with sqlite3.
         'PASSWORD': '211127',                  # Not used with sqlite3.
-        'HOST': '110.75.189.29',                      # Set to empty string for localhost. Not used with sqlite3.
+        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '3306',                      # Set to empty string for default. Not used with sqlite3.
         'CONN_MAX_AGE': None,
 }
