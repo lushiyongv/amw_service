@@ -165,7 +165,7 @@ def makeqrimage(sv_id):
     # qrcode_url = "http://amway.brixd.com/conference/survey/reward/%s" % sr_no
 
 
-    qrcode_content_url = "http://a.brixd.com/conference05/gift_confirm.html?id=%d" % (survey.id)
+    qrcode_content_url = "http://a.brixd.com/conference05/confirm.html?id=%d" % (survey.id)
     print qrcode_content_url
     qr.add_data(qrcode_content_url)
     qr.make(fit=True)

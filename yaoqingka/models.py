@@ -11,6 +11,7 @@ from django.db import models
 import shutil
 import random
 import time
+from django.utils.html import strip_tags
 from tinymce.models import HTMLField
 
 from common.qiniu.qiniu_constants import QINIU_IMAGE_DOMAIN
@@ -69,6 +70,13 @@ class InviteCard(models.Model):
         #     return result
         result = "%s%s%s" % (QINIU_IMAGE_DOMAIN, "img/", self.card_image)
         return result
+
+    def get_card_image4cms(self):
+        result = '''<img style="-webkit-user-select: none; cursor: -webkit-zoom-in;" src="%s%s%s" width="80" height="120">''' % (QINIU_IMAGE_DOMAIN, "img/", self.card_image)
+        # result = "%s%s%s" % (QINIU_IMAGE_DOMAIN, "img/", self.card_image)
+        return (result)
+    get_card_image4cms.allow_tags = True
+    get_card_image4cms.short_description = "图片"
 
     @property
     def get_image_top(self):

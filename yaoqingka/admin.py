@@ -10,8 +10,8 @@ from yaoqingka.models import InviteCard, Template_wish
 
 
 class InviteCardAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'content','meeting_time', 'meeting_location', 'word_postion','word_color','bg_color',
-                    'title_color', 'addressor', 'recipient', 'can_show', 'order', 'author', )
+    list_display = ('id', 'title', 'get_card_image4cms', 'word_postion','word_color','bg_color',
+                    'title_color', 'can_show', 'order')
     list_filter = ('can_show', )
     search_fields = ('title', 'content', 'addressor', 'recipient')
 
