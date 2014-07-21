@@ -1,5 +1,5 @@
 import os,sys
-activate_this = '/home/wwwroot/briapp/apps/nicesite/env4nicesite/bin/activate_this.py'
+activate_this = '/home/wwwroot/briapp/.venv/bin/activate_this.py'
 execfile(activate_this, dict(__file__=activate_this))
 reload(sys)
 
