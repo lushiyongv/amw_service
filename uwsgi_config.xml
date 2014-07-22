@@ -1,6 +1,6 @@
 <uwsgi>
     <http>0.0.0.0:18888</http>
-    <chdir>/home/wwwroot/www.brixd.com/amway.brixd.com/amway_service</chdir>
+    <chdir>/home/wwwroot/briapp/www/amway_service</chdir>
     <pythonpath>..</pythonpath>
     <processes>2</processes>
     <daemonize>../log/uwsgi.log</daemonize>

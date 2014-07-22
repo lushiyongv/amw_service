@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 from fabric.api import *
 
-env.hosts = ['110.75.189.29']
+env.hosts = ['182.92.163.118']
 
 def update_and_restart():
     env.user = "root"
-    env.password = "ourbrixd321"
-    with cd('/home/wwwroot/www.brixd.com/amway.brixd.com/amway_service'):
+    env.password = "fe478c46"
+    with cd('/home/wwwroot/briapp/www/amway_service'):
         run('git pull')
         run('sh restart.sh')
 
