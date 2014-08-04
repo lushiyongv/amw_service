@@ -16,8 +16,8 @@ with open('邀请卡统计.csv', 'wb') as csvfile:
     spamwriter = csv.writer(csvfile, dialect='excel')
     spamwriter.writerow(['创建时间', '模板id', '发送人', '接收人', '标题', '会议时间', '会议地点', '会议内容'])
     for item in cars_db.find({
-        "created_at": {'$gte': datetime.datetime(2014, 6, 1, 0, 0),
-                       '$lte': datetime.datetime(2014, 7, 1, 0, 0)}}).sort(
+        "created_at": {'$gte': datetime.datetime(2014, 7, 1, 0, 0),
+                       '$lte': datetime.datetime(2014, 8, 1, 0, 0)}}).sort(
             "created_at", pymongo.ASCENDING):
         print item
         print item['_id']
