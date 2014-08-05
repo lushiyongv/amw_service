@@ -71,7 +71,7 @@ def get_card_by_id(card_id):
 def edit_card(request, html_key):
     template_card_id = request.GET.get("id", 0)
 
-    mongoconn = Connection('110.75.189.29', 27017)
+    mongoconn = Connection('182.92.163.118', 27017)
     cars_db = mongoconn['yaoqingka']["cards"]
     # print html_key
     item = cars_db.find_one({'_id': html_key})
@@ -206,7 +206,7 @@ def edit_template_card(request, template_card_id):
         item['template_card_id'] = template_card_id
         item['title'] = title
 
-        mongoconn = Connection('110.75.189.29', 27017)
+        mongoconn = Connection('182.92.163.118', 27017)
         cars_db = mongoconn['yaoqingka']["cards"]
         cars_db.insert(item)
 
@@ -274,7 +274,7 @@ def show_card(request, html_key):
     else:
         show_weixin = False
 
-    mongoconn = Connection('110.75.189.29', 27017)
+    mongoconn = Connection('182.92.163.118', 27017)
     cars_db = mongoconn['yaoqingka']["cards"]
     # print html_key
     item = cars_db.find_one({'_id':html_key})

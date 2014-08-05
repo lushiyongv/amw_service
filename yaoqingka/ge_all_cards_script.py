@@ -8,7 +8,7 @@ import csv
 import datetime
 import pymongo
 
-mongoconn = pymongo.Connection('110.75.189.29', 27017)
+mongoconn = pymongo.Connection('182.92.163.118', 27017)
 cars_db = mongoconn['yaoqingka']["cards"]
 # # created_at需要创建索引  db.cards.ensureIndex({x:1})  查看索引 db.test.getIndexes()删除索引：db.test.dropIndex({"username":1})
 
