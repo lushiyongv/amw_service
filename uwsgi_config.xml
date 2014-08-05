@@ -1,5 +1,5 @@
 <uwsgi>
-    <http>0.0.0.0:18888</http>
+    <socket>127.0.0.1:18888</socket>
     <chdir>/home/wwwroot/briapp/www/amway_service</chdir>
     <pythonpath>..</pythonpath>
     <processes>2</processes>
